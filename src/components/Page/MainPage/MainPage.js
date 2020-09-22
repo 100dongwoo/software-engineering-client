@@ -3,7 +3,7 @@ import React from 'react';
 function MainPage(props) {
     return (
         <div>
-            <h1>다윤이 똥멍청이</h1>
+            <h1>다윤이 꽃미녀</h1>
         </div>
     );
 }
