@@ -11,7 +11,7 @@ function NavBar(props) {
                 로그인
             </Link>
             <Link style={{ marginRight: 20 }} to={'/register'}>
-                회원가입
+                회원가입asdfdsafds
             </Link>
         </div>
     );
