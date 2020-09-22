@@ -5,7 +5,7 @@ function NavBar(props) {
     return (
         <div style={{ display: 'flex' }}>
             <Link style={{ marginRight: 20 }} to={'/'}>
-                메인
+                메인페이지
             </Link>
             <Link style={{ marginRight: 20 }} to={'/login'}>
                 로그인
