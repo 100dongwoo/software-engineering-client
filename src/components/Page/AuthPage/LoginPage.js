@@ -27,6 +27,10 @@ const SmallFont = styled.p`
 `;
 const LoginImage = styled.div`
     width: 100%;
+    //이 주석은 해제 하시면 화면크기에 맞춰서 이미지가 변경되긴합니다
+    // background-size: cover;
+    // background-position: center center;
+
     height: 80vh;
     background-image: url(${(props) => props.bg});
 `;
