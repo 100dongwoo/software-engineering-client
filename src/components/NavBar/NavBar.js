@@ -16,6 +16,7 @@ const Navbar = styled(Link)`
         color: #ff534b;
         border-bottom: 2px solid #ff534b;
     }
+    color: #181717;
 `;
 
 function NavBar(props) {
