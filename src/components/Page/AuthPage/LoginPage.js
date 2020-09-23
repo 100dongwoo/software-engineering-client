@@ -25,6 +25,11 @@ const SmallFont = styled.p`
     line-height: 19px;
     opacity: 0.8;
 `;
+const LoginImage = styled.div`
+    width: 100%;
+    height: 80vh;
+    background-image: url(${(props) => props.bg});
+`;
 const useStyles = makeStyles({
     textFiled: {
         border: ' 1px solid #E8E8E8',
@@ -70,7 +75,9 @@ function LoginPage(props) {
                 padding: '4% 4% 4% 4%',
             }}
         >
-            <div style={{ width: '50%' }}>이미지</div>
+            <div style={{ width: '50%' }}>
+                <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
+            </div>
             <div
                 style={{
                     paddingLeft: '10%',
