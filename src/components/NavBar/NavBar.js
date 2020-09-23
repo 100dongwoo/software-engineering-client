@@ -20,14 +20,27 @@ const Navbar = styled(Link)`
 
 function NavBar(props) {
     return (
-        <div style={{ display: 'flex', marginTop: '2%' }}>
+        <div
+            style={{
+                display: 'flex',
+
+                borderBottom: 'solid 1px #e8e8e8',
+            }}
+        >
             <div>
                 {/* 로고 */}
                 <Link to={'/'}>Logo</Link>
             </div>
-
-            <div style={{ width: '100%', paddingRight: '4%' }}>
+            <div
+                style={{
+                    width: '100%',
+                    paddingRight: '4%',
+                }}
+            >
                 {/*메뉴바 컨테이너 */}
+                <Navbar to={'/register'} style={{ padding: ' 15px 40px' }}>
+                    회원가입
+                </Navbar>
                 <Navbar to={'/introduce'}>소개</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
                 <Navbar to={'/login'}>로그인</Navbar>
