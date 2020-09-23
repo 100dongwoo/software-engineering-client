@@ -1,18 +1,37 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+const Navbar = styled(Link)`
+    text-decoration: none;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 120%;
+    letter-spacing: -0.03em;
+    padding: 15px 20px;
+    float: right;
+    &:hover {
+        color: #ff534b;
+        border-bottom: 2px solid #ff534b;
+    }
+`;
 
 function NavBar(props) {
     return (
-        <div style={{ display: 'flex' }}>
-            <Link style={{ marginRight: 20 }} to={'/'}>
-                메인페이지
-            </Link>
-            <Link style={{ marginRight: 20 }} to={'/login'}>
-                로그인
-            </Link>
-            <Link style={{ marginRight: 20 }} to={'/register'}>
-                회원가입asdfdsafds
-            </Link>
+        <div style={{ display: 'flex', marginTop: '2%' }}>
+            <div>
+                {/* 로고 */}
+                <Link to={'/'}>Logo</Link>
+            </div>
+
+            <div style={{ width: '100%', paddingRight: '4%' }}>
+                {/*메뉴바 컨테이너 */}
+                <Navbar to={'/introduce'}>소개</Navbar>
+                <Navbar to={'/post'}>게시판</Navbar>
+                <Navbar to={'/login'}>로그인</Navbar>
+            </div>
         </div>
     );
 }
