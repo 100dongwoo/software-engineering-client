@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-const Title = styled.p`
+export const Title = styled.p`
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -13,20 +13,20 @@ const Title = styled.p`
     color: #2d3748;
     margin-bottom: -3%;
 `;
-const Logintitle = styled.p`
+export const Logintitle = styled.p`
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
 `;
-const SmallFont = styled.p`
+export const SmallFont = styled.p`
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
     opacity: 0.8;
 `;
-const LoginImage = styled.div`
+export const LoginImage = styled.div`
     width: 50%;
     이 주석은 해제 하시면 화면크기에 맞춰서 이미지가 변경되긴합니다
     background-size: cover;
@@ -130,6 +130,7 @@ function LoginPage(props) {
                         회원가입 하러가기
                     </p>
                     <Button
+                        type="submit"
                         onClick={onLoginHandler}
                         className={classes.loginBtn}
                     >
