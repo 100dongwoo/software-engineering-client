@@ -5,7 +5,7 @@ import LoginPage from './components/Page/AuthPage/LoginPage';
 import NavBar from './components/NavBar/NavBar';
 import MainPage from './components/Page/MainPage/MainPage';
 import PostPage from './components/Page/PostPage/PostPage';
-import Introduce from './components/Page/Introduce';
+import Introduce from './components/Page/Introduce/Introduce';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`

@@ -4,6 +4,7 @@ import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+
 const Title = styled.p`
     font-style: normal;
     font-weight: normal;
@@ -26,13 +27,25 @@ const SmallFont = styled.p`
     opacity: 0.8;
 `;
 const LoginImage = styled.div`
-    width: 100%;
-    //이 주석은 해제 하시면 화면크기에 맞춰서 이미지가 변경되긴합니다
-    // background-size: cover;
-    // background-position: center center;
+    width: 50%;
+    이 주석은 해제 하시면 화면크기에 맞춰서 이미지가 변경되긴합니다
+    background-size: cover;
+    background-position: center center;
 
     height: 80vh;
     background-image: url(${(props) => props.bg});
+    @media (max-width: 800px) {
+        display: none;
+        
+    }
+`;
+const Container = styled.div`
+    display: flex;
+    height: 80vh;
+    padding: 4% 4% 4% 4%;
+    @media (max-width: 800px) {
+        padding: 0 0 0 0;
+    }
 `;
 const useStyles = makeStyles({
     textFiled: {
@@ -61,6 +74,7 @@ const useStyles = makeStyles({
         },
     },
 });
+
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
@@ -72,16 +86,9 @@ function LoginPage(props) {
             alert('이메일 또는 비밀번호를 입력하세요');
     };
     return (
-        <div
-            style={{
-                display: 'flex',
-                height: '80vh',
-                padding: '4% 4% 4% 4%',
-            }}
-        >
-            <div style={{ width: '50%' }}>
-                <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
-            </div>
+        <Container>
+            <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
+
             <div
                 style={{
                     paddingLeft: '10%',
@@ -100,7 +107,7 @@ function LoginPage(props) {
                         value={email}
                         onChange={(e) => setEmail(e.currentTarget.value)}
                     />
-                    <SmallFont>pass word</SmallFont>
+                    <SmallFont>password</SmallFont>
                     <Input
                         className={classes.textFiled}
                         type="password"
@@ -130,7 +137,7 @@ function LoginPage(props) {
                     </Button>
                 </form>
             </div>
-        </div>
+        </Container>
     );
 }
 
