@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import MenuOpenSharpIcon from '@material-ui/icons/MenuOpenSharp';
 
@@ -48,13 +48,13 @@ const SideMenu = styled.p`
 `;
 
 function NavBar(props) {
-    const DrawClose = () => {
+    const DrawClose = (a) => {
         setVisible(false);
     };
     const Drawopen = () => {
         setVisible(true);
     };
-
+    const history = useHistory();
     const [visible, setVisible] = useState(false);
     return (
         <div
@@ -63,10 +63,8 @@ function NavBar(props) {
                 borderBottom: 'solid 1px #e8e8e8',
             }}
         >
-            <div>
-                {/* 로고 */}
-                <Link to={'/'}>Logo</Link>
-            </div>
+            {/* 로고 */}
+            <Link to={'/'}>Logo</Link>
             <div
                 style={{
                     width: '100%',
@@ -74,7 +72,6 @@ function NavBar(props) {
                 }}
             >
                 {/*메뉴바 컨테이너 */}
-
                 <Navbar to={'/register'}>회원가입</Navbar>
                 <Navbar to={'/introduce'}>소개</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
@@ -96,13 +93,28 @@ function NavBar(props) {
                     >
                         Basic Drawer
                     </p>
-                    <SideMenu to={'/introduce'} onClick={DrawClose}>
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/introduce');
+                        }}
+                    >
                         소개
                     </SideMenu>
-                    <SideMenu to={'/post'} onClick={DrawClose}>
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/post');
+                        }}
+                    >
                         게시판
                     </SideMenu>
-                    <SideMenu to={'/login'} onClick={DrawClose}>
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/login');
+                        }}
+                    >
                         로그인
                     </SideMenu>
                 </Drawer>
