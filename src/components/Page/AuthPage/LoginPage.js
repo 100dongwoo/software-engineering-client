@@ -28,7 +28,6 @@ export const SmallFont = styled.p`
 `;
 export const LoginImage = styled.div`
     width: 50%;
-    이 주석은 해제 하시면 화면크기에 맞춰서 이미지가 변경되긴합니다
     background-size: cover;
     background-position: center center;
 
@@ -36,7 +35,6 @@ export const LoginImage = styled.div`
     background-image: url(${(props) => props.bg});
     @media (max-width: 800px) {
         display: none;
-        
     }
 `;
 const Container = styled.div`

@@ -23,6 +23,9 @@ const useStyles = makeStyles({
         underline: false,
         maxWidth: 450,
         marginBottom: 10,
+        '& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+            display: 'none',
+        },
     },
     loginBtn: {
         background: '#04C45C',
