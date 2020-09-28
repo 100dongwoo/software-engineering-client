@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Logintitle, Title, SmallFont, LoginImage } from './LoginPage';
+import api from '../../../api_manager';
+import { withAuthContext } from '../../../context/AuthContext';
 const Container = styled.div`
     display: flex;
     height: 80vh;
@@ -51,6 +53,11 @@ function LoginPage(props) {
     const [checkPassword, setCheckPassword] = useState('');
     const [nickname, setNickname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+
+    useEffect(()=>{
+
+    },[]);
+
     const onLoginHandler = (e) => {
         e.preventDefault();
         if (
@@ -60,13 +67,25 @@ function LoginPage(props) {
             nickname === '' ||
             phoneNumber === ''
         )
-            alert('입력하세요');
+            alert('정보를 입력해주세요.');
         else if (password !== checkPassword) {
             alert('Password and CheckPassword are different');
         }
+        api.post('v1/users/sign-up/', {
+            email,
+            password,
+            phoneNumber,
+            nickname,
+        }).then(res=>{
+            if(!res.ok){alert('회원가입에 실패하였습니다.'); return}
+            props.history.replace('/');
+        })
     };
     return (
         <Container>
+            {console.log(props.auth)}
+            {/*props.auth._setUser(null);*/}
+            {/*props.auth.user*/}
             <div
                 style={{
                     paddingLeft: '15%',
@@ -148,4 +167,4 @@ function LoginPage(props) {
     );
 }
 
-export default LoginPage;
+export default withAuthContext(LoginPage);

@@ -7,6 +7,7 @@ import MainPage from './components/Page/MainPage/MainPage';
 import PostPage from './components/Page/PostPage/PostPage';
 import Introduce from './components/Page/Introduce/Introduce';
 import { createGlobalStyle } from 'styled-components';
+import { AuthContextProvider } from './context/AuthContext';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
     return (
+        <AuthContextProvider>
         <Router>
             <GlobalStyle />
             <Switch>
@@ -30,6 +32,7 @@ function App() {
                 </>
             </Switch>
         </Router>
+        </AuthContextProvider>
     );
 }
 

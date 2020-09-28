@@ -5,17 +5,10 @@ const AuthContext = createContext();
 const { Provider } = AuthContext;
 
 const userModel = {
-    // loginId: '',
-    password: '',
-    phoneNumber: '',
     email: '',
-    firstName: '',
+    phoneNumber: '',
+    nickname: '',
     profileImage: '',
-    account: '',
-    gubun: '', // 01: 보호자, 02: 돌보미
-    gubunDolbomi: '', // 01: 아이돌보미, 02: 노인돌보미
-    gubunDolbomiKids: '', // 01: 대학생, 02: 보육교사, 03: 특기교사
-    chatToken: '',
 };
 
 const AuthContextProvider = (props) => {
