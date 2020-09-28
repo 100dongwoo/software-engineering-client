@@ -78,6 +78,7 @@ function LoginPage(props) {
             nickname,
         }).then(res=>{
             if(!res.ok){alert('회원가입에 실패하였습니다.'); return}
+            alert('로그인되었습니다.');
             props.history.replace('/');
         })
     };

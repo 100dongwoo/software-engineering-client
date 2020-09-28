@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import api from '../../../api_manager';
 
 export const Title = styled.p`
     font-style: normal;
@@ -78,11 +79,24 @@ function LoginPage(props) {
     const classes = useStyles();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(()=>{
+
+    },[]);
+
     const onLoginHandler = (e) => {
         e.preventDefault();
         if (email === '' || password === '')
             alert('이메일 또는 비밀번호를 입력하세요');
+        api.post('v1/users/sign-in/', {
+            email,
+            password,
+        }).then(res=>{
+            if(res.data.code==='NotLogin'){alert(res.data.msg); return}
+            props.history.replace('/');
+        });
     };
+
     return (
         <Container>
             <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
