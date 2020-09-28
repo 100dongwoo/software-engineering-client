@@ -20,7 +20,7 @@ const AuthContextProvider = (props) => {
     };
 
     const fetchProfile = async () => {
-        let res = await api.get('v1/me/info/');
+        let res = await api.get('v1/me/profile/');
 
         if (!res.ok) {
             _setUser(userModel);
