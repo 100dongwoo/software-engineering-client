@@ -93,6 +93,7 @@ function LoginPage(props) {
             password,
         }).then(res=>{
             if(res.data.code==='NotLogin'){alert(res.data.msg); return}
+            alert('로그인되었습니다.');
             props.history.replace('/');
         });
     };
