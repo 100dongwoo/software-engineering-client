@@ -55,7 +55,7 @@ function LoginPage(props) {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     useEffect(()=>{
-
+        {console.log(props.auth.user)}
     },[]);
 
     const onLoginHandler = (e) => {
@@ -84,9 +84,6 @@ function LoginPage(props) {
     };
     return (
         <Container>
-            {console.log(props.auth)}
-            {/*props.auth._setUser(null);*/}
-            {/*props.auth.user*/}
             <div
                 style={{
                     paddingLeft: '15%',
