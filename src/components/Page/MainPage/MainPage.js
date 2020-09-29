@@ -14,6 +14,7 @@ function MainPage(props) {
 
     return (
         <div>
+
             <h1>다윤이 꽃미녀</h1>
             <h2>{`${user.nickname} 존멋`}</h2>
         </div>
