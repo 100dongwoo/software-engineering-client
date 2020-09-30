@@ -72,7 +72,7 @@ const useStyles = makeStyles({
         lineHeight: '19px',
         color: '#FFFFFF',
         '&:hover': {
-            background: '#04C45C',
+            background: '#34558b',
         },
     },
 });

@@ -15,8 +15,8 @@ const Navbar = styled(Link)`
     padding: 15px 20px;
     float: right;
     &:hover {
-        color: #ff534b;
-        border-bottom: 1px solid #ff534b;
+        color: #34558b;
+        border-bottom: 1px solid #34558b;
     }
     color: #181717;
     @media (max-width: 800px) {
@@ -40,7 +40,7 @@ const SideMenu = styled.p`
     text-decoration: none;
     cursor: pointer;
     &:hover {
-        color: #ff534b;
+        color: #34558b;
     }
     @media (max-width: 800px) {
         display: inline-block !important;

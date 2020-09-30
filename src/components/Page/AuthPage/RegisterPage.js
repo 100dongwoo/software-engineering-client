@@ -41,7 +41,7 @@ const useStyles = makeStyles({
         lineHeight: '19px',
         color: '#FFFFFF',
         '&:hover': {
-            background: '#04C45C',
+            background: '#34558b',
         },
     },
 });
@@ -54,9 +54,11 @@ function LoginPage(props) {
     const [nickname, setNickname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
-    useEffect(()=>{
-        {console.log(props.auth.user)}
-    },[]);
+    useEffect(() => {
+        {
+            console.log(props.auth.user);
+        }
+    }, []);
 
     const onLoginHandler = (e) => {
         e.preventDefault();
@@ -76,11 +78,14 @@ function LoginPage(props) {
             password,
             phoneNumber,
             nickname,
-        }).then(res=>{
-            if(!res.ok){alert('회원가입에 실패하였습니다.'); return}
+        }).then((res) => {
+            if (!res.ok) {
+                alert('회원가입에 실패하였습니다.');
+                return;
+            }
             alert('회원가입되었습니다.');
             props.history.replace('/');
-        })
+        });
     };
     return (
         <Container>

@@ -9,10 +9,18 @@ const Introduction = (props) => {
         <>
             <div>
                 <div className="logo">
-                    <img src={startup} className="App-logo" alt="logo" />
+                    <img
+                        src={startup}
+                        className="App-logo"
+                        alt="logo"
+                        style={{
+                            marginLeft: 50,
+                            marginRight: 50,
+                            backgroundColor: '#34558b',
+                        }}
+                    />
                     <div>
                         <b>
-                            <hr></hr>
                             <div
                                 style={{
                                     display: 'flex',
@@ -35,19 +43,28 @@ const Introduction = (props) => {
                                     창업 정보는 Where?
                                 </p>
                             </b>
-                            <br></br>
+
                             <p>창업을 준비하는 사람들이 손쉽게</p>
                             <p>정보를 찾을 수 있도록 창업 정보를 공유합니다.</p>
-                            <br></br>
+
                             <b>
-                                <p style={{ fontSize: 32, color: 'blue' }}>
+                                <p style={{ fontSize: 32, color: '#34558b' }}>
                                     I can do it! Start-up
                                 </p>
                             </b>
                             <hr></hr>
                         </div>
                     </div>
-                    <img src={startup2} className="App-logo" alt="logo" />
+                    <img
+                        src={startup2}
+                        className="App-logo"
+                        alt="logo"
+                        style={{
+                            marginLeft: 50,
+                            marginRight: 50,
+                            backgroundColor: '#34558b',
+                        }}
+                    />
                 </div>
             </div>
         </>
