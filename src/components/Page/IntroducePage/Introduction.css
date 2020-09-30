@@ -1,8 +1,18 @@
 .fonts {
     color: black;
     font-size: 15px;
+    text-align: center;
 }
 .a {
     color: blue;
     font-size: 30px;
+}
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.App-logo {
+    height: 70vmin;
+    pointer-events: none;
 }
