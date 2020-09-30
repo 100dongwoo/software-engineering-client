@@ -37,6 +37,9 @@ export const LoginImage = styled.div`
     @media (max-width: 800px) {
         display: none;
     }
+    @media all and (max-device-height: 800px) {
+        display: none;
+    }
 `;
 const Container = styled.div`
     display: flex;
@@ -80,9 +83,7 @@ function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(()=>{
-
-    },[]);
+    useEffect(() => {}, []);
 
     const onLoginHandler = (e) => {
         e.preventDefault();
@@ -91,8 +92,11 @@ function LoginPage(props) {
         api.post('v1/users/sign-in/', {
             email,
             password,
-        }).then(res=>{
-            if(res.data.code==='NotLogin'){alert(res.data.msg); return}
+        }).then((res) => {
+            if (res.data.code === 'NotLogin') {
+                alert(res.data.msg);
+                return;
+            }
             alert('로그인되었습니다.');
             props.history.replace('/');
         });
