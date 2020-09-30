@@ -1,5 +1,5 @@
 import {create} from 'apisauce';
-import {BASE_URL, CHAT_URL} from './urls';
+import {BASE_URL} from './urls';
 import camelcaseKeys from 'camelcase-keys';
 import snakecaseKeys from 'snakecase-keys';
 
@@ -10,7 +10,6 @@ const api = create({
 );
 
 export const extraApi = create({baseURL: BASE_URL});
-export const chatApi = create({baseURL: CHAT_URL});
 
 api.addResponseTransform(response => {
   console.log(response);

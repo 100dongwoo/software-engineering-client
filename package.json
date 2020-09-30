@@ -12,10 +12,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "snakecase-keys": "^3.2.0"
+    "snakecase-keys": "^3.2.0",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/icons": "^4.9.1",
     "react-router-dom": "^5.2.0"
   }
 }
