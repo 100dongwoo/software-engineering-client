@@ -14,6 +14,7 @@ const Navbar = styled(Link)`
     letter-spacing: -0.03em;
     padding: 15px 20px;
     float: right;
+    border-bottom: solid 1px #e8e8e8;
     &:hover {
         color: #34558b;
         border-bottom: 1px solid #34558b;
@@ -60,6 +61,7 @@ function NavBar(props) {
         <div
             style={{
                 display: 'flex',
+
                 borderBottom: 'solid 1px #e8e8e8',
             }}
         >
