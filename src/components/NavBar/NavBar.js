@@ -68,7 +68,6 @@ function NavBar(props) {
             <div
                 style={{
                     width: '100%',
-                    paddingRight: '4%',
                 }}
             >
                 {/*메뉴바 컨테이너 */}

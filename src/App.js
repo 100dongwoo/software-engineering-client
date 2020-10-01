@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
      font-family: DM Sans;
+     padding : 0 4% 0 4%;
   }
 `;
 
@@ -28,12 +29,8 @@ function App() {
                     <>
                         <NavBar />
                         <Route exact path="/post" component={PostPage} />
-                        <Route
-                            exact
-                            path="/Introduction"
-                            component={Introduction}
-                        />
-                        <Route exact path="/" component={Mypage} />
+                        <Route exact path="/" component={Introduction} />
+                        <Route exact path="/mypage" component={Mypage} />
                         <Route
                             exact
                             path="/uploadpage"

@@ -1,18 +1,49 @@
 .fonts {
-    color: black;
     font-size: 15px;
     text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: -0px;
 }
+
 .a {
     color: #34558b;
     font-size: 30px;
+    font-weight: bold;
 }
+
 .logo {
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
-.App-logo {
+
+.Intro {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+
+
+}
+
+img {
+    width: 34%;
     height: 70vmin;
-    pointer-events: none;
+    background-color: #34558b;
 }
+
+@media (max-width: 800px) {
+    .logo {
+        flex-direction: column;
+    }
+
+    img {
+        width: 80%;
+    }
+
+}
+
+
