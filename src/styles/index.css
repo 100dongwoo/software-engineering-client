@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "payboocBold";
+  src: local("footB"),
+    url("./fonts/paybooc Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "payboocExtraBold";
+  src: local("footR"),
+    url("./fonts/paybooc ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "payboocLight";
+  src: local("footL"),
+    url("./fonts/paybooc Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "payboocMedium";
+    src: local("footL"),
+    url("./fonts/paybooc Medium.ttf") format("truetype");
+}

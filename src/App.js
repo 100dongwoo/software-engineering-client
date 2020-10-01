@@ -9,11 +9,11 @@ import { createGlobalStyle } from 'styled-components';
 import { AuthContextProvider } from './context/AuthContext';
 import Mypage from './components/Page/Mypage/Mypage';
 import Uploadpage from './components/Page/Uploadpage/Uploadpage';
-
+import './styles/index.css';
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
-     font-family: DM Sans;
+     font-family: payboocLight;
      padding : 0 4% 0 4%;
   }
 `;
