@@ -35,7 +35,7 @@ img {
     background-color: #34558b;
 }
 
-@media (max-width: 800px) {
+@media only screen and (max-width: 768px) {
     .logo {
         flex-direction: column;
     }

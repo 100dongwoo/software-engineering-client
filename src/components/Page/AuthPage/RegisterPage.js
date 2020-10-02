@@ -11,7 +11,7 @@ const Container = styled.div`
     display: flex;
     height: 80vh;
     padding: 4% 4% 4% 4%;
-    @media (max-width: 800px) {
+    @media only screen and (max-width: 768px) {
         padding: 0 0 0 0;
     }
 `;

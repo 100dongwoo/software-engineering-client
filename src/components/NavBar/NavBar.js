@@ -20,20 +20,19 @@ const Navbar = styled(Link)`
         border-bottom: 1px solid #34558b;
     }
     color: #181717;
-    @media (max-width: 800px) {
+    @media only screen and (max-width: 768px) {
         display: none;
     }
 `;
 const SideBtn = styled.button`
     height: 55px;
-    color: blue;
     background: none;
     border: none;
-    visible: false;
     display: none;
-    text-decoration: none;
-    @media (max-width: 800px) {
+
+    @media only screen and (max-width: 768px) {
         display: inline-block !important;
+        margin-right: -2%;
     }
 `;
 const SideMenu = styled.p`
@@ -43,7 +42,7 @@ const SideMenu = styled.p`
     &:hover {
         color: #34558b;
     }
-    @media (max-width: 800px) {
+    @media only screen and (max-width: 768px) {
         display: inline-block !important;
     }
 `;

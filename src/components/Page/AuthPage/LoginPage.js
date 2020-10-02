@@ -34,10 +34,7 @@ export const LoginImage = styled.div`
 
     height: 80vh;
     background-image: url(${(props) => props.bg});
-    @media (max-width: 800px) {
-        display: none;
-    }
-    @media all and (max-device-height: 800px) {
+    @media only screen and (max-width: 768px) {
         display: none;
     }
 `;
@@ -45,7 +42,7 @@ const Container = styled.div`
     display: flex;
     height: 80vh;
     padding: 4% 4% 4% 4%;
-    @media (max-width: 800px) {
+    @media only screen and (max-width: 768px) {
         padding: 0 0 0 0;
     }
 `;
