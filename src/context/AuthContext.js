@@ -8,7 +8,7 @@ const userModel = {
     email: '',
     phoneNumber: '',
     nickname: '',
-    profileImage: '',
+    profileImage: 'https://placeimg.com/140/140/any',
 };
 
 const AuthContextProvider = (props) => {

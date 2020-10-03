@@ -61,20 +61,6 @@ function LoginPage(props) {
         }
     }, []);
 
-    const onLoginHandler = (e) => {
-        e.preventDefault();
-        if (values.password !== values.checkPassword) {
-            alert('Password and CheckPassword are different');
-        }
-        api.post('v1/users/sign-up/', values).then((res) => {
-            if (!res.ok) {
-                alert('회원가입에 실패하였습니다.');
-                return;
-            }
-            alert('회원가입되었습니다.');
-            props.history.replace('/');
-        });
-    };
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -136,7 +122,7 @@ function LoginPage(props) {
             <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
 
             <RightContainer>
-                <form onSubmit={onLoginHandler}>
+                <form onSubmit={handleSubmit}>
                     <Title>WelcomBack</Title>
                     <Logintitle>Sign up to your account</Logintitle>
                     <SmallFont>Email</SmallFont>
@@ -211,7 +197,7 @@ function LoginPage(props) {
                     </p>
                     <Button
                         type="submit"
-                        onClick={onLoginHandler}
+                        onClick={handleSubmit}
                         className={classes.loginBtn}
                     >
                         Sign Up now

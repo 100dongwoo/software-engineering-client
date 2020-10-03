@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import api from '../../../api_manager';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { withAuthContext } from '../../../context/AuthContext';
 
 export const Title = styled.p`
     font-style: normal;
@@ -99,6 +100,7 @@ const useStyles = makeStyles({
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
+    const [user, setUser] = useState({});
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -115,15 +117,26 @@ function LoginPage(props) {
                 .min(4, '비밀번호는 최소 4자리 이상입니다.')
                 .required('필수 항목입니다.'),
         }),
-        onSubmit: (values, { setSubmitting, setErrors }) => {
+        onSubmit: async (values, { setSubmitting, setErrors }) => {
             console.log('onSubmit result', values);
-            api.post('v1/users/sign-in/', values).then((res) => {
+            await api.post('v1/users/sign-in/', values).then(async (res) => {
                 if (res.data.code === 'NotLogin') {
                     alert(res.data.msg);
                     return;
                 }
                 alert('로그인되었습니다.');
                 props.history.replace('/');
+                //
+                // await props.auth.fetchProfile().then((res) => {
+                //     console.log('a', res);
+                //     if (!res) {
+                //         alert('데이터를 불러오는 데 실패하였습니다.');
+                //         return;
+                //     }
+                //     alert('로그인되었습니다.');
+                //     props.history.replace('/');
+                // });
+
                 // resetForm();
             });
         },
@@ -196,4 +209,4 @@ function LoginPage(props) {
     );
 }
 
-export default LoginPage;
+export default withAuthContext(LoginPage);
