@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -48,6 +48,10 @@ const Container = styled.div`
         padding: 0 0 0 0;
     }
 `;
+const ErrorFont = styled.div`
+    color: blue;
+    font-size: 14px;
+`;
 const useStyles = makeStyles({
     textFiled: {
         border: ' 1px solid #E8E8E8',
@@ -79,9 +83,6 @@ const useStyles = makeStyles({
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
-
-    useEffect(() => {}, []);
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -147,11 +148,7 @@ function LoginPage(props) {
                         value={values.email}
                         onChange={handleChange('email')}
                     />
-                    {errors.email && (
-                        <div style={{ textAlign: 'right', color: 'red' }}>
-                            {errors.email}
-                        </div>
-                    )}
+                    {errors.email && <ErrorFont>{errors.email}</ErrorFont>}
                     <SmallFont>password</SmallFont>
                     <Input
                         className={classes.textFiled}
@@ -160,15 +157,13 @@ function LoginPage(props) {
                         onChange={handleChange('password')}
                     />
                     {errors.password && (
-                        <div style={{ textAlign: 'right', color: 'red' }}>
-                            {errors.password}
-                        </div>
+                        <ErrorFont>{errors.password}</ErrorFont>
                     )}
                     <p
                         style={{
                             textAlign: 'right',
                             maxWidth: 450,
-                            marginTop: -5,
+
                             color: 'red',
                             cursor: 'pointer',
                             fontSize: 13,
