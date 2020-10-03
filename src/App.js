@@ -14,9 +14,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
      font-family: payboocLight;
-     padding : 0 4% 0 4%;
+     padding : 0 4%;
   }
-  
 `;
 
 function App() {

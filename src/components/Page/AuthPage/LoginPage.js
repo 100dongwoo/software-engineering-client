@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import api from '../../../api_manager';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 export const Title = styled.p`
     font-style: normal;
@@ -77,28 +79,52 @@ const useStyles = makeStyles({
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     useEffect(() => {}, []);
 
-    const onLoginHandler = (e) => {
-        e.preventDefault();
-        if (email === '' || password === '')
-            alert('이메일 또는 비밀번호를 입력하세요');
-        api.post('v1/users/sign-in/', {
-            email,
-            password,
-        }).then((res) => {
-            if (res.data.code === 'NotLogin') {
-                alert(res.data.msg);
-                return;
-            }
-            alert('로그인되었습니다.');
-            props.history.replace('/');
-        });
-    };
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        validationSchema: yup.object().shape({
+            email: yup
+                .string()
+                .email('존재하지 않는 형식입니다.')
+                .required('필수 항목입니다.'),
+            password: yup
+                .string()
+                .min(4, '비밀번호는 최소 4자리 이상입니다.')
+                .required('필수 항목입니다.'),
+        }),
+        onSubmit: (values, { setSubmitting, setErrors }) => {
+            console.log('onSubmit result', values);
+            api.post('v1/users/sign-in/', values).then((res) => {
+                if (res.data.code === 'NotLogin') {
+                    alert(res.data.msg);
+                    return;
+                }
+                alert('로그인되었습니다.');
+                props.history.replace('/');
+                // resetForm();
+            });
+        },
+    });
 
+    const {
+        values,
+        handleChange,
+        errors,
+        setFieldTouched,
+        touched,
+        isValid,
+        isSubmitting,
+        handleSubmit,
+        setFieldValue,
+        resetForm,
+        setErrors,
+    } = formik;
     return (
         <Container>
             <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
@@ -111,23 +137,33 @@ function LoginPage(props) {
                     margin: 'auto',
                 }}
             >
-                <form onSubmit={onLoginHandler}>
+                <form onSubmit={handleSubmit}>
                     <Title>WelcomBack</Title>
                     <Logintitle>Login to your account</Logintitle>
                     <SmallFont>Email</SmallFont>
                     <Input
                         className={classes.textFiled}
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.currentTarget.value)}
+                        value={values.email}
+                        onChange={handleChange('email')}
                     />
+                    {errors.email && (
+                        <div style={{ textAlign: 'right', color: 'red' }}>
+                            {errors.email}
+                        </div>
+                    )}
                     <SmallFont>password</SmallFont>
                     <Input
                         className={classes.textFiled}
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.currentTarget.value)}
+                        value={values.password}
+                        onChange={handleChange('password')}
                     />
+                    {errors.password && (
+                        <div style={{ textAlign: 'right', color: 'red' }}>
+                            {errors.password}
+                        </div>
+                    )}
                     <p
                         style={{
                             textAlign: 'right',
@@ -145,7 +181,7 @@ function LoginPage(props) {
                     </p>
                     <Button
                         type="submit"
-                        onClick={onLoginHandler}
+                        onClick={handleSubmit}
                         className={classes.loginBtn}
                     >
                         Login now
