@@ -89,12 +89,21 @@ function LoginPage(props) {
     };
     return (
         <Container>
+            <Logicd
+                nImage
+                bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+            />
+
             <div
                 style={{
-                    paddingLeft: '15%',
+                    paddingLeft: '10%',
                     textAlign: 'left',
                     width: '40%',
                     margin: 'auto',
+                    // paddingLeft: '15%',
+                    // textAlign: 'left',
+                    // width: '40%',
+                    // margin: 'auto',
                 }}
             >
                 <form onSubmit={onLoginHandler}>
@@ -165,7 +174,6 @@ function LoginPage(props) {
                     </Button>
                 </form>
             </div>
-            <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
         </Container>
     );
 }
