@@ -48,7 +48,7 @@ const Container = styled.div`
         padding: 0 0 0 0;
     }
 `;
-const ErrorFont = styled.div`
+export const ErrorFont = styled.div`
     color: blue;
     font-size: 14px;
 `;
