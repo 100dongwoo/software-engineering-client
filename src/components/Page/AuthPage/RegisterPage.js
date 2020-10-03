@@ -83,7 +83,6 @@ function LoginPage(props) {
             phoneNumber: yup
                 .number()
                 .max(11, '최대 11자리입니다 ')
-
                 .required('- 없이 숫자만 입력해주세요.'),
             nickname: yup
                 .string()
@@ -93,7 +92,7 @@ function LoginPage(props) {
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
             console.log('onSubmit result', values);
-            api.post('v1/users/sign-in/', values).then((res) => {
+            api.post('v1/users/sign-up/', values).then((res) => {
                 if (res.data.code === 'NotLogin') {
                     alert(res.data.msg);
                     return;
