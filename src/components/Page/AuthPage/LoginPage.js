@@ -125,7 +125,8 @@ function LoginPage(props) {
                     return;
                 }
                 alert('로그인되었습니다.');
-                props.history.replace('/');
+                props.auth.addUserInfo(res.data);
+                props.history.push('/');
                 //
                 // await props.auth.fetchProfile().then((res) => {
                 //     console.log('a', res);

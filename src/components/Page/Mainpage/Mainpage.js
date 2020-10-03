@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Mainpage.css';
 import startup from './start-up1.png';
 import startup2 from './start-up2.png';
+import { withAuthContext } from '../../../context/AuthContext';
 
 // const Introduction = ({ name }) => {
 const Mainpage = (props) => {
+    const user = props.auth.user;
+    useEffect(() => {}, []);
+
     return (
         <div className="logo" id="qwe">
             <img src={startup} alt="logo" />
@@ -54,4 +58,4 @@ const Mainpage = (props) => {
     );
 };
 
-export default Mainpage;
+export default withAuthContext(Mainpage);
