@@ -1,10 +1,10 @@
 import React from 'react';
-import './Introduction.css';
+import './Mainpage.css';
 import startup from './start-up1.png';
 import startup2 from './start-up2.png';
 
 // const Introduction = ({ name }) => {
-const Introduction = (props) => {
+const Mainpage = (props) => {
     return (
         <div className="logo" id="qwe">
             <img src={startup} alt="logo" />
@@ -54,4 +54,4 @@ const Introduction = (props) => {
     );
 };
 
-export default Introduction;
+export default Mainpage;

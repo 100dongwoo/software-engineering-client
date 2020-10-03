@@ -54,11 +54,6 @@ const useStyles = makeStyles({
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [checkPassword, setCheckPassword] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
 
     useEffect(() => {
         {
@@ -71,12 +66,7 @@ function LoginPage(props) {
         if (values.password !== values.checkPassword) {
             alert('Password and CheckPassword are different');
         }
-        api.post('v1/users/sign-up/', {
-            email,
-            password,
-            phoneNumber,
-            nickname,
-        }).then((res) => {
+        api.post('v1/users/sign-up/', values).then((res) => {
             if (!res.ok) {
                 alert('회원가입에 실패하였습니다.');
                 return;
@@ -104,7 +94,11 @@ function LoginPage(props) {
                 .min(4, '비밀번호는 최소 4자리 이상입니다.')
                 .required('필수 항목입니다.'),
             checkPassword: yup.string().required('필수 항목입니다.'),
-            phoneNumber: yup.number().required('필수 항목입니다.'),
+            phoneNumber: yup
+                .number()
+                .max(11, '최대 11자리입니다 ')
+
+                .required('- 없이 숫자만 입력해주세요.'),
             nickname: yup
                 .string()
                 .min(2, '최소 2자리 이상 입니다 ')
@@ -178,8 +172,15 @@ function LoginPage(props) {
                         className={classes.textFiled}
                         type="number"
                         value={values.phoneNumber}
-                        onChange={handleChange('phoneNumber')}
+                        // placeholder={'01012345678'}
+                        onChange={(e) => {
+                            if (e.target.value === ('-' || 'e')) {
+                                return;
+                            }
+                            setFieldValue('phoneNumber', e.target.value);
+                        }}
                     />
+
                     {errors.phoneNumber && (
                         <ErrorFont>{errors.phoneNumber}</ErrorFont>
                     )}
@@ -198,7 +199,7 @@ function LoginPage(props) {
                             textAlign: 'right',
                             maxWidth: 450,
                             marginTop: -5,
-                            color: 'red',
+                            color: 'blue',
                             cursor: 'pointer',
                             fontSize: 13,
                         }}

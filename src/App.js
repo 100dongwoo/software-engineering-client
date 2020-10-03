@@ -4,7 +4,7 @@ import RegisterPage from './components/Page/AuthPage/RegisterPage';
 import LoginPage from './components/Page/AuthPage/LoginPage';
 import NavBar from './components/NavBar/NavBar';
 import PostPage from './components/Page/PostPage/PostPage';
-import Introduction from './components/Page/IntroducePage/Introduction';
+import Mainpage from './components/Page/Mainpage/Mainpage';
 import { createGlobalStyle } from 'styled-components';
 import { AuthContextProvider } from './context/AuthContext';
 import Mypage from './components/Page/Mypage/Mypage';
@@ -30,7 +30,7 @@ function App() {
                     <>
                         <NavBar />
                         <Route exact path="/post" component={PostPage} />
-                        <Route exact path="/" component={Introduction} />
+                        <Route exact path="/" component={Mainpage} />
                         <Route exact path="/mypage" component={Mypage} />
                         <Route
                             exact

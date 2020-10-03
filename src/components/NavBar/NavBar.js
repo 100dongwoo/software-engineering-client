@@ -73,7 +73,7 @@ function NavBar(props) {
             >
                 {/*메뉴바 컨테이너 */}
                 <Navbar to={'/register'}>회원가입</Navbar>
-                <Navbar to={'/introduce'}>소개</Navbar>
+                <Navbar to={'/'}>소개</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
                 <Navbar to={'/login'}>로그인</Navbar>
             </div>
@@ -96,7 +96,7 @@ function NavBar(props) {
                     <SideMenu
                         onClick={() => {
                             setVisible(false);
-                            history.push('/introduce');
+                            history.push('/');
                         }}
                     >
                         소개

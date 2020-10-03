@@ -61,7 +61,7 @@ export const RightContainer = styled.div`
     }
 `;
 export const ErrorFont = styled.div`
-    color: blue;
+    color: red;
     font-size: 14px;
     @media only screen and (max-width: 768px) {
         text-align: left;
@@ -173,7 +173,7 @@ function LoginPage(props) {
                             textAlign: 'right',
                             maxWidth: 450,
 
-                            color: 'red',
+                            color: 'blue',
                             cursor: 'pointer',
                             fontSize: 13,
                         }}
