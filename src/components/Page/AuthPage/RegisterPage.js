@@ -81,7 +81,7 @@ function LoginPage(props) {
                 .required('필수 항목입니다.'),
             checkPassword: yup.string().required('필수 항목입니다.'),
             phoneNumber: yup
-                .number()
+                .string()
                 .max(11, '최대 11자리입니다 ')
                 .required('- 없이 숫자만 입력해주세요.'),
             nickname: yup
