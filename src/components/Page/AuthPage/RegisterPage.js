@@ -10,6 +10,7 @@ import {
     SmallFont,
     LoginImage,
     ErrorFont,
+    RightContainer,
 } from './LoginPage';
 import api from '../../../api_manager';
 import { withAuthContext } from '../../../context/AuthContext';
@@ -18,10 +19,7 @@ import * as yup from 'yup';
 const Container = styled.div`
     display: flex;
     height: 80vh;
-    padding: 4% 4% 4% 4%;
-    @media only screen and (max-width: 768px) {
-        padding: 0 0 0 0;
-    }
+    padding: 4%;
 `;
 const useStyles = makeStyles({
     textFiled: {
@@ -70,15 +68,7 @@ function LoginPage(props) {
 
     const onLoginHandler = (e) => {
         e.preventDefault();
-        if (
-            email === '' ||
-            password === '' ||
-            checkPassword === '' ||
-            nickname === '' ||
-            phoneNumber === ''
-        )
-            alert('정보를 입력해주세요.');
-        else if (password !== checkPassword) {
+        if (values.password !== values.checkPassword) {
             alert('Password and CheckPassword are different');
         }
         api.post('v1/users/sign-up/', {
@@ -151,18 +141,7 @@ function LoginPage(props) {
         <Container>
             <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
 
-            <div
-                style={{
-                    paddingLeft: '10%',
-                    textAlign: 'left',
-                    width: '40%',
-                    margin: 'auto',
-                    // paddingLeft: '15%',
-                    // textAlign: 'left',
-                    // width: '40%',
-                    // margin: 'auto',
-                }}
-            >
+            <RightContainer>
                 <form onSubmit={onLoginHandler}>
                     <Title>WelcomBack</Title>
                     <Logintitle>Sign up to your account</Logintitle>
@@ -237,7 +216,7 @@ function LoginPage(props) {
                         Sign Up now
                     </Button>
                 </form>
-            </div>
+            </RightContainer>
         </Container>
     );
 }

@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     color: #000000;
      font-family: payboocLight;
      padding : 0 4%;
+
   }
 `;
 

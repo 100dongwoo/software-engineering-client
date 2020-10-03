@@ -28,6 +28,10 @@ export const SmallFont = styled.p`
     font-size: 16px;
     line-height: 19px;
     opacity: 0.8;
+    @media only screen and (max-width: 768px) {
+        text-align: left;
+        margin-left: 5%;
+    }
 `;
 export const LoginImage = styled.div`
     width: 50%;
@@ -44,13 +48,25 @@ const Container = styled.div`
     display: flex;
     height: 80vh;
     padding: 4% 4% 4% 4%;
+`;
+export const RightContainer = styled.div`
+    padding-left: 10%;
+    text-align: left;
+    width: 40%;
+    margin: auto;
     @media only screen and (max-width: 768px) {
-        padding: 0 0 0 0;
+        width: 100%;
+        padding: 10%;
+        text-align: center;
     }
 `;
 export const ErrorFont = styled.div`
     color: blue;
     font-size: 14px;
+    @media only screen and (max-width: 768px) {
+        text-align: left;
+        margin-left: 5%;
+    }
 `;
 const useStyles = makeStyles({
     textFiled: {
@@ -130,14 +146,7 @@ function LoginPage(props) {
         <Container>
             <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
 
-            <div
-                style={{
-                    paddingLeft: '10%',
-                    textAlign: 'left',
-                    width: '40%',
-                    margin: 'auto',
-                }}
-            >
+            <RightContainer>
                 <form onSubmit={handleSubmit}>
                     <Title>WelcomBack</Title>
                     <Logintitle>Login to your account</Logintitle>
@@ -182,7 +191,7 @@ function LoginPage(props) {
                         Login now
                     </Button>
                 </form>
-            </div>
+            </RightContainer>
         </Container>
     );
 }
