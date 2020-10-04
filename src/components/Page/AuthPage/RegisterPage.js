@@ -55,11 +55,11 @@ function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
 
-    useEffect(() => {
-        {
-            console.log(props.auth.user);
-        }
-    }, []);
+    // useEffect(() => {
+    //     {
+    //         console.log(props.auth.user);
+    //     }
+    // }, []);
 
     const formik = useFormik({
         enableReinitialize: true,

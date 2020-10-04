@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import MenuOpenSharpIcon from '@material-ui/icons/MenuOpenSharp';
+import { withAuthContext } from '../../context/AuthContext';
+import api from '../../api_manager';
 
 const Navbar = styled(Link)`
     text-decoration: none;
@@ -24,6 +26,7 @@ const Navbar = styled(Link)`
         display: none;
     }
 `;
+
 const SideBtn = styled.button`
     height: 55px;
     background: none;
@@ -56,6 +59,22 @@ function NavBar(props) {
     };
     const history = useHistory();
     const [visible, setVisible] = useState(false);
+    const logout = () => {
+        api.get('v1/users/sign-out/').then((res, err) => {
+            if (res.data.code === 'OK') {
+                props.auth.addUserInfo({
+                    id: '',
+                    email: '',
+                    phoneNumber: '',
+                    nickname: '',
+                    profileImage: 'https://placeimg.com/140/140/any',
+                });
+                alert('로그아웃되었습니다. ');
+            } else {
+                console.log(err);
+            }
+        });
+    };
     return (
         <div
             style={{
@@ -72,10 +91,19 @@ function NavBar(props) {
                 }}
             >
                 {/*메뉴바 컨테이너 */}
-                <Navbar to={'/register'}>회원가입</Navbar>
+                {props.auth.user.email === '' ? (
+                    <>
+                        <Navbar to={'/register'}>회원가입</Navbar>
+                        <Navbar to={'/login'}>로그인</Navbar>
+                    </>
+                ) : (
+                    <Navbar to={'/'} onClick={logout}>
+                        로그아웃
+                    </Navbar>
+                )}
+
                 <Navbar to={'/'}>소개</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
-                <Navbar to={'/login'}>로그인</Navbar>
             </div>
             <SideBtn>
                 <MenuOpenSharpIcon
@@ -109,18 +137,32 @@ function NavBar(props) {
                     >
                         게시판
                     </SideMenu>
-                    <SideMenu
-                        onClick={() => {
-                            setVisible(false);
-                            history.push('/login');
-                        }}
-                    >
-                        로그인
-                    </SideMenu>
+                    {props.auth.user.email === '' ? (
+                        <>
+                            <SideMenu
+                                onClick={() => {
+                                    setVisible(false);
+                                    history.push('/login');
+                                }}
+                            >
+                                로그인
+                            </SideMenu>
+                            <SideMenu
+                                onClick={() => {
+                                    setVisible(false);
+                                    history.push('/register');
+                                }}
+                            >
+                                회원가입
+                            </SideMenu>
+                        </>
+                    ) : (
+                        <SideMenu onClick={logout}>로그아웃</SideMenu>
+                    )}
                 </Drawer>
             </div>
         </div>
     );
 }
 
-export default NavBar;
+export default withAuthContext(NavBar);
