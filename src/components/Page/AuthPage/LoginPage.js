@@ -8,7 +8,7 @@ import api from '../../../api_manager';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { withAuthContext } from '../../../context/AuthContext';
-import starup from '../Mainpage/start-up1.png';
+import starup from './start-up1.png';
 export const Title = styled.p`
     font-style: normal;
     font-weight: normal;
@@ -34,13 +34,11 @@ export const SmallFont = styled.p`
         margin-left: 5%;
     }
 `;
-export const LoginImage = styled.div`
+export const LoginImage = styled.img`
     width: 50%;
     background-size: cover;
     background-position: center center;
-
     height: 80vh;
-    background-image: url(${(props) => props.bg});
     @media only screen and (max-width: 768px) {
         display: none;
     }
@@ -158,7 +156,7 @@ function LoginPage(props) {
     } = formik;
     return (
         <Container>
-            <LoginImage bg={starup} />
+            <LoginImage src={starup} alt="login" />
             <RightContainer>
                 <form onSubmit={handleSubmit}>
                     <Title>WelcomBack</Title>

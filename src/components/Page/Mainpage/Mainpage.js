@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import './Mainpage.css';
-import startup from './start-up1.png';
-import startup2 from './start-up2.png';
 import startup3 from './Illustration left (2).png';
 import startup4 from './Illustration right (1).png';
 import { withAuthContext } from '../../../context/AuthContext';
