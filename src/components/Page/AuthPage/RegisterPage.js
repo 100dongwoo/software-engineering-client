@@ -43,7 +43,7 @@ const useStyles = makeStyles({
         height: 50,
         marginTop: 25,
         fontWeight: 'bold',
-        fontSize: '16px',
+        fontSize: '1rem',
         lineHeight: '19px',
         color: '#FFFFFF',
         '&:hover': {
@@ -186,7 +186,7 @@ function LoginPage(props) {
                             marginTop: -5,
                             color: 'blue',
                             cursor: 'pointer',
-                            fontSize: 13,
+                            fontSize: '0.8125rem',
                         }}
                         onClick={() => {
                             history.push('/login');

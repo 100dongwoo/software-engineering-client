@@ -32,7 +32,7 @@ const Mainpage = (props) => {
                 </div>
 
                 <div className="fonts">
-                    <p style={{ fontSize: 20, fontWeight: 'bold' }}>
+                    <p style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
                         창업 정보는 Where?
                     </p>
 
@@ -43,7 +43,7 @@ const Mainpage = (props) => {
 
                     <p
                         style={{
-                            fontSize: 32,
+                            fontSize: '2rem',
                             color: '#34558b',
                             fontWeight: 'bold',
                         }}

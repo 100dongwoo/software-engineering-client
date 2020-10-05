@@ -12,7 +12,7 @@ import { withAuthContext } from '../../../context/AuthContext';
 export const Title = styled.p`
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 19px;
     color: #2d3748;
     margin-bottom: -3%;
@@ -20,13 +20,13 @@ export const Title = styled.p`
 export const Logintitle = styled.p`
     font-style: normal;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 1.875rem;
     line-height: 35px;
 `;
 export const SmallFont = styled.p`
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 19px;
     opacity: 0.8;
     @media only screen and (max-width: 768px) {
@@ -63,7 +63,7 @@ export const RightContainer = styled.div`
 `;
 export const ErrorFont = styled.div`
     color: red;
-    font-size: 14px;
+    font-size: 0.875rem;
     @media only screen and (max-width: 768px) {
         text-align: left;
         margin-left: 5%;
@@ -88,7 +88,7 @@ const useStyles = makeStyles({
         height: 50,
         marginTop: 25,
         fontWeight: 'bold',
-        fontSize: '16px',
+        fontSize: '1rem',
         lineHeight: '19px',
         color: '#FFFFFF',
         '&:hover': {
@@ -189,7 +189,7 @@ function LoginPage(props) {
 
                             color: 'blue',
                             cursor: 'pointer',
-                            fontSize: 13,
+                            fontSize: '0.8125rem',
                         }}
                         onClick={() => {
                             history.push('/register');
