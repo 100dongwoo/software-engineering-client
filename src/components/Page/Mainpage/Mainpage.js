@@ -2,7 +2,32 @@ import React, { useEffect } from 'react';
 import './Mainpage.css';
 import startup from './start-up1.png';
 import startup2 from './start-up2.png';
+import startup3 from './Illustration left (2).png';
+import startup4 from './Illustration right (1).png';
 import { withAuthContext } from '../../../context/AuthContext';
+import styled from 'styled-components';
+const Container = styled.div`
+    margin-top: 3%;
+    background: #fefefe;
+    box-shadow: 0px 40px 100px rgba(125, 125, 125, 0.5);
+    border-radius: 60px;
+    display: flex;
+    height: 80vh;
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (max-width: 768px) {
+        height: 100%;
+    }
+`;
+const Img = styled.img`
+    height: 72%;
+    width: 25%;
+    @media only screen and (max-width: 768px) {
+        margin-bottom: 5%;
+        margin-top: 5%;
+        width: 80%;
+    }
+`;
 
 // const Introduction = ({ name }) => {
 const Mainpage = (props) => {
@@ -10,8 +35,8 @@ const Mainpage = (props) => {
     useEffect(() => {}, []);
 
     return (
-        <div className="logo" id="qwe">
-            <img src={startup} alt="logo" />
+        <Container className="logo" id="qwe">
+            <Img src={startup3} alt="logo" />
             <div className="Intro">
                 <div
                     className="IntroFont"
@@ -53,8 +78,8 @@ const Mainpage = (props) => {
                 </div>
             </div>
 
-            <img src={startup2} alt="logo" />
-        </div>
+            <Img src={startup4} alt="logo" />
+        </Container>
     );
 };
 

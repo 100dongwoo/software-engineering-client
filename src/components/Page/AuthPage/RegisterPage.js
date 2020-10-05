@@ -4,6 +4,7 @@ import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import starup2 from '../Mainpage/start-up2.png';
 import {
     Logintitle,
     Title,
@@ -118,8 +119,7 @@ function LoginPage(props) {
     } = formik;
     return (
         <Container>
-            <LoginImage bg="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
-
+            <LoginImage bg={starup2} />
             <RightContainer>
                 <form onSubmit={handleSubmit}>
                     <Title>WelcomBack</Title>

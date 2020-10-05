@@ -26,21 +26,9 @@
     border-top: solid 1px black;
     border-bottom: solid 1px black;
 }
-
-img {
-    width: 34%;
-    height: 70vmin;
-    background-color: #34558b;
-}
-
 @media only screen and (max-width: 768px) {
     .logo {
         flex-direction: column;
-    }
-    img {
-       margin-bottom: 5%;
-        margin-top: 5%;
-        width: 80%;
     }
 
 }
