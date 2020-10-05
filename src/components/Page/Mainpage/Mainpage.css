@@ -17,7 +17,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
 
+.bigFont {
+    font-size: 2rem;
+    color: #34558b;
+    font-weight: bold;
 }
 
 .Intro {
@@ -26,9 +31,22 @@
     border-top: solid 1px black;
     border-bottom: solid 1px black;
 }
+
 @media only screen and (max-width: 768px) {
     .logo {
         flex-direction: column;
+    }
+
+    .fonts {
+        font-size: 0.8375rem;
+    }
+
+    .a {
+        font-size: 1.675rem;
+    }
+
+    .bigFont {
+        font-size: 1.8rem;
     }
 
 }

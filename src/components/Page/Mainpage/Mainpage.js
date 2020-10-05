@@ -39,7 +39,6 @@ const Mainpage = (props) => {
             <Img src={startup3} alt="logo" />
             <div className="Intro">
                 <div
-                    className="IntroFont"
                     style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -66,15 +65,7 @@ const Mainpage = (props) => {
                         <br /> 정보를 찾을 수 있도록 창업 정보를 공유합니다.
                     </p>
 
-                    <p
-                        style={{
-                            fontSize: '2rem',
-                            color: '#34558b',
-                            fontWeight: 'bold',
-                        }}
-                    >
-                        I can do it! Start-up
-                    </p>
+                    <p className="bigFont">I can do it! Start-up</p>
                 </div>
             </div>
 
