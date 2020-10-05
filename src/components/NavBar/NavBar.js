@@ -102,8 +102,8 @@ function NavBar(props) {
                     </Navbar>
                 )}
 
-                <Navbar to={'/'}>소개</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
+                <Navbar to={'/'}>소개</Navbar>
             </div>
             <SideBtn>
                 <MenuOpenSharpIcon
@@ -121,14 +121,7 @@ function NavBar(props) {
                     >
                         Basic Drawer
                     </p>
-                    <SideMenu
-                        onClick={() => {
-                            setVisible(false);
-                            history.push('/');
-                        }}
-                    >
-                        소개
-                    </SideMenu>
+
                     <SideMenu
                         onClick={() => {
                             setVisible(false);
@@ -136,6 +129,14 @@ function NavBar(props) {
                         }}
                     >
                         게시판
+                    </SideMenu>
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/');
+                        }}
+                    >
+                        소개
                     </SideMenu>
                     {props.auth.user.email === '' ? (
                         <>

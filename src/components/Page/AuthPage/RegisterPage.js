@@ -40,7 +40,7 @@ const useStyles = makeStyles({
         background: '#04C45C',
         borderRadius: '5px',
         width: '100%',
-        maxWidth: 400,
+        maxWidth: 450,
         height: 50,
         marginTop: 25,
         fontWeight: 'bold',
