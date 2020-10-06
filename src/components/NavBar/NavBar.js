@@ -60,8 +60,8 @@ function NavBar(props) {
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const logout = () => {
-        api.get('v1/users/sign-out/').then((res, err) => {
-            if (res.data.code === 'OK') {
+        api.get('v1/users/sign-out/')
+            .then((res) => {
                 props.auth.addUserInfo({
                     id: '',
                     email: '',
@@ -70,10 +70,10 @@ function NavBar(props) {
                     profileImage: 'https://placeimg.com/140/140/any',
                 });
                 alert('로그아웃되었습니다. ');
-            } else {
+            })
+            .catch((err) => {
                 console.log(err);
-            }
-        });
+            });
     };
     return (
         <div
@@ -121,15 +121,6 @@ function NavBar(props) {
                     >
                         Basic Drawer
                     </p>
-
-                    <SideMenu
-                        onClick={() => {
-                            setVisible(false);
-                            history.push('/post');
-                        }}
-                    >
-                        게시판
-                    </SideMenu>
                     <SideMenu
                         onClick={() => {
                             setVisible(false);
@@ -137,6 +128,14 @@ function NavBar(props) {
                         }}
                     >
                         소개
+                    </SideMenu>
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/post');
+                        }}
+                    >
+                        게시판
                     </SideMenu>
                     {props.auth.user.email === '' ? (
                         <>

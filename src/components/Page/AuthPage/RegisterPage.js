@@ -93,15 +93,19 @@ function LoginPage(props) {
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
             console.log('onSubmit result', values);
-            api.post('v1/users/sign-up/', values).then((res) => {
-                if (res.data.code === 'NotLogin') {
-                    alert(res.data.msg);
-                    return;
-                }
-                alert('로그인되었습니다.');
-                props.history.replace('/');
-                // resetForm();
-            });
+            api.post('v1/users/sign-up/', values)
+                .then((res) => {
+                    if (res.data.code === 'NotLogin') {
+                        alert(res.data.msg);
+                        return;
+                    }
+                    alert('로그인되었습니다.');
+                    props.history.replace('/');
+                    // resetForm();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     });
     const {

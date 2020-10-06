@@ -117,27 +117,32 @@ function LoginPage(props) {
         }),
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             console.log('onSubmit result', values);
-            await api.post('v1/users/sign-in/', values).then(async (res) => {
-                if (res.data.code === 'NotLogin') {
-                    alert(res.data.msg);
-                    return;
-                }
-                alert('로그인되었습니다.');
-                props.auth.addUserInfo(res.data);
-                props.history.push('/');
-                //
-                // await props.auth.fetchProfile().then((res) => {
-                //     console.log('a', res);
-                //     if (!res) {
-                //         alert('데이터를 불러오는 데 실패하였습니다.');
-                //         return;
-                //     }
-                //     alert('로그인되었습니다.');
-                //     props.history.replace('/');
-                // });
+            await api
+                .post('v1/users/sign-in/', values)
+                .then(async (res) => {
+                    if (res.data.code === 'NotLogin') {
+                        alert(res.data.msg);
+                        return;
+                    }
+                    alert('로그인되었습니다.');
+                    props.auth.addUserInfo(res.data);
+                    props.history.push('/');
+                    //
+                    // await props.auth.fetchProfile().then((res) => {
+                    //     console.log('a', res);
+                    //     if (!res) {
+                    //         alert('데이터를 불러오는 데 실패하였습니다.');
+                    //         return;
+                    //     }
+                    //     alert('로그인되었습니다.');
+                    //     props.history.replace('/');
+                    // });
 
-                // resetForm();
-            });
+                    // resetForm();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     });
 
