@@ -17,6 +17,7 @@ import api from '../../../api_manager';
 import { withAuthContext } from '../../../context/AuthContext';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+
 const Container = styled.div`
     display: flex;
     height: 80vh;
@@ -52,6 +53,7 @@ const useStyles = makeStyles({
         },
     },
 });
+
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();

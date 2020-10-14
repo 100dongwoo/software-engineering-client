@@ -25,3 +25,7 @@ yarn start
 - styled-components
 - Material UI (UI 컴포넌트 라이브러리)
 - useFormik, yup
+
+# 서버 저장소
+
+[서버 저장소](https://github.com/kimja7045/software-engineering-server)
