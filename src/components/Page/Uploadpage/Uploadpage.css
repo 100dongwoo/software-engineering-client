@@ -1,0 +1,43 @@
+.UploadText {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+.UploadTitle {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+.Center {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    border: black solid;
+    border-width: thin medium;
+}
+.FileUp {
+    width: 60%;
+    margin: 0 auto;
+    border: black solid;
+    border-width: thin medium;
+}
+.ButtonStyle1 {
+    margin: 0 auto;
+    background: rgb(223, 222, 222);
+    font-size: 1.5em;
+    float: left;
+    border: 3px solid rgb(78, 78, 78);
+    margin-right: 10px;
+}
+.ButtonStyle2 {
+    margin: 0 auto;
+    background: white;
+    font-size: 1.5em;
+    float: left;
+    border: 3px solid rgb(78, 78, 78);
+}
+.Center1 {
+    width: 10%;
+    text-align: center;
+    margin: 0 auto;
+}
