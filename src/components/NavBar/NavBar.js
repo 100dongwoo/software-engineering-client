@@ -11,7 +11,7 @@ const Navbar = styled(Link)`
     cursor: pointer;
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3125rem;
+    font-size: 1.7125rem;
     line-height: 120%;
     letter-spacing: -0.03em;
     padding: 15px 20px;
@@ -41,6 +41,7 @@ const SideBtn = styled.button`
 const SideMenu = styled.p`
     margin-left: 20px;
     text-decoration: none;
+
     cursor: pointer;
     &:hover {
         color: #34558b;

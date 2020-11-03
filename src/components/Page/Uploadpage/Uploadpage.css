@@ -1,43 +1,71 @@
+.Container {
+    padding: 1% 4% 4% 4%;
+
+}
+
 .UploadText {
-    width: 60%;
+    width: 70%;
     text-align: center;
-    margin: 0 auto;
+    margin: auto auto 30px;
 }
+
 .UploadTitle {
-    width: 60%;
+    width: 70%;
     text-align: center;
-    margin: 0 auto;
+    margin: auto auto 30px;
 }
+
 .Center {
-    width: 60%;
+    width: 70%;
+    font-weight: bold;
     text-align: center;
-    margin: 0 auto;
-    border: black solid;
     border-width: thin medium;
+    font-size: 40px;
+    margin: auto auto 36px;
+
 }
+
 .FileUp {
-    width: 60%;
-    margin: 0 auto;
+    width: 70%;
     border: black solid;
     border-width: thin medium;
+    margin: auto auto 30px;
+    display: flex;
+
+    align-items: center;
 }
+
 .ButtonStyle1 {
-    margin: 0 auto;
     background: rgb(223, 222, 222);
     font-size: 1.5em;
-    float: left;
     border: 3px solid rgb(78, 78, 78);
-    margin-right: 10px;
+    margin-right: 20px;
+    cursor: pointer;
 }
 .ButtonStyle2 {
-    margin: 0 auto;
     background: white;
     font-size: 1.5em;
-    float: left;
     border: 3px solid rgb(78, 78, 78);
+    cursor: pointer;
 }
+
 .Center1 {
-    width: 10%;
+    width: 100%;
     text-align: center;
-    margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .UploadText {
+        width: 90%;
+    }
+
+    .UploadTitle {
+        width: 90%;
+    }
+    .FileUp {
+        width: 90%;
+        margin: auto auto 10px;
+    }
+
 }
