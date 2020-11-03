@@ -36,6 +36,7 @@ function Uploadpage(props) {
             <div className="FileUp">
                 <p style={{ marginRight: '20px' }}>첨부 이미지</p>
                 <input
+                    style={{ cursor: 'pointer' }}
                     type="file"
                     name="file"
                     accept=".jpg, .jpeg, .png"
