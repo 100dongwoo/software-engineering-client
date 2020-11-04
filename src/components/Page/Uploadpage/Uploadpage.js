@@ -19,7 +19,6 @@ function Uploadpage(props) {
                     }}
                 />
             </div>
-
             <div className="UploadText">
                 <TextField
                     variant="filled"
