@@ -38,26 +38,23 @@ function GridLists({ test }) {
         small: 2.5,
         smallest: 1.5,
     };
-    const matchsfull = useMediaQuery('(min-width:1401px)');
-    const matchss1200 = useMediaQuery('(min-width:1200px)');
-    const matchs1000 = useMediaQuery('(min-width:1000px)');
-    const matchs768 = useMediaQuery('(min-width:768px)');
-    const matchs375 = useMediaQuery('(min-width:375px)');
-
+    const matchFull = useMediaQuery('(min-width:1401px)');
+    const match1200 = useMediaQuery('(min-width:1200px)');
+    const match1000 = useMediaQuery('(min-width:1000px)');
+    const match768 = useMediaQuery('(min-width:768px)');
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            {console.log(test)}
             <GridList
                 className={classes.gridList}
                 cols={
-                    matchsfull
+                    matchFull
                         ? categoryCount.big
-                        : matchss1200
+                        : match1200
                         ? categoryCount.medium
-                        : matchs1000
+                        : match1000
                         ? categoryCount.medismall
-                        : matchs768
+                        : match768
                         ? categoryCount.small
                         : categoryCount.smallest
                 }

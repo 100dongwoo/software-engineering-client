@@ -8,6 +8,9 @@ const Container = styled.div`
     box-shadow: 0px 40px 100px rgba(125, 125, 125, 0.5);
     padding: 3% 3% 3% 3%;
     min-width: 300px;
+    &: hover {
+        transform: scale(1.1);
+    }
 `;
 const Title = styled.p`
     font-size: 25px;

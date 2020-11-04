@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -114,14 +114,14 @@ function LoginPage(props) {
         values,
         handleChange,
         errors,
-        setFieldTouched,
-        touched,
-        isValid,
-        isSubmitting,
+        // setFieldTouched,
+        // touched,
+        // isValid,
+        // isSubmitting,
         handleSubmit,
         setFieldValue,
-        resetForm,
-        setErrors,
+        // resetForm,
+        // setErrors,
     } = formik;
     return (
         <Container>

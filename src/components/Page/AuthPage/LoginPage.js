@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -98,7 +98,6 @@ const useStyles = makeStyles({
 function LoginPage(props) {
     const history = useHistory();
     const classes = useStyles();
-    const [user, setUser] = useState({});
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -150,14 +149,14 @@ function LoginPage(props) {
         values,
         handleChange,
         errors,
-        setFieldTouched,
-        touched,
-        isValid,
-        isSubmitting,
+        // setFieldTouched,
+        // touched,
+        // isValid,
+        // isSubmitting,
         handleSubmit,
-        setFieldValue,
-        resetForm,
-        setErrors,
+        // setFieldValue,
+        // resetForm,
+        // setErrors,
     } = formik;
     return (
         <Container>

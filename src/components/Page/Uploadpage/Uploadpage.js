@@ -6,6 +6,7 @@ function Uploadpage(props) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [file, setFile] = useState('');
+
     return (
         <div className="Container">
             <p className="Center">게시판</p>
