@@ -122,8 +122,8 @@ function Mypage(props) {
                     ?
                 </Button>
                 <div className="row__posters">
-                    {test.map((test) => (
-                        <GridLists test={test} />
+                    {test.map((test, index) => (
+                        <GridLists test={test} key={index} />
                     ))}
                 </div>
                 <Button id="slide" type="button" onClick={nextSlide}>
@@ -137,8 +137,8 @@ function Mypage(props) {
                     ?
                 </Button>
                 <div className="second__posters">
-                    {test.map((test) => (
-                        <GridLists test={test} />
+                    {test.map((test, index) => (
+                        <GridLists test={test} key={index} />
                     ))}
                 </div>
                 <Button id="slide" type="button" onClick={secondNextSlide}>

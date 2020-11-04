@@ -159,8 +159,8 @@ function PostPage(props) {
                 </Topcontainer>
 
                 <GridContainer>
-                    {test.map((information) => (
-                        <Post test={information} />
+                    {test.map((information, index) => (
+                        <Post test={information} key={index} />
                     ))}
                 </GridContainer>
             </Content>
