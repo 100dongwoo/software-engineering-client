@@ -7,13 +7,22 @@ const Container = styled.div`
     border-radius: 15px;
     box-shadow: 0px 40px 100px rgba(125, 125, 125, 0.5);
     padding: 3% 3% 3% 3%;
-    min-width: 400px;
+    min-width: 300px;
 `;
 const Title = styled.p`
     font-size: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 const SubTitle = styled.p`
-    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
 `;
 function Post({ test }) {
     return (
@@ -34,16 +43,8 @@ function Post({ test }) {
                     padding: '0 10px 0 10px ',
                 }}
             >
-                <Title>
-                    {test.title.length > 20
-                        ? test.title.slice(0, 20) + '...'
-                        : test.title}
-                </Title>
-                <SubTitle>
-                    {test.content.length > 48
-                        ? test.content.slice(0, 48) + '...'
-                        : test.content}
-                </SubTitle>
+                <Title>{test.title}</Title>
+                <SubTitle>{test.content}</SubTitle>
             </div>
         </Container>
     );

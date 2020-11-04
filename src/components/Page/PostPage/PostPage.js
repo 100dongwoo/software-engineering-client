@@ -4,6 +4,7 @@ import Post from './Post';
 import { Input } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useHistory } from 'react-router-dom';
+
 const Container = styled.div`
     width: 100%;
     padding-top: 2.5%;
@@ -55,12 +56,21 @@ const SearhContainer = styled.form`
     align-items: center;
     justify-content: space-between;
     min-width: 300px;
+    @media only screen and (max-width: 375px) {
+        min-width: 200px;
+    }
 `;
 const SearchBtn = styled.button`
     color: #34558b;
     background-color: transparent;
     border: none;
     outline: none;
+`;
+const Topcontainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: space-between;
 `;
 
 function PostPage(props) {
@@ -125,14 +135,7 @@ function PostPage(props) {
         <Container>
             <Content>
                 <LastFont>게시글</LastFont>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginBottom: '30px',
-                        justifyContent: 'space-between',
-                    }}
-                >
+                <Topcontainer>
                     <SearhContainer>
                         <SearchBtn onClick={onSearchPost}>
                             <SearchIcon />
@@ -151,9 +154,9 @@ function PostPage(props) {
                             history.push('/Uploadpage');
                         }}
                     >
-                        게시글 쓰기
+                        글 쓰기
                     </button>
-                </div>
+                </Topcontainer>
 
                 <GridContainer>
                     {test.map((information) => (
