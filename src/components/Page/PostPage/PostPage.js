@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Post from './Post';
 import { Input } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import ClearIcon from '@material-ui/icons/Clear';
+import { useHistory } from 'react-router-dom';
 const Container = styled.div`
     width: 100%;
     padding-top: 2.5%;
@@ -64,6 +64,7 @@ const SearchBtn = styled.button`
 `;
 
 function PostPage(props) {
+    const history = useHistory();
     const [search, setSearch] = useState('');
     const onSearchPost = (e) => {
         e.preventDefault();
@@ -129,22 +130,9 @@ function PostPage(props) {
                         display: 'flex',
                         alignItems: 'center',
                         marginBottom: '30px',
+                        justifyContent: 'space-between',
                     }}
                 >
-                    {/*<Input*/}
-                    {/*    style={{ width: '30%', border: 'red' }}*/}
-                    {/*    onChange={(e) => {*/}
-                    {/*        setSearch(e.target.value);*/}
-                    {/*    }}*/}
-                    {/*/>*/}
-                    {/*<Button*/}
-                    {/*    style={{*/}
-                    {/*        fontSize: '26px',*/}
-                    {/*        marginRight: '30px',*/}
-                    {/*    }}*/}
-                    {/*>*/}
-                    {/*    검색*/}
-                    {/*</Button>*/}
                     <SearhContainer>
                         <SearchBtn onClick={onSearchPost}>
                             <SearchIcon />
@@ -158,6 +146,13 @@ function PostPage(props) {
                             onChange={(e) => setSearch(e.currentTarget.value)}
                         />
                     </SearhContainer>
+                    <button
+                        onClick={() => {
+                            history.push('/Uploadpage');
+                        }}
+                    >
+                        게시글 쓰기
+                    </button>
                 </div>
 
                 <GridContainer>
