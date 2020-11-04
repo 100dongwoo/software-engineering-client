@@ -1,81 +1,56 @@
 import React from 'react';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import { useMediaQuery } from '@material-ui/core';
-const useStyles = makeStyles((theme) => ({
-    root: {
-        cursor: 'pointer',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-        borderBottom: '4px solid gray',
-    },
-    gridList: {
-        flexWrap: 'nowrap',
-        '&::-webkit-scrollbar': {
-            display: 'none',
-        },
-    },
-    title: {
-        background: 'gray',
-        color: 'black',
-        float: 'left',
-    },
-    titleBar: {
-        background:
-            'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
-}));
+import styled from 'styled-components';
+const Container = styled.div`
+    width: 100%;
+    height: 24.5rem;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 40px 100px rgba(125, 225, 225, 0.5);
+    padding: 1% 1% 1% 1%;
+    margin-right: 27px;
+    min-width: 260px;
+    &: hover {
+        transform: scale(1.1);
+    }
+`;
+const Title = styled.p`
+    font-size: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+`;
+const SubTitle = styled.p`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+`;
 function GridLists({ test }) {
-    const categoryCount = {
-        big: 5.5,
-        medium: 4.5,
-        medismall: 3.5,
-        small: 2.5,
-        smallest: 1.5,
-    };
-    const matchFull = useMediaQuery('(min-width:1401px)');
-    const match1200 = useMediaQuery('(min-width:1200px)');
-    const match1000 = useMediaQuery('(min-width:1000px)');
-    const match768 = useMediaQuery('(min-width:768px)');
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <GridList
-                className={classes.gridList}
-                cols={
-                    matchFull
-                        ? categoryCount.big
-                        : match1200
-                        ? categoryCount.medium
-                        : match1000
-                        ? categoryCount.medismall
-                        : match768
-                        ? categoryCount.small
-                        : categoryCount.smallest
-                }
+        <Container>
+            <img
+                alt="이미지"
+                src="https://placeimg.com/700/700/anys"
+                style={{
+                    backgroundRepeat: 'no-repeat',
+                    width: '100%',
+                    height: '65%',
+                    borderRadius: '15px',
+                }}
+            />
+            <div
+                style={{
+                    height: '35%',
+                    padding: '0 10px 0 10px ',
+                }}
             >
-                {test.map((tile, index) => (
-                    <GridListTile key={index}>
-                        <img
-                            src="https://placeimg.com/700/700/anys"
-                            alt={tile.title}
-                        />
-                        <GridListTileBar
-                            title={tile.title}
-                            classes={{
-                                root: classes.titleBar,
-                                title: classes.title,
-                            }}
-                        />
-                    </GridListTile>
-                ))}
-            </GridList>
-        </div>
+                <Title>{test.title}</Title>
+                <SubTitle>{test.content}</SubTitle>
+            </div>
+        </Container>
     );
 }
 

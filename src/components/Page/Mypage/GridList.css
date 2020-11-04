@@ -1,0 +1,23 @@
+.row__posters {
+    width: 95%;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.row__posters::-webkit-scrollbar {
+    display: none;
+}
+
+.second__posters {
+    width: 95%;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.second__posters::-webkit-scrollbar {
+    display: none;
+}
