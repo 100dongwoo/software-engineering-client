@@ -3,6 +3,8 @@ import banner from './Mypagebanner.png';
 import styled from 'styled-components';
 import './GridList.css';
 import GridLists from './GridLists';
+import TabScrollButton from '@material-ui/core/TabScrollButton';
+import { makeStyles } from '@material-ui/core/styles';
 const Title = styled.p`
     text-align: left;
     font-size: 30px;
@@ -16,15 +18,19 @@ const Image = styled.img`
     margin-bottom: 12px;
     margin-top: 25px;
 `;
-const Button = styled.button`
-    height: 10%;
-    margin: auto 0;
-`;
+
 const GridContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+const useStyles = makeStyles({
+    TabBtn: {
+        height: '10%',
+        margin: 'auto 0',
+    },
+});
 function Mypage(props) {
+    const classes = useStyles();
     const nextSlide = () => {
         const container = document.querySelector('.row__posters');
         sideScroll(container, 'right', 25, 300, 30);
@@ -108,42 +114,52 @@ function Mypage(props) {
             content: '예시입니다?', //상세내용
         },
     ];
-    const [value, setValue] = React.useState(0);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
     return (
         <div style={{ width: '100%', marginBottom: '50px' }}>
             <Image alt="Banner" src={banner} className="App-logo" />
             <Title>내 게시물</Title>
             <GridContainer>
-                <Button id="slideBack" type="button" onClick={prevSlide}>
-                    ?
-                </Button>
+                <TabScrollButton
+                    className={classes.TabBtn}
+                    onClick={prevSlide}
+                    direction="left"
+                    orientation="horizontal"
+                />
+
                 <div className="row__posters">
                     {test.map((test, index) => (
                         <GridLists test={test} key={index} />
                     ))}
                 </div>
-                <Button id="slide" type="button" onClick={nextSlide}>
-                    >
-                </Button>
+                <TabScrollButton
+                    className={classes.TabBtn}
+                    onClick={nextSlide}
+                    direction="right"
+                    orientation="horizontal"
+                />
             </GridContainer>
 
             <Title>내가 찜한 게시물</Title>
             <GridContainer>
-                <Button id="slideBack" type="button" onClick={secondPrevSlide}>
-                    ?
-                </Button>
+                <TabScrollButton
+                    className={classes.TabBtn}
+                    onClick={secondPrevSlide}
+                    direction="left"
+                    orientation="horizontal"
+                />
                 <div className="second__posters">
                     {test.map((test, index) => (
                         <GridLists test={test} key={index} />
                     ))}
                 </div>
-                <Button id="slide" type="button" onClick={secondNextSlide}>
-                    >
-                </Button>
+
+                <TabScrollButton
+                    className={classes.TabBtn}
+                    onClick={secondNextSlide}
+                    direction="right"
+                    orientation="horizontal"
+                />
             </GridContainer>
         </div>
     );
