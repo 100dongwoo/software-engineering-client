@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Container = styled.div`
     width: 100%;
     height: 24.5rem;
     background: #ffffff;
     border-radius: 15px;
-    box-shadow: 0px 40px 100px rgba(125, 225, 225, 0.5);
+    // box-shadow: 0px 40px 100px rgba(125, 25, 225, 0.5);
+    border: 1px solid #adadad;
     padding: 1% 1% 1% 1%;
     margin-right: 27px;
-    min-width: 260px;
+    min-width: 250px;
     &: hover {
         transform: scale(1.1);
     }
@@ -28,6 +30,7 @@ const SubTitle = styled.p`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 `;
+
 function GridLists({ test }) {
     return (
         <Container>

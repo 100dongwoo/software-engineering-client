@@ -1,5 +1,5 @@
 .row__posters {
-    width: 95%;
+    width: 94%;
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
@@ -11,7 +11,7 @@
 }
 
 .second__posters {
-    width: 95%;
+    width: 94%;
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;

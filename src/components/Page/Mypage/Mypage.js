@@ -23,9 +23,20 @@ const GridContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+const Avartar = styled.img`
+    border-radius: 50%;
+    max-width: 200px;
+`;
+const IntroduceFont = styled.p`
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    margin-left: 5%;
+`;
 const useStyles = makeStyles({
     TabBtn: {
-        height: '10%',
+        height: '5%',
         margin: 'auto 0',
     },
 });
@@ -117,7 +128,24 @@ function Mypage(props) {
 
     return (
         <div style={{ width: '100%', marginBottom: '50px' }}>
-            <Image alt="Banner" src={banner} className="App-logo" />
+            <Image alt="Banner" src={banner} className="App-logo" />{' '}
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
+                <div style={{ textAlign: 'center', marginLeft: 33 }}>
+                    <div>
+                        <Avartar
+                            alt="Avartar"
+                            src="https://placeimg.com/700/700/anys"
+                        />
+                    </div>
+                    <button>수정</button>
+                </div>
+                <IntroduceFont>안녕하세요 ㄴㅁㅇㄴㅁㅇㄴㅁ</IntroduceFont>
+            </div>
             <Title>내 게시물</Title>
             <GridContainer>
                 <TabScrollButton
@@ -139,7 +167,6 @@ function Mypage(props) {
                     orientation="horizontal"
                 />
             </GridContainer>
-
             <Title>내가 찜한 게시물</Title>
             <GridContainer>
                 <TabScrollButton
