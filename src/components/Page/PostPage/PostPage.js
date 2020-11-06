@@ -20,13 +20,16 @@ const LastFont = styled.div`
 const GridContainer = styled.div`
     cursor: pointer;
     display: grid;
-    grid-template-columns: repeat(3, 1.2fr);
+    grid-template-columns: repeat(4, 1.2fr);
     grid-column-gap: 3rem;
     grid-row-gap: 2rem;
-    @media only screen and (max-width: 1268px) {
+    @media only screen and (max-width: 1650px) {
+        grid-template-columns: repeat(3, 1.2fr);
+    }
+    @media only screen and (max-width: 1200px) {
         grid-template-columns: repeat(2, 1.2fr);
     }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 650px) {
         grid-template-columns: repeat(1, 1.2fr);
     }
 `;

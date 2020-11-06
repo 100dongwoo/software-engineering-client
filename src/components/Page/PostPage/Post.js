@@ -6,7 +6,7 @@ const Container = styled.div`
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0px 40px 100px rgba(125, 125, 125, 0.5);
-    padding: 3% 3% 3% 3%;
+
     min-width: 300px;
     &: hover {
         transform: scale(1.1);
@@ -37,7 +37,7 @@ function Post({ test }) {
                     backgroundRepeat: 'no-repeat',
                     width: '100%',
                     height: '65%',
-                    borderRadius: '15px',
+                    // borderRadius: '15px',
                 }}
             />
             <div
@@ -46,7 +46,9 @@ function Post({ test }) {
                     padding: '0 10px 0 10px ',
                 }}
             >
-                <Title>{test.title}</Title>
+                <strong>
+                    <Title>{test.title}</Title>
+                </strong>
                 <SubTitle>{test.content}</SubTitle>
             </div>
         </Container>
