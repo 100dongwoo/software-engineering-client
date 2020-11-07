@@ -27,7 +27,7 @@ const SubTitle = styled.p`
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
 `;
-function Post({ test }) {
+function Post({ post }) {
     return (
         <Container>
             <img
@@ -47,9 +47,9 @@ function Post({ test }) {
                 }}
             >
                 <strong>
-                    <Title>{test.title}</Title>
+                    <Title>{post.title}</Title>
                 </strong>
-                <SubTitle>{test.content}</SubTitle>
+                <SubTitle>{post.content}</SubTitle>
             </div>
         </Container>
     );

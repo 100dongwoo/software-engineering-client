@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Post from './Post';
 import { Input } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useHistory } from 'react-router-dom';
+import api from '../../../api_manager';
 
 const Container = styled.div`
     width: 100%;
@@ -83,6 +84,18 @@ function PostPage(props) {
         e.preventDefault();
         alert('검색', search);
     };
+    const [page, setPage] = useState(0);
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        api.get('v1/posts/', page)
+            .then((res) => {
+                setPosts(res.data.results);
+                // console.log(res.data.results);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
     const test = [
         {
             title: '222222222222222222222', //제목
@@ -161,15 +174,15 @@ function PostPage(props) {
                     </button>
                 </Topcontainer>
                 <button
-                        onClick={() => {
-                            history.push('/Contentpage');
-                        }}
-                    >
-                        게시글 보기
-                    </button>
+                    onClick={() => {
+                        history.push('/Contentpage');
+                    }}
+                >
+                    게시글 보기
+                </button>
                 <GridContainer>
-                    {test.map((information, index) => (
-                        <Post test={information} key={index} />
+                    {posts.map((post, index) => (
+                        <Post post={post} key={index} />
                     ))}
                 </GridContainer>
             </Content>
