@@ -160,7 +160,13 @@ function PostPage(props) {
                         글 쓰기
                     </button>
                 </Topcontainer>
-
+                <button
+                        onClick={() => {
+                            history.push('/Contentpage');
+                        }}
+                    >
+                        게시글 보기
+                    </button>
                 <GridContainer>
                     {test.map((information, index) => (
                         <Post test={information} key={index} />

@@ -9,6 +9,7 @@ import { createGlobalStyle } from 'styled-components';
 import { AuthContextProvider } from './context/AuthContext';
 import Mypage from './components/Page/Mypage/Mypage';
 import Uploadpage from './components/Page/Uploadpage/Uploadpage';
+import Contentpage from './components/Page/Contentpage/Contentpage';
 import './styles/index.css';
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,11 +33,8 @@ function App() {
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path="/" component={Mainpage} />
                         <Route exact path="/mypage" component={Mypage} />
-                        <Route
-                            exact
-                            path="/uploadpage"
-                            component={Uploadpage}
-                        />
+                        <Route exact path="/uploadpage" component={Uploadpage} />
+                        <Route exact path="/Contentpage" component={Contentpage} />
                     </>
                 </Switch>
             </Router>

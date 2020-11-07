@@ -156,6 +156,7 @@ function NavBar(props) {
                             >
                                 회원가입
                             </SideMenu>
+                            
                         </>
                     ) : (
                         <SideMenu onClick={logout}>로그아웃</SideMenu>
