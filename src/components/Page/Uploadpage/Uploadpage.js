@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import './Uploadpage.css';
 import api from '../../../api_manager';
+import { useHistory } from 'react-router-dom';
 
 function Uploadpage(props) {
+    const history = useHistory();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [file, setFile] = useState('');
     const params = {
-        title: title,
-        content: content,
+        title,
+        content,
     };
     const onRegister = (e) => {
         e.preventDefault();
         api.post('v1/posts/', params)
             .then((res) => {
-                alert(res);
+                alert('업로드완료');
+                history('/');
             })
             .catch((err) => {
                 alert(err);
@@ -70,4 +73,4 @@ function Uploadpage(props) {
     );
 }
 
-export default Uploadpage;
+export default withAuthContext(Uploadpage);

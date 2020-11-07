@@ -11,7 +11,7 @@ const api = create({
 export const extraApi = create({ baseURL: BASE_URL });
 
 api.addResponseTransform((response) => {
-    //console.log(response);
+    console.log(response);
     if (response.status && response.status >= 500) {
         throw 'Server Error';
     } else if (!response.status) {
