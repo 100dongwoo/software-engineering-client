@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import './Uploadpage.css';
+import api from '../../../api_manager';
 
 function Uploadpage(props) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [file, setFile] = useState('');
-
+    const params = {
+        title: title,
+        content: content,
+    };
+    const onRegister = (e) => {
+        e.preventDefault();
+        api.post('v1/posts/', params)
+            .then((res) => {
+                alert(res);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    };
     return (
         <div className="Container">
             <p className="Center">게시판</p>
@@ -47,7 +61,9 @@ function Uploadpage(props) {
             </div>
 
             <div className="Center1">
-                <button className="ButtonStyle1">등록</button>
+                <button className="ButtonStyle1" onClick={onRegister}>
+                    등록
+                </button>
                 <button className="ButtonStyle2">취소</button>
             </div>
         </div>
