@@ -73,4 +73,4 @@ function Uploadpage(props) {
     );
 }
 
-export default withAuthContext(Uploadpage);
+export default Uploadpage;

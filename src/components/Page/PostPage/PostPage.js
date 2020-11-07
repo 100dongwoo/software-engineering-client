@@ -5,24 +5,29 @@ import { Input } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useHistory } from 'react-router-dom';
 import api from '../../../api_manager';
-
+import InfiniteScroll from 'react-infinite-scroll-component';
+import './InfiniteScroll.css';
 const Container = styled.div`
     width: 100%;
     padding-top: 2.5%;
     font-style: normal;
     font-weight: normal;
     margin-bottom: 3rem;
+    margin-bottom: 30px;
 `;
 const LastFont = styled.div`
     font-size: 26px;
     line-height: 30px;
     margin-bottom: 25px;
+    padding: 15px 15px 15px 10px;
 `;
 const GridContainer = styled.div`
+    margin-bottom: 35px;
     cursor: pointer;
     display: grid;
+    padding: 15px 15px 15px 25px;
     grid-template-columns: repeat(4, 1.2fr);
-    grid-column-gap: 3rem;
+    grid-column-gap: 2rem;
     grid-row-gap: 2rem;
     @media only screen and (max-width: 1650px) {
         grid-template-columns: repeat(3, 1.2fr);
@@ -75,27 +80,61 @@ const Topcontainer = styled.div`
     align-items: center;
     margin-bottom: 30px;
     justify-content: space-between;
+    padding: 15px 15px 15px 10px;
 `;
+let url = 'v1/posts/';
+let onEndReached = false;
 
 function PostPage(props) {
     const history = useHistory();
     const [search, setSearch] = useState('');
+
     const onSearchPost = (e) => {
         e.preventDefault();
         alert('검색', search);
     };
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        api.get('v1/posts/', page)
+        api.get(url, { page: 1 })
             .then((res) => {
+                if (!res.ok) {
+                    alert('error');
+                    return;
+                }
                 setPosts(res.data.results);
+                setPage(page + 1);
                 // console.log(res.data.results);
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
+
+    const postNext = () => {
+        if (onEndReached) {
+            return;
+        }
+        api.get(url, { page })
+            .then((res) => {
+                if (!res.ok) {
+                    alert('error');
+                    return;
+                }
+                setPosts([...posts, ...res.data.results]);
+                // setPosts(posts.concat(res.data.results));
+                setPage(page + 1);
+                if (!res.data.next) {
+                    onEndReached = true;
+                }
+                // setPosts(...(posts) => res.data.results);
+
+                // console.log(res.data.results);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
     return (
         <Container>
             <Content>
@@ -129,11 +168,18 @@ function PostPage(props) {
                 >
                     게시글 보기
                 </button>
-                <GridContainer>
-                    {posts.map((post, index) => (
-                        <Post post={post} key={index} />
-                    ))}
-                </GridContainer>
+                <InfiniteScroll
+                    dataLength={posts.length}
+                    hasMore={!onEndReached}
+                    loader={onEndReached && <h4>Loading...</h4>}
+                    next={postNext}
+                >
+                    <GridContainer>
+                        {posts.map((post, index) => (
+                            <Post post={post} key={index} />
+                        ))}
+                    </GridContainer>
+                </InfiniteScroll>
             </Content>
         </Container>
     );
