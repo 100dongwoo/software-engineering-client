@@ -25,6 +25,8 @@ yarn start
 - styled-components
 - Material UI (UI 컴포넌트 라이브러리)
 - useFormik, yup
+- Context
+- Infinite Scroll
 
 # 서버 저장소
 
