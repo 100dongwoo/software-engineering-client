@@ -1,5 +1,6 @@
 .Container {
     padding: 3% 4% 4% 4%;
+    margin: auto;
 
 }
 
@@ -13,64 +14,50 @@
 
 }
 
-.PostBox
-{
-    width: 80%;
-    height:100%;
-    position: absolute;
-    left: 10%;
-    right:10%;
+.PostBox {
+    margin: auto;
+    width: 85%;
+    height: 100%;
     background: whitesmoke;
     border-radius: 10px;
     border: 3px solid #030303;
     box-sizing: border-box;
     align-items: center;
 }
-.PostName
-{   
+
+.PostName {
     width: 95%;
     font-weight: bold;
     text-align: Left;
     font-size: 30px;
     margin-top: 1.9%;
-    margin-left: 4%;
     margin-bottom: 0.4%;
 }
-.PostNameDate
-{
-    width: 90%;
-    right: 10%;
+
+.PostNameDate {
     font-weight: bold;
     text-align: Left;
     font-size: 15px;
-    margin-left: 10%;
+
     margin-top: 0.7%;
     margin-bottom: 0.5%;
 }
-.PostNameImage
-{
-    position: absolute;
+
+.PostNameImage {
     width: 60px;
     height: 60px;
-    margin-left: 4.5%;
-    margin-top: 0%;
-    background-image: url(test.png);
+
+    margin-top: 0;
     border: 2px solid #000000;
     border-radius: 100%;
 }
-.PostDate
-{
-    display: flex;
+
+.PostDate {
     width: 90%;
-    margin-left: 4%;
-    margin-top: 3%;
-    margin-bottom: 0%;
+
 }
-.PostBoxLine
-{
-    position: absolute;
-    width: 95%;
-    left: 2%;
-    top: 14%;
+
+.PostBoxLine {
+
     border: 1px solid black;
 }
