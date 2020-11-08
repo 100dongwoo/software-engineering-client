@@ -8,7 +8,7 @@ const Container = styled.div`
     border-radius: 15px;
     // box-shadow: 0px 40px 100px rgba(125, 25, 225, 0.5);
     border: 1px solid #adadad;
-    padding: 1% 1% 1% 1%;
+
     margin-right: 27px;
     min-width: 250px;
     &: hover {
@@ -41,7 +41,6 @@ function GridLists({ test }) {
                     backgroundRepeat: 'no-repeat',
                     width: '100%',
                     height: '65%',
-                    borderRadius: '15px',
                 }}
             />
             <div

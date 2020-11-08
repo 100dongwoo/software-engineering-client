@@ -3,7 +3,7 @@
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
-    padding: 10px;
+    padding: 2% 1.5% 2% 1.5%;
 }
 
 .row__posters::-webkit-scrollbar {
@@ -15,7 +15,7 @@
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
-    padding: 10px;
+    padding: 2% 1.5% 2% 1.5%;
 }
 
 .second__posters::-webkit-scrollbar {

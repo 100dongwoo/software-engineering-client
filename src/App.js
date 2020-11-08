@@ -33,8 +33,22 @@ function App() {
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path="/" component={Mainpage} />
                         <Route exact path="/mypage" component={Mypage} />
-                        <Route exact path="/uploadpage" component={Uploadpage} />
-                        <Route exact path="/Contentpage" component={Contentpage} />
+                        <Route
+                            exact
+                            path="/uploadpage"
+                            component={Uploadpage}
+                        />
+                        <Route
+                            exact
+                            path="/post/:postid"
+                            component={Contentpage}
+                        />
+
+                        {/*<Route*/}
+                        {/*    exact*/}
+                        {/*    path="/Contentpage"*/}
+                        {/*    component={Contentpage}*/}
+                        {/*/>*/}
                     </>
                 </Switch>
             </Router>

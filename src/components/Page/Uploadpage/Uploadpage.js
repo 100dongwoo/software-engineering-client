@@ -17,7 +17,11 @@ function Uploadpage(props) {
         e.preventDefault();
         api.post('v1/posts/', params)
             .then((res) => {
-                alert('업로드완료');
+                if (!res.ok) {
+                    alert('업로드 실패');
+                    return;
+                }
+                alert('업로드 완료');
                 history('/');
             })
             .catch((err) => {
@@ -25,30 +29,29 @@ function Uploadpage(props) {
             });
     };
     return (
-        <div className="Container">
+        <div className="container" style={{ marginTop: '50px' }}>
             <p className="Center">게시판</p>
-            <div className="UploadTitle">
-                <TextField
-                    variant="filled"
-                    fullWidth
-                    placeholder="제목을 입력해주세요."
-                    onChange={(e) => {
-                        setTitle(e.target.value);
-                    }}
-                />
-            </div>
-            <div className="UploadText">
-                <TextField
-                    variant="filled"
-                    multiline
-                    rows={20}
-                    fullWidth
-                    placeholder="내용을 입력해주세요."
-                    onChange={(e) => {
-                        setContent(e.target.value);
-                    }}
-                />
-            </div>
+
+            <TextField
+                variant="filled"
+                fullWidth
+                placeholder="제목을 입력해주세요."
+                onChange={(e) => {
+                    setTitle(e.target.value);
+                }}
+            />
+
+            <TextField
+                style={{ marginTop: '30px' }}
+                variant="filled"
+                multiline
+                rows={20}
+                fullWidth
+                placeholder="내용을 입력해주세요."
+                onChange={(e) => {
+                    setContent(e.target.value);
+                }}
+            />
 
             <div className="FileUp">
                 <p style={{ marginRight: '20px' }}>첨부 이미지</p>
@@ -63,11 +66,23 @@ function Uploadpage(props) {
                 />
             </div>
 
-            <div className="Center1">
+            <div
+                style={{
+                    textAlign: 'center',
+                    marginTop: 30,
+                }}
+            >
                 <button className="ButtonStyle1" onClick={onRegister}>
                     등록
                 </button>
-                <button className="ButtonStyle2">취소</button>
+                <button
+                    className="ButtonStyle2"
+                    onClick={() => {
+                        history.goBack();
+                    }}
+                >
+                    취소
+                </button>
             </div>
         </div>
     );

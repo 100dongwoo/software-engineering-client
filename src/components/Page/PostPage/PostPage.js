@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../../../api_manager';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './InfiniteScroll.css';
+import './Button.css';
 const Container = styled.div`
     width: 100%;
     padding-top: 2.5%;
@@ -38,6 +39,9 @@ const GridContainer = styled.div`
     @media only screen and (max-width: 650px) {
         grid-template-columns: repeat(1, 1.2fr);
     }
+    @media only screen and (max-width: 375px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
 const Content = styled.div`
     max-width: 1640px;
@@ -53,7 +57,7 @@ const Content = styled.div`
         padding: 0 2.875rem;
     }
     @media only screen and (max-width: 375px) {
-        padding: 0 1rem;
+        padding: 0 0rem;
     }
 `;
 const SearhContainer = styled.form`
@@ -77,10 +81,13 @@ const SearchBtn = styled.button`
 `;
 const Topcontainer = styled.div`
     display: flex;
-    align-items: center;
+
     margin-bottom: 30px;
     justify-content: space-between;
     padding: 15px 15px 15px 10px;
+    @media only screen and (max-width: 375px) {
+        flex-direction: column;
+    }
 `;
 let url = 'v1/posts/';
 let onEndReached = false;
@@ -153,21 +160,24 @@ function PostPage(props) {
                             onChange={(e) => setSearch(e.currentTarget.value)}
                         />
                     </SearhContainer>
+                    {/*<button*/}
+                    {/*    className="btn"*/}
+                    {/*    onClick={() => {*/}
+                    {/*        history.push('/Uploadpage');*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    글쓰기*/}
+                    {/*</button>*/}
+
                     <button
+                        className="fun-btn"
                         onClick={() => {
                             history.push('/Uploadpage');
                         }}
                     >
-                        글 쓰기
+                        글 쓰 기
                     </button>
                 </Topcontainer>
-                <button
-                    onClick={() => {
-                        history.push('/Contentpage');
-                    }}
-                >
-                    게시글 보기
-                </button>
                 <InfiniteScroll
                     dataLength={posts.length}
                     hasMore={!onEndReached}

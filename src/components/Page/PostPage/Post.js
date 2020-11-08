@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 const Container = styled.div`
     width: 100%;
     height: 24.5rem;
@@ -27,8 +28,9 @@ const SubTitle = styled.p`
     -webkit-box-orient: vertical;
 `;
 function Post({ post }) {
+    const history = useHistory();
     return (
-        <Container>
+        <Container onClick={() => history.push(`/post/${post.id}`)}>
             <img
                 alt="이미지"
                 // src={`https://placeimg.com/700/700/${
