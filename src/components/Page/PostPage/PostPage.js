@@ -85,7 +85,7 @@ const Topcontainer = styled.div`
     margin-bottom: 30px;
     justify-content: space-between;
     padding: 15px 15px 15px 10px;
-    @media only screen and (max-width: 375px) {
+    @media only screen and (max-width: 768px) {
         flex-direction: column;
     }
 `;

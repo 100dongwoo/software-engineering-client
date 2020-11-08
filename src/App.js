@@ -32,7 +32,7 @@ function App() {
                         <NavBar />
                         <Route exact path="/post" component={PostPage} />
                         <Route exact path="/" component={Mainpage} />
-                        <Route exact path="/mypage" component={Mypage} />
+                        <Route exact path="/mypage/:id" component={Mypage} />
                         <Route
                             exact
                             path="/uploadpage"

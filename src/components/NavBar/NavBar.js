@@ -98,9 +98,14 @@ function NavBar(props) {
                         <Navbar to={'/login'}>로그인</Navbar>
                     </>
                 ) : (
-                    <Navbar to={'/'} onClick={logout}>
-                        로그아웃
-                    </Navbar>
+                    <>
+                        <Navbar to={'/'} onClick={logout}>
+                            로그아웃
+                        </Navbar>
+                        <Navbar to={`/mypage/${props.auth.user.id}`}>
+                            마이페이지
+                        </Navbar>
+                    </>
                 )}
 
                 <Navbar to={'/post'}>게시판</Navbar>
@@ -156,7 +161,6 @@ function NavBar(props) {
                             >
                                 회원가입
                             </SideMenu>
-                            
                         </>
                     ) : (
                         <SideMenu onClick={logout}>로그아웃</SideMenu>
