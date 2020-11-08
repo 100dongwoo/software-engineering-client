@@ -16,17 +16,17 @@ const Container = styled.div`
     margin-bottom: 3rem;
     margin-bottom: 30px;
 `;
-const LastFont = styled.div`
+const LastFont = styled.p`
     font-size: 26px;
     line-height: 30px;
     margin-bottom: 25px;
-    padding: 15px 15px 15px 10px;
+    margin-left: 15px;
 `;
 const GridContainer = styled.div`
     margin-bottom: 35px;
     cursor: pointer;
     display: grid;
-    padding: 15px 15px 15px 25px;
+    padding: 15px 15px 15px 15px;
     grid-template-columns: repeat(4, 1.2fr);
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;

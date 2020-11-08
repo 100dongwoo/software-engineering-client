@@ -163,7 +163,19 @@ function NavBar(props) {
                             </SideMenu>
                         </>
                     ) : (
-                        <SideMenu onClick={logout}>로그아웃</SideMenu>
+                        <>
+                            <SideMenu
+                                onClick={() => {
+                                    setVisible(false);
+                                    history.push(
+                                        `/mypage/${props.auth.user.id}`
+                                    );
+                                }}
+                            >
+                                마이페이지
+                            </SideMenu>
+                            <SideMenu onClick={logout}>로그아웃</SideMenu>
+                        </>
                     )}
                 </Drawer>
             </div>

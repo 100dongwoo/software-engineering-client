@@ -3,14 +3,13 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     width: 100%;
-    height: 24.5rem;
+    height: 24.4rem;
     background: #ffffff;
     border-radius: 15px;
     // box-shadow: 0px 40px 100px rgba(125, 25, 225, 0.5);
     border: 1px solid #adadad;
-
     margin-right: 27px;
-    min-width: 250px;
+    min-width: 295px;
     &: hover {
         transform: scale(1.1);
     }

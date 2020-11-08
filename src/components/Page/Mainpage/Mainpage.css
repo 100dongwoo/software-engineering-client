@@ -36,7 +36,10 @@
     .logo {
         flex-direction: column;
     }
-
+    .Intro{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     .fonts {
         font-size: 0.8375rem;
     }

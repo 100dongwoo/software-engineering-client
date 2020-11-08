@@ -36,15 +36,15 @@ const IntroduceFont = styled.p`
 `;
 const useStyles = makeStyles({
     TabBtn: {
-        height: '5%',
         margin: 'auto 0',
+        maxWidth: '10px',
     },
 });
 function Mypage(props) {
     const classes = useStyles();
     const nextSlide = () => {
         const container = document.querySelector('.row__posters');
-        sideScroll(container, 'right', 25, 300, 30);
+        sideScroll(container, 'right', 25, 300, 20);
     };
 
     const prevSlide = () => {
@@ -135,7 +135,7 @@ function Mypage(props) {
                     alignItems: 'center',
                 }}
             >
-                <div style={{ textAlign: 'center', marginLeft: 33 }}>
+                <div style={{ textAlign: 'center', marginLeft: '1%' }}>
                     <div>
                         <Avartar
                             alt="Avartar"
