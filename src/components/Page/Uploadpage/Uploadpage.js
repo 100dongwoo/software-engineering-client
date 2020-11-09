@@ -22,7 +22,7 @@ function Uploadpage(props) {
                     return;
                 }
                 alert('업로드 완료');
-                history('/');
+                history.push('/');
             })
             .catch((err) => {
                 alert(err);
