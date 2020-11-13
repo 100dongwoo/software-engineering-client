@@ -8,6 +8,7 @@ import api from '../../../api_manager';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './InfiniteScroll.css';
 import './Button.css';
+import { withAuthContext } from '../../../context/AuthContext';
 const Container = styled.div`
     width: 100%;
     padding-top: 2.5%;
@@ -94,11 +95,11 @@ let onEndReached = false;
 
 function PostPage(props) {
     const history = useHistory();
-    const [search, setSearch] = useState('');
+    const [keyword, setSearch] = useState('');
 
     const onSearchPost = (e) => {
         e.preventDefault();
-        alert('검색', search);
+        alert('검색', keyword);
     };
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState([]);
@@ -156,7 +157,7 @@ function PostPage(props) {
                             style={{ disableUnderline: true, width: '90%' }}
                             type="search"
                             placeholder="내용을 검색하세요"
-                            value={search}
+                            value={keyword}
                             onChange={(e) => setSearch(e.currentTarget.value)}
                         />
                     </SearhContainer>
@@ -168,15 +169,16 @@ function PostPage(props) {
                     {/*>*/}
                     {/*    글쓰기*/}
                     {/*</button>*/}
-
-                    <button
-                        className="fun-btn"
-                        onClick={() => {
-                            history.push('/Uploadpage');
-                        }}
-                    >
-                        글 쓰 기
-                    </button>
+                    {props.auth.user.email !== '' && (
+                        <button
+                            className="fun-btn"
+                            onClick={() => {
+                                history.push('/Uploadpage');
+                            }}
+                        >
+                            글 쓰 기
+                        </button>
+                    )}
                 </Topcontainer>
                 <InfiniteScroll
                     dataLength={posts.length}
@@ -195,4 +197,4 @@ function PostPage(props) {
     );
 }
 
-export default PostPage;
+export default withAuthContext(PostPage);
