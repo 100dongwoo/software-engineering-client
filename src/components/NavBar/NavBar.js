@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import MenuOpenSharpIcon from '@material-ui/icons/MenuOpenSharp';
 import { withAuthContext } from '../../context/AuthContext';
 import api from '../../api_manager';
-
+import ApiNotice from '../Page/PublicDataPage/API_Notice';
 const Navbar = styled(Link)`
     text-decoration: none;
     cursor: pointer;
@@ -92,6 +92,7 @@ function NavBar(props) {
                 }}
             >
                 {/*메뉴바 컨테이너 */}
+
                 {props.auth.user.email === '' ? (
                     <>
                         <Navbar to={'/register'}>회원가입</Navbar>
@@ -107,7 +108,7 @@ function NavBar(props) {
                         </Navbar>
                     </>
                 )}
-
+                <Navbar to={'/Notice'}>사업 공지사항</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
                 <Navbar to={'/'}>소개</Navbar>
             </div>
@@ -143,6 +144,7 @@ function NavBar(props) {
                     >
                         게시판
                     </SideMenu>
+
                     {props.auth.user.email === '' ? (
                         <>
                             <SideMenu
