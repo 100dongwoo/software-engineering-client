@@ -37,6 +37,18 @@ function Contentpage(props) {
             });
     };
 
+    const onDeletePost = () => {
+        api.delete(`v1/posts/${postid}/`).then(res=> {
+                if (!res.ok) {
+                    alert('게시물 삭제에 실패하였습니다.');
+                    return;
+                }
+                alert('게시물이 삭제되었습니다.');
+                props.history.goBack();
+            }
+        )
+    };
+
     return (
         <div className="Container">
             {/*<p className="Banner">L.o.g.o</p>*/}
@@ -54,7 +66,7 @@ function Contentpage(props) {
                             {post.isMine &&
                                 <>
                             <button>수정</button>
-                            <button>삭제</button>
+                            <button onClick={onDeletePost}>삭제</button>
                             </>
                             }
                             <button>찜(즐찾 뀨!)</button>
