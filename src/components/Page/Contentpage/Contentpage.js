@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './Contentpage.css';
 import api from '../../../api_manager';
+import { withAuthContext } from '../../../context/AuthContext';
 
 function Contentpage(props) {
     const postid = props.match.params.postid; ///URL 에서 가져옴
     const [post, setPost] = useState({});
     const [reviews, setReviews] = useState([]);
+
     useEffect(() => {
+        props.auth.fetchProfile();
         fetchPost();
         fetchReviews();
     }, []);
@@ -49,8 +52,25 @@ function Contentpage(props) {
         )
     };
 
+    const onChangeFavorite = (hasFavorite) => {
+        api.get(`v1/posts/${postid}/${hasFavorite ? 'unfavorite' : 'favorite'}/`).then(res=> {
+                if (!res.ok) {
+                    alert('찜목록 업데이트에 실패하였습니다.');
+                    return;
+                }
+                if(hasFavorite){
+                    setPost(Object.assign({}, post, {hasFavorite: false}));
+                } else {
+                    setPost(Object.assign({}, post, {hasFavorite: true}));
+                }
+                alert('찜목록이 업데이트되었습니다.');
+            }
+        )
+    };
+
     return (
         <div className="Container">
+            {console.log('aa',post)}
             {/*<p className="Banner">L.o.g.o</p>*/}
             <div className="PostBox">
                 {/*상단 컨테이너*/}
@@ -64,12 +84,12 @@ function Contentpage(props) {
                         <p className="PostName">{post.title}</p>
                         <div>
                             {post.isMine &&
-                                <>
-                            <button>수정</button>
-                            <button onClick={onDeletePost}>삭제</button>
-                            </>
-                            }
-                            <button>찜(즐찾 뀨!)</button>
+                            <>
+                                <button>수정</button>
+                                <button onClick={onDeletePost}>삭제</button>
+                            </>}
+                            {!post.isMine && !!props.auth.user?.id &&
+                            <button onClick={()=>onChangeFavorite(post.hasFavorite)}>{`찜 ${post.hasFavorite ? '삭제' : '추가'}`}</button>}
                         </div>
                     </div>
                     <img
@@ -95,4 +115,4 @@ function Contentpage(props) {
     );
 }
 
-export default Contentpage;
+export default withAuthContext(Contentpage);

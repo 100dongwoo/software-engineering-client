@@ -30,7 +30,9 @@ const Img = styled.img`
 // const Introduction = ({ name }) => {
 const Mainpage = (props) => {
     // const user = props.auth.user;
-    useEffect(() => {}, []);
+    useEffect(() => {
+        props.auth.fetchProfile()
+    }, []);
 
     return (
         <Container className="logo" id="qwe">

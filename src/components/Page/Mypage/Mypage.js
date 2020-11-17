@@ -55,6 +55,8 @@ function Mypage(props) {
     const [myFavoritePosts, setMyFavoritePosts] = useState([]);
 
     useEffect(() => {
+        console.log(props)
+        // props.auth.fetchProfile();
         fetchPosts();
         fetchFavoritePosts();
     }, []);

@@ -101,6 +101,7 @@ function PostPage(props) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        props.auth.fetchProfile();
         api.get(url, { page: 1 })
             .then((res) => {
                 if (!res.ok) {
