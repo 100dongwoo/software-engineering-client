@@ -96,6 +96,7 @@ function Mypage(props) {
         const container = document.querySelector('.second__posters');
         sideScroll(container, 'left', 25, 300, 30);
     };
+
     const sideScroll = (element, direction, speed, distance, step) => {
         let scrollAmount = 0;
         const slideTimer = setInterval(() => {
@@ -110,57 +111,6 @@ function Mypage(props) {
             }
         }, speed);
     };
-    const test = [
-        {
-            title: '222222222222222222222', //제목
-            content:
-                '예시입니다예시입니다예시입니다예시입니다예시입니다예예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다예시입니다시입니다예시입니다예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-        {
-            title: '카페 정보 공유합니다!!!!!!', //제목
-            content: '예시입니다?', //상세내용
-        },
-    ];
 
     return (
         <div style={{ width: '100%', marginBottom: '50px' }}>
@@ -182,7 +132,7 @@ function Mypage(props) {
                 </div>
                 <IntroduceFont>안녕하세요 ㄴㅁㅇㄴㅁㅇㄴㅁ</IntroduceFont>
             </div>
-            <Title>내 게시물</Title>
+            <Title>나의 창업정보 게시물</Title>
             <GridContainer>
                 <TabScrollButton
                     className={classes.TabBtn}
@@ -192,7 +142,7 @@ function Mypage(props) {
                 />
 
                 <div className="row__posters">
-                    {test.map((test, index) => (
+                    {myPosts.map((test, index) => (
                         <GridLists test={test} key={index} />
                     ))}
                 </div>
@@ -203,7 +153,7 @@ function Mypage(props) {
                     orientation="horizontal"
                 />
             </GridContainer>
-            <Title>내가 찜한 게시물</Title>
+            <Title>내가 찜한 창업정보</Title>
             <GridContainer>
                 <TabScrollButton
                     className={classes.TabBtn}
@@ -212,7 +162,7 @@ function Mypage(props) {
                     orientation="horizontal"
                 />
                 <div className="second__posters">
-                    {test.map((test, index) => (
+                    {myFavoritePosts.map((test, index) => (
                         <GridLists test={test} key={index} />
                     ))}
                 </div>
