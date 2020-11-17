@@ -97,10 +97,6 @@ function PostPage(props) {
     const history = useHistory();
     const [keyword, setSearch] = useState('');
 
-    const onSearchPost = (e) => {
-        e.preventDefault();
-        alert('검색', keyword);
-    };
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState([]);
 
@@ -123,17 +119,26 @@ function PostPage(props) {
             });
     }, []);
 
-    const postNext = () => {
+    const postNext = (page, keyword) => {
+        if (keyword) {
+            page = 1;
+            setPage(1);
+            onEndReached = false;
+        }
         if (onEndReached) {
             return;
         }
-        api.get(url, { page })
+        api.get(url, { page, keyword })
             .then((res) => {
                 if (!res.ok) {
                     alert('error');
                     return;
                 }
-                setPosts([...posts, ...res.data.results]);
+                if (keyword) {
+                    setPosts(res.data.results);
+                } else {
+                    setPosts([...posts, ...res.data.results]);
+                }
                 // setPosts(posts.concat(res.data.results));
                 setPage(page + 1);
                 if (res.data.next === null) {
@@ -153,7 +158,12 @@ function PostPage(props) {
                 <LastFont>게시글</LastFont>
                 <Topcontainer>
                     <SearhContainer>
-                        <SearchBtn onClick={onSearchPost}>
+                        <SearchBtn
+                            onClick={(e) => {
+                                e.preventDefault();
+                                postNext(page, keyword);
+                            }}
+                        >
                             <SearchIcon />
                         </SearchBtn>
                         <Input
@@ -188,7 +198,7 @@ function PostPage(props) {
                     dataLength={posts.length}
                     hasMore={!onEndReached}
                     loader={onEndReached && <h4>Loading...</h4>}
-                    next={postNext}
+                    next={() => postNext(page, keyword)}
                 >
                     <GridContainer>
                         {posts.map((post, index) => (
