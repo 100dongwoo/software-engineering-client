@@ -103,6 +103,7 @@ function PostPage(props) {
     };
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState([]);
+
     useEffect(() => {
         api.get(url, { page: 1 })
             .then((res) => {
@@ -112,6 +113,9 @@ function PostPage(props) {
                 }
                 setPosts(res.data.results);
                 setPage(page + 1);
+                if (!res.data.next) {
+                    onEndReached = true;
+                }
                 // console.log(res.data.results);
             })
             .catch((err) => {
@@ -132,7 +136,7 @@ function PostPage(props) {
                 setPosts([...posts, ...res.data.results]);
                 // setPosts(posts.concat(res.data.results));
                 setPage(page + 1);
-                if (!res.data.next) {
+                if (res.data.next === null) {
                     onEndReached = true;
                 }
                 // setPosts(...(posts) => res.data.results);
