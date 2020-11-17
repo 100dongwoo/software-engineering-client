@@ -35,6 +35,13 @@ const IntroduceFont = styled.p`
     line-height: 150%;
     margin-left: 5%;
 `;
+const Message = styled.p`
+    font-style: normal;
+    font-size: 1rem;
+
+    line-height: 150%;
+    margin-left: 4%;
+`;
 const useStyles = makeStyles({
     TabBtn: {
         margin: 'auto 0',
@@ -133,47 +140,55 @@ function Mypage(props) {
                 <IntroduceFont>안녕하세요 ㄴㅁㅇㄴㅁㅇㄴㅁ</IntroduceFont>
             </div>
             <Title>나의 창업정보 게시물</Title>
-            <GridContainer>
-                <TabScrollButton
-                    className={classes.TabBtn}
-                    onClick={prevSlide}
-                    direction="left"
-                    orientation="horizontal"
-                />
+            {myPosts.length !== 0 ? (
+                <GridContainer>
+                    <TabScrollButton
+                        className={classes.TabBtn}
+                        onClick={prevSlide}
+                        direction="left"
+                        orientation="horizontal"
+                    />
 
-                <div className="row__posters">
-                    {myPosts.map((test, index) => (
-                        <GridLists test={test} key={index} />
-                    ))}
-                </div>
-                <TabScrollButton
-                    className={classes.TabBtn}
-                    onClick={nextSlide}
-                    direction="right"
-                    orientation="horizontal"
-                />
-            </GridContainer>
+                    <div className="row__posters">
+                        {myPosts.map((test, index) => (
+                            <GridLists test={test} key={index} />
+                        ))}
+                    </div>
+                    <TabScrollButton
+                        className={classes.TabBtn}
+                        onClick={nextSlide}
+                        direction="right"
+                        orientation="horizontal"
+                    />
+                </GridContainer>
+            ) : (
+                <Message>아직 게시물이 없습니다. 게시글 작성해주세요!</Message>
+            )}
             <Title>내가 찜한 창업정보</Title>
-            <GridContainer>
-                <TabScrollButton
-                    className={classes.TabBtn}
-                    onClick={secondPrevSlide}
-                    direction="left"
-                    orientation="horizontal"
-                />
-                <div className="second__posters">
-                    {myFavoritePosts.map((test, index) => (
-                        <GridLists test={test} key={index} />
-                    ))}
-                </div>
+            {myFavoritePosts.length !== 0 ? (
+                <GridContainer>
+                    <TabScrollButton
+                        className={classes.TabBtn}
+                        onClick={secondPrevSlide}
+                        direction="left"
+                        orientation="horizontal"
+                    />
+                    <div className="second__posters">
+                        {myFavoritePosts.map((test, index) => (
+                            <GridLists test={test} key={index} />
+                        ))}
+                    </div>
 
-                <TabScrollButton
-                    className={classes.TabBtn}
-                    onClick={secondNextSlide}
-                    direction="right"
-                    orientation="horizontal"
-                />
-            </GridContainer>
+                    <TabScrollButton
+                        className={classes.TabBtn}
+                        onClick={secondNextSlide}
+                        direction="right"
+                        orientation="horizontal"
+                    />
+                </GridContainer>
+            ) : (
+                <Message>아직 찜한 창업정보가 없습니다!</Message>
+            )}
         </div>
     );
 }
