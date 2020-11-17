@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import banner from './Mypagebanner.png';
 import styled from 'styled-components';
 import './GridList.css';
 import GridLists from './GridLists';
 import TabScrollButton from '@material-ui/core/TabScrollButton';
 import { makeStyles } from '@material-ui/core/styles';
+import api from '../../../api_manager';
 const Title = styled.p`
     text-align: left;
     font-size: 30px;
@@ -42,6 +43,41 @@ const useStyles = makeStyles({
 });
 function Mypage(props) {
     const classes = useStyles();
+    const userId = props.match.params.id; ///URL 에서 가져옴
+    const [myPosts, setMyPosts] = useState([]);
+    const [myFavoritePosts, setMyFavoritePosts] = useState([]);
+
+    useEffect(() => {
+        fetchPosts();
+        fetchFavoritePosts();
+    }, []);
+
+    const fetchPosts = () => {
+        api.get(`v1/posts/`, { user: userId })
+            .then((res) => {
+                if (!res.ok) {
+                    alert('error');
+                }
+                setMyPosts(res.data.results);
+            })
+            .catch((err) => {
+                console.log('post' + err);
+            });
+    };
+
+    const fetchFavoritePosts = () => {
+        api.get(`v1/posts/`, { favoriteUser: userId })
+            .then((res) => {
+                if (!res.ok) {
+                    alert('error');
+                }
+                setMyFavoritePosts(res.data.results);
+            })
+            .catch((err) => {
+                console.log('post' + err);
+            });
+    };
+
     const nextSlide = () => {
         const container = document.querySelector('.row__posters');
         sideScroll(container, 'right', 25, 300, 20);
