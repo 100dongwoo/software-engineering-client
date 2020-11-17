@@ -51,8 +51,12 @@ function Contentpage(props) {
                     >
                         <p className="PostName">{post.title}</p>
                         <div>
+                            {post.isMine &&
+                                <>
                             <button>수정</button>
                             <button>삭제</button>
+                            </>
+                            }
                             <button>찜(즐찾 뀨!)</button>
                         </div>
                     </div>
