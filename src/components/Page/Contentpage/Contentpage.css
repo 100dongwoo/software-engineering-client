@@ -49,13 +49,18 @@
     border: 2px solid #000000;
     border-radius: 100%;
 }
-
 .PostDate {
     min-height: 40vh;
     font-size: 1.5rem;
-
 }
 
 .PostBoxLine {
     border: 1px solid black;
+}
+@media only screen and (max-width: 768px) {
+    .Container {
+        width: 95%;
+
+    }
+
 }

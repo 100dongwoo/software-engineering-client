@@ -3,29 +3,15 @@ import api from '../../../api_manager';
 
 function ApiNotice(props) {
     const [posts, setPosts] = useState([]);
-
+    //http://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList?serviceKey=UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D&numOfRows=10&startPage=1&pageSize=10&pageNo=1
     useEffect(() => {
         // props.auth.fetchProfile();
         fetch(
-            'https://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList?serviceKey=UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D&pageNo=1&numOfRows=100&pageSize=100&startPage=1&startDate=20141001&endDate=20201020'
-            // {
-            //     mode: 'no-cors',
-            //     method: 'GET',
-            //     headers: new Headers({
-            //         Accept: 'application/xml',
-            //         'content-type':
-            //             'application/xml; charset=utf-8; application/x-www-form-urlencoded',
-            //         'Access-Control-Allow-Origin': '*',
-            //         'Access-Control-Allow-Methods': 'GET, POST, PUT',
-            //         'Access-Control-Allow-Headers': 'Content-Type',
-            //     }),
-            // }
+            'http://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList?serviceKey=UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D&numOfRows=10&startPage=1&pageSize=10&pageNo=1'
         )
-            .then((res) => console.log('openApi res', res))
-
-            .catch((error) => {
-                console.log('openApi err', error);
-            });
+            .then((res) => res.json())
+            .then((json) => console.log(json))
+            .catch((err) => console.log(err));
     }, []);
 
     return <div>asd</div>;
