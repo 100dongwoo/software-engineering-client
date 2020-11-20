@@ -97,19 +97,24 @@ function LoginPage(props) {
             console.log('onSubmit result', values);
             api.post('v1/users/sign-up/', values)
                 .then((res) => {
-                    if (res.data.code === 'NotLogin') {
+                    // console.log(res)
+                    if (res.data.code === 'exists') {
                         alert(res.data.msg);
                         return;
+                    } else if (!res.ok){
+                        alert('회원가입에 실패하였습니다.');
+                        return;
                     }
-                    alert('로그인되었습니다.');
+                    alert('회원가입 되었습니다.');
                     props.history.replace('/');
                     // resetForm();
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log('err',err);
                 });
         },
     });
+
     const {
         values,
         handleChange,
