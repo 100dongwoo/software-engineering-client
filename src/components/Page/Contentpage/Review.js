@@ -18,6 +18,7 @@ const ReviewConainer = styled.div`
     width: 95%;
     height: auto;
 `;
+
 function Review({ arr, index }) {
     return (
         <Container>

@@ -19,10 +19,46 @@ const ReviewContent = styled.div`
 const TextArea = styled.textarea`
     width: 95%;
     resize: none;
-    height: 200px; padding 1% 1%;
+    height: 150px; padding 1% 1%;
     overflow: hidden;
-    border: 2px solid #e1e4e5;
+    border: 2px solid #adadad;
     background-color: #fafafa;
+    font-size:1.2rem;
+     ::placeholder {
+        color: #adadad;
+        font-style: normal;
+        line-height: 157.5%;
+        color: #bebebe;
+    }
+`;
+const ReviewSubmitBtn = styled.button`
+    font-size: 1rem;
+    margin-right: 1.5%;
+    background-image: linear-gradient(
+        to right,
+        #314755 0%,
+        #26a0da 51%,
+        #314755 100%
+    );
+    border: none;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 116%;
+    display: block;
+    :hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
 `;
 
 
@@ -30,7 +66,31 @@ function Contentpage(props) {
     const postid = props.match.params.postid; ///URL 에서 가져옴
     const [post, setPost] = useState({});
     const [reviews, setReviews] = useState([]);
-
+    const [content, setContent] = useState('');
+    let params = {
+        content: content,
+        user: props.auth.user.id,
+    };
+    const onSubmitReview = (e) => {
+        if (props.auth.user.id === '') {
+            alert('로그인후 이용 가능합니다');
+            return;
+        }
+        if (content === '') {
+            alert('댓글을 작성해주세요(빈칸 금지)');
+            return;
+        }
+        e.preventDefault();
+        api.post(`v1/posts/${postid}/reviews`, params).then((res) => {
+            if (!res.ok) {
+                alert('댓글작성이 실패하였습니다.');
+                return;
+            }
+            console.log(res);
+            setContent('');
+            alert('댓글작성 완료');
+        });
+    };
     useEffect(() => {
         props.auth.fetchProfile();
         fetchPost();
@@ -43,6 +103,7 @@ function Contentpage(props) {
                 if (!res.ok) {
                     alert('error');
                 }
+                console.log('12321321321', res.data.results);
                 setReviews(res.data.results);
             })
             .catch((err) => {
@@ -110,8 +171,6 @@ function Contentpage(props) {
     ];
     return (
         <div className="Container">
-            {console.log('aa', post)}
-            {/*<p className="Banner">L.o.g.o</p>*/}
             <div className="PostBox">
                 {/*상단 컨테이너*/}
                 <div>
@@ -172,7 +231,18 @@ function Contentpage(props) {
                     marginTop: '2.5rem',
                 }}
             >
-                <TextArea />
+                <TextArea
+                    onchange={(e) => {
+                        setContent(e.target.value);
+                    }}
+                    value={content}
+                    placeholder="댓글을 작성해주세요"
+                />
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <ReviewSubmitBtn onClick={onSubmitReview}>
+                        작 성
+                    </ReviewSubmitBtn>
+                </div>
             </div>
         </div>
     );

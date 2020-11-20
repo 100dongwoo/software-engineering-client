@@ -1,11 +1,10 @@
 .Container {
     width: 80%;
-    padding: 4% 4% 4% 4%;
+    padding: 4% 4% 5% 4%;
     border: 1px solid #adadad;
     border-radius: 25px;
     min-height: 60vh;
-    margin: 40px auto auto;
-
+    margin: 40px auto 3rem;
 }
 
 .Banner {
@@ -13,7 +12,6 @@
     text-align: center;
     border-width: thin medium;
     font-size: 40px;
-
 }
 
 .PostBox {
@@ -23,7 +21,6 @@
     border: 3px solid #030303;
     box-sizing: border-box;
     align-items: center;
-
 }
 
 .PostName {
