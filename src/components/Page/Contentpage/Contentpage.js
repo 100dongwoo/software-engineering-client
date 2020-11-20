@@ -71,11 +71,11 @@ function Contentpage(props) {
         user: props.auth.user.id,
     };
     const onSubmitReview = (e) => {
-        if (props.auth.user.id === '') {
+        if (!props.auth.user.id) {
             alert('로그인후 이용 가능합니다');
             return;
         }
-        if (content === '') {
+        if (content === ' ') {
             alert('댓글을 작성해주세요(빈칸 금지)');
             return;
         }
