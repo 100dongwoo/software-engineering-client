@@ -33,6 +33,8 @@ const TextArea = styled.textarea`
 `;
 const ReviewSubmitBtn = styled.button`
     font-size: 1rem;
+    cursor: pointer;
+    outline: none;
     margin-right: 1.5%;
     background-image: linear-gradient(
         to right,
