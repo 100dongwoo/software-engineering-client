@@ -80,7 +80,7 @@ function Contentpage(props) {
             return;
         }
         e.preventDefault();
-        api.post(`v1/posts/${postid}/reviews`, params).then((res) => {
+        api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
             if (!res.ok) {
                 alert('댓글작성이 실패하였습니다.');
                 return;

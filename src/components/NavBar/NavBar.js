@@ -63,7 +63,10 @@ function NavBar(props) {
     const logout = () => {
         api.get('v1/users/sign-out/')
             .then((res) => {
-                if(!res.ok){alert('로그아웃에 실패하였습니다.'); return}
+                if (!res.ok) {
+                    alert('로그아웃에 실패하였습니다.');
+                    return;
+                }
                 props.auth.addUserInfo({
                     id: '',
                     email: '',
@@ -79,7 +82,7 @@ function NavBar(props) {
     };
 
     return (
-        <div style={{ display: 'flex', borderBottom: 'solid 1px #e8e8e8'}}>
+        <div style={{ display: 'flex', borderBottom: 'solid 1px #e8e8e8' }}>
             {/* 로고 */}
             <Link to={'/'}>Logo</Link>
             <div
@@ -118,11 +121,11 @@ function NavBar(props) {
                 <Drawer anchor="right" open={visible} onClose={DrawClose}>
                     <p
                         style={{
-                            padding: '10px 140px 10px 30px ',
+                            padding: '10px 140px 10px 20px ',
                             borderBottom: 'solid 1px #e8e8e8',
                         }}
                     >
-                        Basic Drawer
+                        M S S I
                     </p>
                     <SideMenu
                         onClick={() => {
