@@ -221,8 +221,8 @@ function Contentpage(props) {
                 <p className="PostDate">{post.content}</p>
             </div>
             <ReviewContent>
-                {array.map((arr, index) => (
-                    <Review arr={arr} key={index} />
+                {reviews.map((reviews, index) => (
+                    <Review reviews={reviews} key={index} />
                 ))}
             </ReviewContent>
             <div
