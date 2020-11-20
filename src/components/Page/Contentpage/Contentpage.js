@@ -71,6 +71,7 @@ function Contentpage(props) {
         user: props.auth.user.id,
     };
     const onSubmitReview = (e) => {
+        e.preventDefault();
         if (!props.auth.user.id) {
             alert('로그인후 이용 가능합니다');
             return;
@@ -79,13 +80,14 @@ function Contentpage(props) {
             alert('댓글을 작성해주세요(빈칸 금지)');
             return;
         }
-        e.preventDefault();
+
         api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
             if (!res.ok) {
                 alert('댓글작성이 실패하였습니다.');
                 return;
             }
             console.log(res);
+            fetchReviews();
             setContent('');
             alert('댓글작성 완료');
         });
@@ -150,24 +152,6 @@ function Contentpage(props) {
             alert('찜목록이 업데이트되었습니다.');
         });
     };
-
-    const array = [
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-    ];
     return (
         <div className="Container">
             <div className="PostBox">
