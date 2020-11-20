@@ -61,7 +61,6 @@ const ReviewSubmitBtn = styled.button`
     }
 `;
 
-
 function Contentpage(props) {
     const postid = props.match.params.postid; ///URL 에서 가져옴
     const [post, setPost] = useState({});
@@ -211,7 +210,10 @@ function Contentpage(props) {
                     <p className="PostNameDate">
                         작성자 이름 : {post?.user?.nickname}
                     </p>
-                    <p className="PostNameDate">작성 날짜 : {moment(post.createdAt).format('YYYY-MM-DD')}</p>
+                    <p className="PostNameDate">
+                        작성 날짜 :{' '}
+                        {moment(post.createdAt).format('YYYY-MM-DD')}
+                    </p>
                 </div>
                 {/* 경계선*/}
                 <div className="PostBoxLine" />
@@ -232,7 +234,7 @@ function Contentpage(props) {
                 }}
             >
                 <TextArea
-                    onchange={(e) => {
+                    onChange={(e) => {
                         setContent(e.target.value);
                     }}
                     value={content}
