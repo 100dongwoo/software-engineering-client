@@ -63,6 +63,7 @@ function NavBar(props) {
     const logout = () => {
         api.get('v1/users/sign-out/')
             .then((res) => {
+                if(!res.ok){alert('로그아웃에 실패하였습니다.'); return}
                 props.auth.addUserInfo({
                     id: '',
                     email: '',
@@ -76,14 +77,9 @@ function NavBar(props) {
                 console.log(err);
             });
     };
-    return (
-        <div
-            style={{
-                display: 'flex',
 
-                borderBottom: 'solid 1px #e8e8e8',
-            }}
-        >
+    return (
+        <div style={{ display: 'flex', borderBottom: 'solid 1px #e8e8e8'}}>
             {/* 로고 */}
             <Link to={'/'}>Logo</Link>
             <div
