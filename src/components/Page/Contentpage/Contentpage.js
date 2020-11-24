@@ -66,11 +66,13 @@ function Contentpage(props) {
     const [post, setPost] = useState({});
     const [reviews, setReviews] = useState([]);
     const [content, setContent] = useState('');
-    let params = {
-        content: content,
-        user: props.auth.user.id,
-    };
+
+    console.log(props.auth.user.id)
     const onSubmitReview = (e) => {
+        let params = {
+            content: content,
+            // user: props.auth.user.id,
+        };
         if (props.auth.user.id === '') {
             alert('로그인후 이용 가능합니다');
             return;
@@ -80,7 +82,7 @@ function Contentpage(props) {
             return;
         }
         e.preventDefault();
-        api.post(`v1/posts/${postid}/reviews`, params).then((res) => {
+        api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
             if (!res.ok) {
                 alert('댓글작성이 실패하였습니다.');
                 return;
