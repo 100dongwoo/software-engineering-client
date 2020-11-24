@@ -69,25 +69,23 @@ function Contentpage(props) {
     const [reviews, setReviews] = useState([]);
     const [content, setContent] = useState('');
 
-    console.log(props.auth.user.id)
     const onSubmitReview = (e) => {
         let params = {
             content: content,
             // user: props.auth.user.id,
         };
-        if (props.auth.user.id === '') {
             e.preventDefault();
             if (!props.auth.user.id) {
                 alert('로그인후 이용 가능합니다');
                 return;
             }
-            if (content === ' ') {
+            else if (content.length===0) {
                 alert('댓글을 작성해주세요(빈칸 금지)');
                 return;
             }
             api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
                 if (!res.ok) {
-                    alert('댓글작성이 실패하였습니다.');
+                    alert('댓글작성에 실패하였습니다.');
                     return;
                 }
                 console.log(res);
@@ -95,7 +93,6 @@ function Contentpage(props) {
                 setContent('');
                 alert('댓글작성 완료');
             });
-        }
     };
     useEffect(() => {
         props.auth.fetchProfile();
@@ -107,9 +104,9 @@ function Contentpage(props) {
         api.get(`v1/posts/${postid}/reviews/`)
             .then((res) => {
                 if (!res.ok) {
-                    alert('error');
+                    alert('리뷰데이터를 불러오는 데 실패하였습니다.');
+                    return;
                 }
-                console.log('12321321321', res.data.results);
                 setReviews(res.data.results);
             })
             .catch((err) => {
@@ -121,7 +118,8 @@ function Contentpage(props) {
         api.get(`v1/posts/${postid}/`)
             .then((res) => {
                 if (!res.ok) {
-                    alert('error');
+                    alert('게시물정보를 불러오는 데 실패하였습니다.');
+                    return;
                 }
                 setPost(res.data);
             })
@@ -210,8 +208,8 @@ function Contentpage(props) {
                 <p className="PostDate">{post.content}</p>
             </div>
             <ReviewContent>
-                {reviews.map((reviews, index) => (
-                    <Review reviews={reviews} key={index} />
+                {reviews.map((review, index) => (
+                    <Review review={review} key={index} postId={postid} fetchReviews={fetchReviews}/>
                 ))}
             </ReviewContent>
             <div

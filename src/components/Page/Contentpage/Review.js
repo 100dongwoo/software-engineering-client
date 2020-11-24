@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import api from '../../../api_manager';
+import {withAuthContext} from '../../../context/AuthContext';
 
 const Container = styled.div`
     width: 95%;
@@ -21,7 +23,20 @@ const ReviewConainer = styled.div`
     height: auto;
 `;
 
-function Review({ reviews }) {
+function Review(props) {
+    const {review, postId, fetchReviews} = props;
+
+    const onDeleteReview = () => {
+        api.delete(`v1/posts/${postId}/reviews/${review.id}/`).then((res) => {
+            if (!res.ok) {
+                alert('리뷰 삭제에 실패하였습니다.');
+                return;
+            }
+            alert('리뷰가 삭제되었습니다.');
+            fetchReviews();
+        });
+    };
+
     return (
         <Container>
             {/*이미지, -이름 -시간*/}
@@ -30,25 +45,34 @@ function Review({ reviews }) {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'space-between'
                     }}
                 >
-                    <Avartar
-                        src="https://placeimg.com/40/50/anys"
-                        alt="avartar"
-                    />
-                    <div>
-                        <p>
-                            유저이름: {reviews.user.nickname}
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <Avartar
+                            src="https://placeimg.com/40/50/anys"
+                            alt="avartar"
+                        />
+                        <p style={{marginLeft: '0.5rem'}}>
+                            유저이름: {review.user.nickname}
                             <br />
                             작성날짜 :
-                            {moment(reviews.createAt).format('YYYY-MM-DD')}
+                            {moment(review.createAt).format('YYYY-MM-DD')}
                         </p>
+                        {console.log(review.user.id, props.auth.user.id)}
+                    </div>
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        {review?.user?.id === props.auth.user?.id &&
+                        <div>
+                            <button>수정</button>
+                            <button onClick={onDeleteReview}>삭제</button>
+                        </div>}
                     </div>
                 </div>
-                <p>{reviews.content}</p>
+                <p>{review.content}</p>
             </ReviewConainer>
         </Container>
     );
 }
 
-export default Review;
+export default withAuthContext(Review);
