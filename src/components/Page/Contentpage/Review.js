@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
+
 const Container = styled.div`
     width: 95%;
     height: auto;
@@ -19,7 +21,7 @@ const ReviewConainer = styled.div`
     height: auto;
 `;
 
-function Review({ arr, index }) {
+function Review({ reviews }) {
     return (
         <Container>
             {/*이미지, -이름 -시간*/}
@@ -36,13 +38,14 @@ function Review({ arr, index }) {
                     />
                     <div>
                         <p>
-                            유저이름: {'asd'}
+                            유저이름: {reviews.user.nickname}
                             <br />
-                            작성날짜 : 2020-??-??
+                            작성날짜 :
+                            {moment(reviews.createAt).format('YYYY-MM-DD')}
                         </p>
                     </div>
                 </div>
-                <p>asdsadsadsadsadsad</p>
+                <p>{reviews.content}</p>
             </ReviewConainer>
         </Container>
     );

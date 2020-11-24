@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useHistory } from 'react-router-dom';
 const Container = styled.div`
     width: 100%;
     height: 24.4rem;
+    cursor: pointer;
     background: #ffffff;
     border-radius: 15px;
     // box-shadow: 0px 40px 100px rgba(125, 25, 225, 0.5);
     border: 1px solid #adadad;
     margin-right: 27px;
     min-width: 295px;
+    width: 295px;
     &: hover {
         transform: scale(1.1);
     }
@@ -30,9 +32,10 @@ const SubTitle = styled.p`
     -webkit-box-orient: vertical;
 `;
 
-function GridLists({ test }) {
+function GridLists({ post }) {
+    const history = useHistory();
     return (
-        <Container>
+        <Container onClick={() => history.push(`/post/${post.id}`)}>
             <img
                 alt="이미지"
                 src="https://placeimg.com/700/700/anys"
@@ -48,8 +51,8 @@ function GridLists({ test }) {
                     padding: '0 10px 0 10px ',
                 }}
             >
-                <Title>{test.title}</Title>
-                <SubTitle>{test.content}</SubTitle>
+                <Title>{post.title}</Title>
+                <SubTitle>{post.content}</SubTitle>
             </div>
         </Container>
     );

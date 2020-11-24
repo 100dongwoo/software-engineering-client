@@ -33,6 +33,8 @@ const TextArea = styled.textarea`
 `;
 const ReviewSubmitBtn = styled.button`
     font-size: 1rem;
+    cursor: pointer;
+    outline: none;
     margin-right: 1.5%;
     background-image: linear-gradient(
         to right,
@@ -74,23 +76,26 @@ function Contentpage(props) {
             // user: props.auth.user.id,
         };
         if (props.auth.user.id === '') {
-            alert('로그인후 이용 가능합니다');
-            return;
-        }
-        if (content === '') {
-            alert('댓글을 작성해주세요(빈칸 금지)');
-            return;
-        }
-        e.preventDefault();
-        api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
-            if (!res.ok) {
-                alert('댓글작성이 실패하였습니다.');
+            e.preventDefault();
+            if (!props.auth.user.id) {
+                alert('로그인후 이용 가능합니다');
                 return;
             }
-            console.log(res);
-            setContent('');
-            alert('댓글작성 완료');
-        });
+            if (content === ' ') {
+                alert('댓글을 작성해주세요(빈칸 금지)');
+                return;
+            }
+            api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
+                if (!res.ok) {
+                    alert('댓글작성이 실패하였습니다.');
+                    return;
+                }
+                console.log(res);
+                fetchReviews();
+                setContent('');
+                alert('댓글작성 완료');
+            });
+        }
     };
     useEffect(() => {
         props.auth.fetchProfile();
@@ -152,24 +157,6 @@ function Contentpage(props) {
             alert('찜목록이 업데이트되었습니다.');
         });
     };
-
-    const array = [
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-        {
-            content: 123231213,
-        },
-    ];
     return (
         <div className="Container">
             <div className="PostBox">
@@ -223,8 +210,8 @@ function Contentpage(props) {
                 <p className="PostDate">{post.content}</p>
             </div>
             <ReviewContent>
-                {array.map((arr, index) => (
-                    <Review arr={arr} key={index} />
+                {reviews.map((reviews, index) => (
+                    <Review reviews={reviews} key={index} />
                 ))}
             </ReviewContent>
             <div

@@ -55,7 +55,7 @@ function Mypage(props) {
     const [myFavoritePosts, setMyFavoritePosts] = useState([]);
 
     useEffect(() => {
-        console.log(props)
+        console.log(props);
         // props.auth.fetchProfile();
         fetchPosts();
         fetchFavoritePosts();
@@ -152,8 +152,8 @@ function Mypage(props) {
                     />
 
                     <div className="row__posters">
-                        {myPosts.map((test, index) => (
-                            <GridLists test={test} key={index} />
+                        {myPosts.map((post, index) => (
+                            <GridLists post={post} key={index} />
                         ))}
                     </div>
                     <TabScrollButton
@@ -176,8 +176,8 @@ function Mypage(props) {
                         orientation="horizontal"
                     />
                     <div className="second__posters">
-                        {myFavoritePosts.map((test, index) => (
-                            <GridLists test={test} key={index} />
+                        {myFavoritePosts.map((post, index) => (
+                            <GridLists post={post} key={index} />
                         ))}
                     </div>
 
