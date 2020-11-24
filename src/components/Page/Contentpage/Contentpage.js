@@ -16,10 +16,11 @@ const ReviewContent = styled.div`
         display: none;
     }
 `;
-const TextArea = styled.textarea`
+export const TextArea = styled.textarea`
     width: 95%;
     resize: none;
-    height: 150px; padding 1% 1%;
+    height: 150px; 
+    padding: 1% 1%;
     overflow: hidden;
     border: 2px solid #adadad;
     background-color: #fafafa;
@@ -28,7 +29,6 @@ const TextArea = styled.textarea`
         color: #adadad;
         font-style: normal;
         line-height: 157.5%;
-        color: #bebebe;
     }
 `;
 const ReviewSubmitBtn = styled.button`
@@ -128,6 +128,10 @@ function Contentpage(props) {
             });
     };
 
+    const onUpdatePost = () => {
+        props.history.push({pathname: '/Uploadpage', state: {post}});
+    };
+
     const onDeletePost = () => {
         api.delete(`v1/posts/${postid}/`).then((res) => {
             if (!res.ok) {
@@ -170,8 +174,8 @@ function Contentpage(props) {
                         <div>
                             {post.isMine && (
                                 <>
-                                    <button>수정</button>
-                                    <button onClick={onDeletePost}>삭제</button>
+                                    <button onClick={onUpdatePost}>수정</button>
+                                    <button style={{marginLeft: 4}} onClick={onDeletePost}>삭제</button>
                                 </>
                             )}
                             {!post.isMine && !!props.auth.user?.id && (
@@ -195,10 +199,9 @@ function Contentpage(props) {
                         alt="avatar"
                     />
                     <p className="PostNameDate">
-                        작성자 이름 : {post?.user?.nickname}
+                        {post?.user?.nickname}
                     </p>
                     <p className="PostNameDate">
-                        작성 날짜 :{' '}
                         {moment(post.createdAt).format('YYYY-MM-DD')}
                     </p>
                 </div>

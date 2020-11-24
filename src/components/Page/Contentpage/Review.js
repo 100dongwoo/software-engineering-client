@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import api from '../../../api_manager';
 import {withAuthContext} from '../../../context/AuthContext';
+import { TextArea } from './Contentpage';
 
 const Container = styled.div`
     width: 95%;
     height: auto;
     margin-top: 2rem;
-     padding 1% 1%;
+     padding: 1% 1%;
    
 `;
 const Avartar = styled.img`
@@ -25,6 +26,20 @@ const ReviewConainer = styled.div`
 
 function Review(props) {
     const {review, postId, fetchReviews} = props;
+    const [isUpdateClicked, setIsUpdateClicked] = useState(false);
+    const [reviewContent, setReviewContent] = useState(review.content);
+
+    const onUpdateReview = (content) => {
+        api.patch(`v1/posts/${postId}/reviews/${review.id}/`,{content}).then((res) => {
+            if (!res.ok) {
+                alert('리뷰 업데이트에 실패하였습니다.');
+                return;
+            }
+            setIsUpdateClicked(false);
+            alert('리뷰가 업데이트되었습니다.');
+            fetchReviews();
+        });
+    };
 
     const onDeleteReview = () => {
         api.delete(`v1/posts/${postId}/reviews/${review.id}/`).then((res) => {
@@ -50,26 +65,37 @@ function Review(props) {
                 >
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <Avartar
-                            src="https://placeimg.com/40/50/anys"
+                            src={review.user.image ? review.user.image : "https://placeimg.com/40/50/anys"}
                             alt="avartar"
                         />
                         <p style={{marginLeft: '0.5rem'}}>
-                            유저이름: {review.user.nickname}
+                            {review.user.nickname}
                             <br />
-                            작성날짜 :
                             {moment(review.createAt).format('YYYY-MM-DD')}
                         </p>
-                        {console.log(review.user.id, props.auth.user.id)}
                     </div>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         {review?.user?.id === props.auth.user?.id &&
                         <div>
-                            <button>수정</button>
-                            <button onClick={onDeleteReview}>삭제</button>
+                            <button
+                                onClick={()=>{
+                                    if(isUpdateClicked){onUpdateReview(reviewContent)}
+                                    setIsUpdateClicked(true)
+                                }}
+                            >수정</button>
+                            <button style={{marginLeft: 4}} onClick={onDeleteReview}>삭제</button>
                         </div>}
                     </div>
                 </div>
-                <p>{review.content}</p>
+                {isUpdateClicked ?
+                    <TextArea
+                        onChange={(e) => {
+                            setReviewContent(e.target.value);
+                        }}
+                        value={reviewContent}
+                        placeholder="댓글을 작성해주세요"
+                    /> :
+                <p>{reviewContent}</p>}
             </ReviewConainer>
         </Container>
     );

@@ -6,22 +6,27 @@ import { useHistory } from 'react-router-dom';
 
 function Uploadpage(props) {
     const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const post = !!props.location.state? props.location.state.post : null;
+    const [title, setTitle] = useState(post? post?.title : '');
+    const [content, setContent] = useState(post? post?.content : '');
     const [file, setFile] = useState('');
+
+
     const params = {
         title,
         content,
     };
     const onRegister = (e) => {
+        let request = post ? api.patch : api.post;
+        let url = post ? `v1/posts/${post.id}/` : 'v1/posts/';
         e.preventDefault();
-        api.post('v1/posts/', params)
+        request(url, params)
             .then((res) => {
                 if (!res.ok) {
-                    alert('업로드 실패');
+                    alert('업로드에 문제가 있습니다.');
                     return;
                 }
-                alert('업로드 완료');
+                alert(`${post ? '수정' : '추가'}되었습니다.`);
                 history.goBack();
             })
             .catch((err) => {
@@ -35,6 +40,7 @@ function Uploadpage(props) {
             <TextField
                 variant="filled"
                 fullWidth
+                value={title}
                 placeholder="제목을 입력해주세요."
                 onChange={(e) => {
                     setTitle(e.target.value);
@@ -42,8 +48,9 @@ function Uploadpage(props) {
             />
 
             <TextField
-                style={{ marginTop: '30px' }}
                 variant="filled"
+                style={{ marginTop: '30px' }}
+                value={content}
                 multiline
                 rows={20}
                 fullWidth
@@ -73,7 +80,7 @@ function Uploadpage(props) {
                 }}
             >
                 <button className="ButtonStyle1" onClick={onRegister}>
-                    등록
+                    {post ? '수정' : '등록'}
                 </button>
                 <button
                     className="ButtonStyle2"
