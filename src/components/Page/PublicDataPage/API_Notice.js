@@ -18,12 +18,13 @@ function ApiNotice(props) {
         // props.auth.fetchProfile();
         extraApi.get(
             `${url}?serviceKey=${apiKey}&numOfRows=${numOfRows}&startPage=${startPage}&pageSize=${pageSize}&pageNo=${pageNumber}`
-        ,{'headers' : {'Access-Control-Allow-Origin' : '*'}})
+        ,{},{'headers' : {'Access-Control-Allow-Origin' : '*'}})
             .then((res) => res.text())
             .then((data) => {
                 console.log('aa')
                 let xmlDoc = new DOMParser().parseFromString(data, 'text/xml');
-                console.log(xmlDoc)
+                let x = xmlDoc.getElementsByTagName("items");
+                console.log(x)
                 // console.log(data)
             })
             .catch((err) => console.log(err));
