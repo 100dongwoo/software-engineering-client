@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "apisauce": "^1.1.2",
+    "axios": "^0.21.0",
     "camelcase-keys": "^6.2.2",
     "formik": "^2.1.7",
     "moment": "^2.29.1",

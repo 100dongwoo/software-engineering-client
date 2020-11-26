@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api, { extraApi } from '../../../api_manager';
-
+import axios from 'axios';
 const apiKey = 'UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D';
 const url = 'http://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList';
 let DOMParser = require('xmldom').DOMParser;
@@ -16,9 +16,9 @@ function ApiNotice(props) {
 
     useEffect(() => {
         // props.auth.fetchProfile();
-        extraApi.get(
+    axios.get(
             `${url}?serviceKey=${apiKey}&numOfRows=${numOfRows}&startPage=${startPage}&pageSize=${pageSize}&pageNo=${pageNumber}`
-        ,{},{'headers' : {'Access-Control-Allow-Origin' : '*'}})
+        ,{headers : {'Access-Control-Allow-Origin' : '*'}})
             .then((res) => res.text())
             .then((data) => {
                 console.log('aa')
