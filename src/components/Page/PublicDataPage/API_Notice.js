@@ -27,7 +27,7 @@ function ApiNotice(props) {
         <>
             {publicNotices.map((publicNotice, i)=>(
                 <div key={i} className={classes.container}>
-                    <a href={publicNotice?.url}>
+                    <a href={publicNotice?.url} style={{textDecoration: 'none'}}>
                         <p>{publicNotice?.title}</p>
                     </a>
                     <p>{moment(publicNotice?.createdAt,'YYYYMMDD').format('YYYY-MM-DD')}</p>
