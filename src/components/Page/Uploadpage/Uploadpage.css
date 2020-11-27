@@ -48,13 +48,72 @@
 
 @media only screen and (max-width: 768px) {
     .container {
-        width: 95%;
+        width: 90%;
     }
 }
 .input-file-button {
     padding: 6px 25px;
-    background-color: #FF6600;
+    background-color: pink;
     border-radius: 4px;
     color: white;
     cursor: pointer;
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
+.btn-grad {
+    margin: 10px;
+    padding: 15px 45px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.btn-grad1 {background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%)}
+.btn-grad1 {
+    margin: 10px;
+    padding: 15px 45px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-grad1:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+   .btn-grad1{
+       padding: 5px 15px;
+   }
+    .btn-grad{
+        padding: 5px 15px;
+    }
+    .FileUp{
+        width: 95%;
+        padding: 8px;
+    }
+    .container {
+        width: 90%;
+    }
+
 }

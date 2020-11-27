@@ -39,7 +39,6 @@ function Uploadpage(props) {
     return (
         <div className="container" style={{ marginTop: '50px' }}>
             <p className="Center">게시판</p>
-            {console.log('12312', file)}
             <TextField
                 className={classes.TextField}
                 fullWidth
@@ -100,19 +99,19 @@ function Uploadpage(props) {
                 }}
             >
                 <button
-                    className="ButtonStyle1"
+                    className="btn-grad"
                     onClick={onRegister}
                     style={{ marginRight: 30 }}
                 >
-                    {post ? '수정' : '등록'}
+                    {post ? '수 정' : '등 록'}
                 </button>
                 <button
-                    className="ButtonStyle1"
+                    className="btn-grad1"
                     onClick={() => {
                         history.goBack();
                     }}
                 >
-                    취소
+                    취 소
                 </button>
             </div>
         </div>
@@ -130,7 +129,7 @@ const Image = styled.img`
 
 const useStyles = makeStyles({
     TextField: {
-        padding: 8,
+        padding: '8px 2px',
         borderRadius: 2,
     },
 });
