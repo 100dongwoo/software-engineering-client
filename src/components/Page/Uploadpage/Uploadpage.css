@@ -27,28 +27,20 @@
 }
 
 .FileUp {
-    margin-top: 30px;
-    border: black solid;
-    border-width: thin medium;
+    margin-top: 0.7rem;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #adadad;
+    border-radius: 4px;
     display: flex;
     align-items: center;
 }
 
 .ButtonStyle1 {
-    background: rgb(223, 222, 222);
     font-size: 1.5em;
-    border: 3px solid rgb(78, 78, 78);
-    margin-right: 20px;
     cursor: pointer;
+    padding: 4px 7px;
 }
-
-.ButtonStyle2 {
-    background: white;
-    font-size: 1.5em;
-    border: 3px solid rgb(78, 78, 78);
-    cursor: pointer;
-}
-
 .Center1 {
 
     text-align: center;
@@ -58,5 +50,11 @@
     .container {
         width: 95%;
     }
-
+}
+.input-file-button {
+    padding: 6px 25px;
+    background-color: #FF6600;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
 }

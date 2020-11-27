@@ -3,15 +3,17 @@ import { TextField } from '@material-ui/core';
 import './Uploadpage.css';
 import api from '../../../api_manager';
 import { useHistory } from 'react-router-dom';
-
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import styled from 'styled-components';
 function Uploadpage(props) {
     const history = useHistory();
-    const post = !!props.location.state? props.location.state.post : null;
-    const [title, setTitle] = useState(post? post?.title : '');
-    const [content, setContent] = useState(post? post?.content : '');
+    const post = !!props.location.state ? props.location.state.post : null;
+    const [title, setTitle] = useState(post ? post?.title : '');
+    const [content, setContent] = useState(post ? post?.content : '');
     const [file, setFile] = useState('');
-
-
+    const [preview, setPreview] = useState('');
+    const classes = useStyles();
     const params = {
         title,
         content,
@@ -33,12 +35,13 @@ function Uploadpage(props) {
                 alert(err);
             });
     };
+
     return (
         <div className="container" style={{ marginTop: '50px' }}>
             <p className="Center">게시판</p>
-
+            {console.log('12312', file)}
             <TextField
-                variant="filled"
+                className={classes.TextField}
                 fullWidth
                 value={title}
                 placeholder="제목을 입력해주세요."
@@ -48,8 +51,12 @@ function Uploadpage(props) {
             />
 
             <TextField
-                variant="filled"
-                style={{ marginTop: '30px' }}
+                className={classes.TextField}
+                style={{
+                    marginTop: '30px',
+                    border: '1px solid #adadad',
+                    marginBottom: '0.7rem;',
+                }}
                 value={content}
                 multiline
                 rows={20}
@@ -59,31 +66,48 @@ function Uploadpage(props) {
                     setContent(e.target.value);
                 }}
             />
-
+            {preview && <Image src={preview} alt="File" />}
             <div className="FileUp">
                 <p style={{ marginRight: '20px' }}>첨부 이미지</p>
+                <label className="input-file-button" htmlFor="input-file">
+                    업로드
+                </label>
                 <input
-                    style={{ cursor: 'pointer' }}
+                    id="input-file"
+                    style={{ display: 'none' }}
                     type="file"
                     name="file"
                     accept=".jpg, .jpeg, .png"
                     onChange={(e) => {
-                        setFile(e.target.value);
+                        // setFile(e.target.value);
+                        e.preventDefault();
+
+                        let reader = new FileReader();
+                        let file = e.target.files[0];
+                        reader.onloadend = () => {
+                            setFile(file);
+                            setPreview(reader.result);
+                        };
+                        reader.readAsDataURL(file);
                     }}
                 />
             </div>
 
             <div
                 style={{
+                    marginTop: '1.3rem',
                     textAlign: 'center',
-                    marginTop: 30,
                 }}
             >
-                <button className="ButtonStyle1" onClick={onRegister}>
+                <button
+                    className="ButtonStyle1"
+                    onClick={onRegister}
+                    style={{ marginRight: 30 }}
+                >
                     {post ? '수정' : '등록'}
                 </button>
                 <button
-                    className="ButtonStyle2"
+                    className="ButtonStyle1"
                     onClick={() => {
                         history.goBack();
                     }}
@@ -96,3 +120,17 @@ function Uploadpage(props) {
 }
 
 export default Uploadpage;
+const Image = styled.img`
+    width: 12.5rem;
+    height: 12.5rem;
+    margin: 1.5rem 0px;
+    @media only screen and (max-width: 1024px) {
+    }
+`;
+
+const useStyles = makeStyles({
+    TextField: {
+        padding: 8,
+        borderRadius: 2,
+    },
+});
