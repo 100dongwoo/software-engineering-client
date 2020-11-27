@@ -1,38 +1,52 @@
 import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import api, { extraApi } from '../../../api_manager';
-import axios from 'axios';
-const apiKey = 'UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D';
-const url = 'http://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList';
-let DOMParser = require('xmldom').DOMParser;
+import moment from 'moment';
 
+//http://openapi.kised.or.kr/openapi/service/rest/ContentsService/getNoticeList?serviceKey=UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D&numOfRows=10&startPage=1&pageSize=10&pageNo=1
 
 function ApiNotice(props) {
-    const [posts, setPosts] = useState([]);
-    const [numOfRows, setNumOfRows] = useState(5); //페이지당 게시물 목록 수
-    const [startPage, setStartPage] = useState(1); //시작페이지 번호
-    const [pageSize, setPageSize] = useState(10); //페이지당 게시물 목록 건수
-    const [pageNumber, setPageNumber] = useState(1); //페이지번호
-    //http://openapi.kised.or.kr/openapi/service/rest/StartupInfoSvc/ContentsService/getNoticeList?serviceKey=UO7tvHBrpODqQ%2BFLE4u3%2FRWyekRHkB5tnV%2B3OS2FaYJeT8xLTF2d5Qa7xH6y32xBp9BJR5eex%2FOPNb0s0zpfeg%3D%3D&numOfRows=5&startPage=1&pageSize=10&pageNo=1
+    const [publicNotices, setPublicNotices] = useState([]);
+    const classes = styles();
 
     useEffect(() => {
-        // props.auth.fetchProfile();
-    axios.get(
-            `${url}?serviceKey=${apiKey}&numOfRows=${numOfRows}&startPage=${startPage}&pageSize=${pageSize}&pageNo=${pageNumber}`
-        ,{headers : {'Access-Control-Allow-Origin' : '*'}})
-            .then((res) => res.text())
-            .then((data) => {
-                console.log('aa')
-                let xmlDoc = new DOMParser().parseFromString(data, 'text/xml');
-                let x = xmlDoc.getElementsByTagName("items");
-                console.log(x)
-                // console.log(data)
-            })
-            .catch((err) => console.log(err));
+        fetchPublicPosts()
     }, []);
 
+    const fetchPublicPosts = () => {
+        api.get('v1/public-posts/').then(res=>{
+            if (!res.ok) {
+                alert('공공데이터를 불러오는 데\n실패하였습니다.');
+                return;
+            }
+            setPublicNotices(res.data);
+        })
+    };
 
-
-    return <div>asdf</div>;
+    return (
+        <>
+            {publicNotices.map((publicNotice, i)=>(
+                <div key={i} className={classes.container}>
+                    <a href={publicNotice?.url}>
+                        <p>{publicNotice?.title}</p>
+                    </a>
+                    <p>{moment(publicNotice?.createdAt,'YYYYMMDD').format('YYYY-MM-DD')}</p>
+                </div>
+            ))}
+            </>
+    );
 }
 
 export default ApiNotice;
+
+
+const styles = makeStyles({
+    container: {
+        display: 'flex',
+        padding: 16,
+        marginTop: 8,
+        border: '1px solid #adadad',
+        borderRadius: 2,
+        flexDirection: 'column'
+    }
+});

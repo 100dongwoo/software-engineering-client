@@ -66,6 +66,7 @@ function Mypage(props) {
             .then((res) => {
                 if (!res.ok) {
                     alert('error');
+                    return;
                 }
                 setMyPosts(res.data.results);
             })
@@ -79,6 +80,7 @@ function Mypage(props) {
             .then((res) => {
                 if (!res.ok) {
                     alert('error');
+                    return;
                 }
                 setMyFavoritePosts(res.data.results);
             })
