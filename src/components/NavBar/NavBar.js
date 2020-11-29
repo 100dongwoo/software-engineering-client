@@ -84,7 +84,16 @@ function NavBar(props) {
     return (
         <div style={{ display: 'flex', borderBottom: 'solid 1px #e8e8e8' }}>
             {/* 로고 */}
-            <Link to={'/'}>Logo</Link>
+            <Link to={'/'}>
+                <img
+                    src="LOGO193.png"
+                    style={{
+                        width: '3.5rem',
+                        height: '3.5rem',
+                    }}
+                    alt="LOGO"
+                />
+            </Link>
             <div
                 style={{
                     width: '100%',
