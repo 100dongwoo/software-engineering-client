@@ -19,13 +19,13 @@ const ReviewContent = styled.div`
 export const TextArea = styled.textarea`
     width: 95%;
     resize: none;
-    height: 150px; 
+    height: 150px;
     padding: 1% 1%;
     overflow: hidden;
     border: 2px solid #adadad;
     background-color: #fafafa;
-    font-size:1.2rem;
-     ::placeholder {
+    font-size: 1.2rem;
+    ::placeholder {
         color: #adadad;
         font-style: normal;
         line-height: 157.5%;
@@ -74,25 +74,24 @@ function Contentpage(props) {
             content: content,
             // user: props.auth.user.id,
         };
-            e.preventDefault();
-            if (!props.auth.user.id) {
-                alert('로그인후 이용 가능합니다');
+        e.preventDefault();
+        if (!props.auth.user.id) {
+            alert('로그인후 이용 가능합니다');
+            return;
+        } else if (content.length === 0) {
+            alert('댓글을 작성해주세요(빈칸 금지)');
+            return;
+        }
+        api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
+            if (!res.ok) {
+                alert('댓글작성에 실패하였습니다.');
                 return;
             }
-            else if (content.length===0) {
-                alert('댓글을 작성해주세요(빈칸 금지)');
-                return;
-            }
-            api.post(`v1/posts/${postid}/reviews/`, params).then((res) => {
-                if (!res.ok) {
-                    alert('댓글작성에 실패하였습니다.');
-                    return;
-                }
-                console.log(res);
-                fetchReviews();
-                setContent('');
-                alert('댓글작성 완료');
-            });
+            console.log(res);
+            fetchReviews();
+            setContent('');
+            alert('댓글작성 완료');
+        });
     };
     useEffect(() => {
         props.auth.fetchProfile();
@@ -129,7 +128,7 @@ function Contentpage(props) {
     };
 
     const onUpdatePost = () => {
-        props.history.push({pathname: '/Uploadpage', state: {post}});
+        props.history.push({ pathname: '/Uploadpage', state: { post } });
     };
 
     const onDeletePost = () => {
@@ -175,7 +174,12 @@ function Contentpage(props) {
                             {post.isMine && (
                                 <>
                                     <button onClick={onUpdatePost}>수정</button>
-                                    <button style={{marginLeft: 4}} onClick={onDeletePost}>삭제</button>
+                                    <button
+                                        style={{ marginLeft: 4 }}
+                                        onClick={onDeletePost}
+                                    >
+                                        삭제
+                                    </button>
                                 </>
                             )}
                             {!post.isMine && !!props.auth.user?.id && (
@@ -198,9 +202,7 @@ function Contentpage(props) {
                         }
                         alt="avatar"
                     />
-                    <p className="PostNameDate">
-                        {post?.user?.nickname}
-                    </p>
+                    <p className="PostNameDate">{post?.user?.nickname}</p>
                     <p className="PostNameDate">
                         {moment(post.createdAt).format('YYYY-MM-DD')}
                     </p>
@@ -212,7 +214,12 @@ function Contentpage(props) {
             </div>
             <ReviewContent>
                 {reviews.map((review, index) => (
-                    <Review review={review} key={index} postId={postid} fetchReviews={fetchReviews}/>
+                    <Review
+                        review={review}
+                        key={index}
+                        postId={postid}
+                        fetchReviews={fetchReviews}
+                    />
                 ))}
             </ReviewContent>
             <div

@@ -7,7 +7,7 @@ const Container = styled.div`
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0px 40px 100px rgba(125, 125, 125, 0.5);
-    min-width: 300px;
+    min-width: 100%;
     &: hover {
         transform: scale(1.1);
     }

@@ -55,7 +55,7 @@ const Content = styled.div`
         padding: 0 4.875rem;
     }
     @media only screen and (max-width: 768px) {
-        padding: 0 2.875rem;
+        padding: 0 1rem;
     }
     @media only screen and (max-width: 375px) {
         padding: 0 0rem;

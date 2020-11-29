@@ -143,7 +143,14 @@ function NavBar(props) {
                     >
                         게시판
                     </SideMenu>
-
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/Notice');
+                        }}
+                    >
+                        사업공지사항
+                    </SideMenu>
                     {props.auth.user.email === '' ? (
                         <>
                             <SideMenu
