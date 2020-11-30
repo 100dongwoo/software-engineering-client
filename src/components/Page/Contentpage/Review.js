@@ -25,7 +25,13 @@ const ReviewConainer = styled.div`
     width: 95%;
     height: auto;
 `;
-
+const ReviewIconContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
 function Review(props) {
     const { review, postId, fetchReviews } = props;
     const [isUpdateClicked, setIsUpdateClicked] = useState(false);
@@ -84,7 +90,7 @@ function Review(props) {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {review?.user?.id === props.auth.user?.id && (
-                            <div>
+                            <ReviewIconContainer>
                                 <Tooltip title="수정">
                                     <IconButton
                                         aria-label="수정"
@@ -106,7 +112,7 @@ function Review(props) {
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
-                            </div>
+                            </ReviewIconContainer>
                         )}
                     </div>
                 </div>
