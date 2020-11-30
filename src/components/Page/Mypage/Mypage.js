@@ -140,7 +140,10 @@ function Mypage(props) {
                             src="https://placeimg.com/700/700/anys"
                         />
                     </div>
-                    <button>수정</button>
+                    <div className="wrap">
+                        <button className="button">수 정</button>
+                    </div>
+                    {/*<button>수정</button>*/}
                 </div>
                 <IntroduceFont>안녕하세요 ㄴㅁㅇㄴㅁㅇㄴㅁ</IntroduceFont>
             </div>
