@@ -5,6 +5,12 @@ import { withAuthContext } from '../../../context/AuthContext';
 import Review from './Review';
 import styled from 'styled-components';
 import moment from 'moment';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import BorderColorOutlinedIcon from '@material-ui/icons/BorderColorOutlined';
+import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
 const ReviewContent = styled.div`
     width: 100%;
@@ -173,24 +179,64 @@ function Contentpage(props) {
                         <div>
                             {post.isMine && (
                                 <>
-                                    <button onClick={onUpdatePost}>수정</button>
-                                    <button
-                                        style={{ marginLeft: 4 }}
-                                        onClick={onDeletePost}
-                                    >
-                                        삭제
-                                    </button>
+                                    <Tooltip title="삭제">
+                                        <IconButton
+                                            aria-label="삭제"
+                                            onClick={onUpdatePost}
+                                        >
+                                            <DeleteIcon />
+                                            {/*<button onClick={onUpdatePost}>수정</button>*/}
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="수정">
+                                        <IconButton
+                                            aria-label="수정"
+                                            onClick={onDeletePost}
+                                        >
+                                            <BorderColorOutlinedIcon />
+                                        </IconButton>
+                                    </Tooltip>
                                 </>
                             )}
                             {!post.isMine && !!props.auth.user?.id && (
-                                <button
-                                    onClick={() =>
-                                        onChangeFavorite(post.hasFavorite)
+                                // <FavoriteOutlinedIcon/>
+                                <Tooltip
+                                    title={
+                                        post.hasFavorite ? '찜 삭제' : '찜 추가'
                                     }
-                                >{`찜 ${
-                                    post.hasFavorite ? '삭제' : '추가'
-                                }`}</button>
+                                >
+                                    (post.hasFavorite ? (
+                                    <FavoriteOutlinedIcon />
+                                    ) : (
+                                    <FavoriteBorderOutlinedIcon />
+                                    ))
+                                </Tooltip>
                             )}
+
+                            {/*<Tooltip title="수정">*/}
+                            {/*    <IconButton*/}
+                            {/*        aria-label="수정"*/}
+                            {/*        onClick={() => {*/}
+                            {/*            if (isUpdateClicked) {*/}
+                            {/*                onUpdateReview(reviewContent);*/}
+                            {/*            }*/}
+                            {/*            setIsUpdateClicked(true);*/}
+                            {/*        }}*/}
+                            {/*    >*/}
+                            {/*        <BorderColorOutlinedIcon />*/}
+                            {/*    </IconButton>*/}
+                            {/*</Tooltip>*/}
+
+                            {/*{!post.isMine && !!props.auth.user?.id && (*/}
+                            {/*    // <FavoriteOutlinedIcon/>*/}
+                            {/*    <button*/}
+                            {/*        onClick={() =>*/}
+                            {/*            onChangeFavorite(post.hasFavorite)*/}
+                            {/*        }*/}
+                            {/*    >{`찜 ${*/}
+                            {/*        post.hasFavorite ? '삭제' : '추가'*/}
+                            {/*    }`}</button>*/}
+                            {/*)}*/}
                         </div>
                     </div>
                     <img

@@ -86,25 +86,24 @@ function Review(props) {
                         {review?.user?.id === props.auth.user?.id && (
                             <div>
                                 <Tooltip title="수정">
-                                    <IconButton aria-label="수정">
-                                        <BorderColorOutlinedIcon
-                                            onClick={() => {
-                                                if (isUpdateClicked) {
-                                                    onUpdateReview(
-                                                        reviewContent
-                                                    );
-                                                }
-                                                setIsUpdateClicked(true);
-                                            }}
-                                        />
+                                    <IconButton
+                                        aria-label="수정"
+                                        onClick={() => {
+                                            if (isUpdateClicked) {
+                                                onUpdateReview(reviewContent);
+                                            }
+                                            setIsUpdateClicked(true);
+                                        }}
+                                    >
+                                        <BorderColorOutlinedIcon />
                                     </IconButton>
                                 </Tooltip>
                                 <Tooltip title="삭제">
-                                    <IconButton aria-label="삭제">
-                                        <DeleteIcon
-                                            style={{ marginLeft: 8 }}
-                                            onClick={onDeleteReview}
-                                        />
+                                    <IconButton
+                                        aria-label="삭제"
+                                        onClick={onDeleteReview}
+                                    >
+                                        <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
                             </div>
