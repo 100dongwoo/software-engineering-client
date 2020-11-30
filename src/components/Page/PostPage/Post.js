@@ -36,7 +36,7 @@ function Post({ post }) {
                 // src={`https://placeimg.com/700/700/${
                 //     Math.random() * (100 - 1) + 1
                 // }`}
-                src="https://placeimg.com/700/700/anys"
+                src={!!post.image ? post.image : `https://picsum.photos/id/${Math.floor(Math.random()*(49))+1}/700/700`}
                 style={{
                     backgroundRepeat: 'no-repeat',
                     width: '100%',

@@ -53,6 +53,7 @@ function Mypage(props) {
     const userId = props.match.params.id; ///URL 에서 가져옴
     const [myPosts, setMyPosts] = useState([]);
     const [myFavoritePosts, setMyFavoritePosts] = useState([]);
+    const [file, setFile] = useState('');
 
     useEffect(() => {
         console.log(props);

@@ -4,8 +4,10 @@ import './Uploadpage.css';
 import api from '../../../api_manager';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
+// import Input from '@material-ui/core/Input';
 import styled from 'styled-components';
+
+
 function Uploadpage(props) {
     const history = useHistory();
     const post = !!props.location.state ? props.location.state.post : null;
@@ -14,15 +16,17 @@ function Uploadpage(props) {
     const [file, setFile] = useState('');
     const [preview, setPreview] = useState('');
     const classes = useStyles();
-    const params = {
-        title,
-        content,
-    };
+
     const onRegister = (e) => {
+        e.preventDefault();
+        let form = new FormData();
+        form.append('title', title);
+        form.append('content', content);
+        if(!!file){form.append('image', file)}
         let request = post ? api.patch : api.post;
         let url = post ? `v1/posts/${post.id}/` : 'v1/posts/';
-        e.preventDefault();
-        request(url, params)
+
+        request(url, form)
             .then((res) => {
                 if (!res.ok) {
                     alert('업로드에 문제가 있습니다.');
@@ -54,7 +58,7 @@ function Uploadpage(props) {
                 style={{
                     marginTop: '30px',
                     border: '1px solid #adadad',
-                    marginBottom: '0.7rem;',
+                    marginBottom: '0.7rem',
                 }}
                 value={content}
                 multiline
@@ -75,8 +79,8 @@ function Uploadpage(props) {
                     id="input-file"
                     style={{ display: 'none' }}
                     type="file"
-                    name="file"
-                    accept=".jpg, .jpeg, .png"
+                    // name="file"
+                    // accept=".jpg, .jpeg, .png"
                     onChange={(e) => {
                         // setFile(e.target.value);
                         e.preventDefault();
@@ -100,7 +104,10 @@ function Uploadpage(props) {
             >
                 <button
                     className="btn-grad"
-                    onClick={onRegister}
+                    onClick={(e)=>{
+                        if(title==='' || content===''){alert('내용을 입력해주세요!'); return}
+                        onRegister(e)
+                    }}
                     style={{ marginRight: 30 }}
                 >
                     {post ? '수 정' : '등 록'}
@@ -122,7 +129,7 @@ export default Uploadpage;
 const Image = styled.img`
     width: 12.5rem;
     height: 12.5rem;
-    margin: 1.5rem 0px;
+    margin: 1.5rem 0;
     @media only screen and (max-width: 1024px) {
     }
 `;

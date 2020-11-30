@@ -86,7 +86,7 @@ function NavBar(props) {
             {/* 로고 */}
             <Link to={'/'}>
                 <img
-                    src="LOGO193.png"
+                    src={'LOGO193.png'}
                     style={{
                         width: '3.5rem',
                         height: '3.5rem',
