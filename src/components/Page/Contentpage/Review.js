@@ -91,27 +91,33 @@ function Review(props) {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {review?.user?.id === props.auth.user?.id && (
                             <ReviewIconContainer>
-                                <Tooltip title="수정">
-                                    <IconButton
-                                        aria-label="수정"
-                                        onClick={() => {
-                                            if (isUpdateClicked) {
-                                                onUpdateReview(reviewContent);
-                                            }
-                                            setIsUpdateClicked(true);
-                                        }}
-                                    >
-                                        <BorderColorOutlinedIcon />
-                                    </IconButton>
-                                </Tooltip>
-                                <Tooltip title="삭제">
-                                    <IconButton
-                                        aria-label="삭제"
-                                        onClick={onDeleteReview}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </Tooltip>
+                                <div>
+                                    <Tooltip title="수정">
+                                        <IconButton
+                                            aria-label="수정"
+                                            onClick={() => {
+                                                if (isUpdateClicked) {
+                                                    onUpdateReview(
+                                                        reviewContent
+                                                    );
+                                                }
+                                                setIsUpdateClicked(true);
+                                            }}
+                                        >
+                                            <BorderColorOutlinedIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                </div>
+                                <div>
+                                    <Tooltip title="삭제">
+                                        <IconButton
+                                            aria-label="삭제"
+                                            onClick={onDeleteReview}
+                                        >
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                </div>
                             </ReviewIconContainer>
                         )}
                     </div>
