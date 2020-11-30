@@ -198,20 +198,21 @@ function Contentpage(props) {
                                     </Tooltip>
                                 </>
                             )}
-                            {!post.isMine && !!props.auth.user?.id && (
+                            {!post.isMine &&
+                                !!props.auth.user?.id &&
                                 // <FavoriteOutlinedIcon/>
-                                <Tooltip
-                                    title={
-                                        post.hasFavorite ? '찜 삭제' : '찜 추가'
-                                    }
-                                >
-                                    (post.hasFavorite ? (
+                                // <Tooltip
+                                //     title={
+                                //         post.hasFavorite ? '찜 삭제' : '찜 추가'
+                                //     }
+                                // >
+                                (post.hasFavorite ? (
                                     <FavoriteOutlinedIcon />
-                                    ) : (
+                                ) : (
                                     <FavoriteBorderOutlinedIcon />
-                                    ))
-                                </Tooltip>
-                            )}
+                                ))
+                                // </Tooltip>
+                            }
 
                             {/*<Tooltip title="수정">*/}
                             {/*    <IconButton*/}
