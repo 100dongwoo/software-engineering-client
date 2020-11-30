@@ -7,6 +7,7 @@ import { TextArea } from './Contentpage';
 import DeleteIcon from '@material-ui/icons/Delete';
 import BorderColorOutlinedIcon from '@material-ui/icons/BorderColorOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 const Container = styled.div`
     width: 95%;
     height: auto;
@@ -85,20 +86,26 @@ function Review(props) {
                         {review?.user?.id === props.auth.user?.id && (
                             <div>
                                 <Tooltip title="수정">
-                                    <BorderColorOutlinedIcon
-                                        onClick={() => {
-                                            if (isUpdateClicked) {
-                                                onUpdateReview(reviewContent);
-                                            }
-                                            setIsUpdateClicked(true);
-                                        }}
-                                    />
+                                    <IconButton aria-label="수정">
+                                        <BorderColorOutlinedIcon
+                                            onClick={() => {
+                                                if (isUpdateClicked) {
+                                                    onUpdateReview(
+                                                        reviewContent
+                                                    );
+                                                }
+                                                setIsUpdateClicked(true);
+                                            }}
+                                        />
+                                    </IconButton>
                                 </Tooltip>
                                 <Tooltip title="삭제">
-                                    <DeleteIcon
-                                        style={{ marginLeft: 4 }}
-                                        onClick={onDeleteReview}
-                                    />
+                                    <IconButton aria-label="삭제">
+                                        <DeleteIcon
+                                            style={{ marginLeft: 8 }}
+                                            onClick={onDeleteReview}
+                                        />
+                                    </IconButton>
                                 </Tooltip>
                             </div>
                         )}
