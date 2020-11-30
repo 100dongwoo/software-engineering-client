@@ -179,38 +179,51 @@ function Contentpage(props) {
                         <div>
                             {post.isMine && (
                                 <>
+                                    <Tooltip title="수정">
+                                        <IconButton
+                                            aria-label="수정"
+                                            onClick={onUpdatePost}
+                                        >
+                                            <BorderColorOutlinedIcon />
+                                        </IconButton>
+                                    </Tooltip>
                                     <Tooltip title="삭제">
                                         <IconButton
                                             aria-label="삭제"
-                                            onClick={onUpdatePost}
+                                            onClick={onDeletePost}
                                         >
                                             <DeleteIcon />
                                             {/*<button onClick={onUpdatePost}>수정</button>*/}
                                         </IconButton>
                                     </Tooltip>
-                                    <Tooltip title="수정">
-                                        <IconButton
-                                            aria-label="수정"
-                                            onClick={onDeletePost}
-                                        >
-                                            <BorderColorOutlinedIcon />
-                                        </IconButton>
-                                    </Tooltip>
                                 </>
                             )}
-                            {!post.isMine &&
-                                !!props.auth.user?.id &&
-                                // <FavoriteOutlinedIcon/>
-                                // <Tooltip
-                                //     title={
-                                //         post.hasFavorite ? '찜 삭제' : '찜 추가'
-                                //     }
-                                // >
-                                (post.hasFavorite ? (
-                                    <FavoriteOutlinedIcon />
-                                ) : (
-                                    <FavoriteBorderOutlinedIcon />
-                                ))
+                            {
+                                !post.isMine &&
+                                    !!props.auth.user?.id &&
+                                    (post.hasFavorite ? (
+                                        <Tooltip title="찜 삭제">
+                                            <FavoriteOutlinedIcon
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() =>
+                                                    onChangeFavorite(
+                                                        post.hasFavorite
+                                                    )
+                                                }
+                                            />
+                                        </Tooltip>
+                                    ) : (
+                                        <Tooltip title="찜 추가">
+                                            <FavoriteBorderOutlinedIcon
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() =>
+                                                    onChangeFavorite(
+                                                        post.hasFavorite
+                                                    )
+                                                }
+                                            />
+                                        </Tooltip>
+                                    ))
                                 // </Tooltip>
                             }
 
