@@ -22,7 +22,7 @@ const ReviewContent = styled.div`
         display: none;
     }
 `;
-export const TextArea = styled.textarea`
+export const ReviewArea = styled.textarea`
     width: 95%;
     resize: none;
     height: 150px;
@@ -290,7 +290,7 @@ function Contentpage(props) {
                     marginTop: '2.5rem',
                 }}
             >
-                <TextArea
+                <ReviewArea
                     onChange={(e) => {
                         setContent(e.target.value);
                     }}

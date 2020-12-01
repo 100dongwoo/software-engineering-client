@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Input from '@material-ui/core/Input';
 import styled from 'styled-components';
 
-
 function Uploadpage(props) {
     const history = useHistory();
     const post = !!props.location.state ? props.location.state.post : null;
@@ -22,7 +21,9 @@ function Uploadpage(props) {
         let form = new FormData();
         form.append('title', title);
         form.append('content', content);
-        if(!!file){form.append('image', file)}
+        if (!!file) {
+            form.append('image', file);
+        }
         let request = post ? api.patch : api.post;
         let url = post ? `v1/posts/${post.id}/` : 'v1/posts/';
 
@@ -69,7 +70,7 @@ function Uploadpage(props) {
                     setContent(e.target.value);
                 }}
             />
-            {preview && <Image src={preview} alt="File" />}
+            {preview && <Preview src={preview} alt="previewImage" />}
             <div className="FileUp">
                 <p style={{ marginRight: '20px' }}>첨부 이미지</p>
                 <label className="input-file-button" htmlFor="input-file">
@@ -103,17 +104,20 @@ function Uploadpage(props) {
                 }}
             >
                 <button
-                    className="btn-grad"
-                    onClick={(e)=>{
-                        if(title==='' || content===''){alert('내용을 입력해주세요!'); return}
-                        onRegister(e)
+                    className="enrollmentModify"
+                    onClick={(e) => {
+                        if (title === '' || content === '') {
+                            alert('내용을 입력해주세요!');
+                            return;
+                        }
+                        onRegister(e);
                     }}
                     style={{ marginRight: 30 }}
                 >
                     {post ? '수 정' : '등 록'}
                 </button>
                 <button
-                    className="btn-grad1"
+                    className="cancle"
                     onClick={() => {
                         history.goBack();
                     }}
@@ -126,7 +130,7 @@ function Uploadpage(props) {
 }
 
 export default Uploadpage;
-const Image = styled.img`
+const Preview = styled.img`
     width: 12.5rem;
     height: 12.5rem;
     margin: 1.5rem 0;
