@@ -131,7 +131,7 @@ function Review(props) {
                         placeholder="댓글을 작성해주세요"
                     />
                 ) : (
-                    <p>{reviewContent}</p>
+                    <p>{review?.content}</p>
                 )}
             </ReviewConainer>
         </Container>

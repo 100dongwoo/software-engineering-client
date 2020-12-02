@@ -8,7 +8,7 @@ const userModel = {
     email: '',
     phoneNumber: '',
     nickname: '',
-    profileImage: 'https://placeimg.com/140/140/any',
+    image: '',
 };
 
 const AuthContextProvider = (props) => {
@@ -33,7 +33,7 @@ const AuthContextProvider = (props) => {
     };
 
     const patchProfile = async (values) => {
-        let res = await api.patch('v1/me/info/', values);
+        let res = await api.patch('v1/me/profile/', values);
         if (!res.ok) {
             return false;
         }

@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import MenuOpenSharpIcon from '@material-ui/icons/MenuOpenSharp';
 import { withAuthContext } from '../../context/AuthContext';
 import api from '../../api_manager';
-import ApiNotice from '../Page/PublicDataPage/API_Notice';
+
 const Navbar = styled(Link)`
     text-decoration: none;
     cursor: pointer;
@@ -72,7 +72,7 @@ function NavBar(props) {
                     email: '',
                     phoneNumber: '',
                     nickname: '',
-                    profileImage: 'https://placeimg.com/140/140/any',
+                    image: '',
                 });
                 alert('로그아웃되었습니다. ');
             })
@@ -86,6 +86,7 @@ function NavBar(props) {
             {/* 로고 */}
             <Link to={'/'}>
                 <img
+                    // src={'../../../public/LOGO193.png'}
                     src={'LOGO193.png'}
                     style={{
                         width: '3.5rem',
