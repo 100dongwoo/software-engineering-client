@@ -78,7 +78,9 @@ function Review(props) {
                             src={
                                 review.user.image
                                     ? review.user.image
-                                    : 'https://placeimg.com/40/50/anys'
+                                    : `https://picsum.photos/id/${
+                                          Math.floor(Math.random() * 49) + 1
+                                      }/40/50`
                             }
                             alt="avartar"
                         />
