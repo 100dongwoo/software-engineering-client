@@ -87,7 +87,9 @@ function NavBar(props) {
             <Link to={'/'}>
                 <img
                     // src={'../../../public/LOGO193.png'}
-                    src={'LOGO193.png'}
+                    src={
+                        'https://software-service1.s3.ap-northeast-2.amazonaws.com/LOGO193.png'
+                    }
                     style={{
                         width: '3.5rem',
                         height: '3.5rem',
@@ -102,7 +104,7 @@ function NavBar(props) {
             >
                 {/*메뉴바 컨테이너 */}
 
-                {props.auth.user.email === '' ? (
+                {props.auth.user?.email === '' ? (
                     <>
                         <Navbar to={'/register'}>회원가입</Navbar>
                         <Navbar to={'/login'}>로그인</Navbar>
@@ -112,12 +114,12 @@ function NavBar(props) {
                         <Navbar to={'/'} onClick={logout}>
                             로그아웃
                         </Navbar>
-                        <Navbar to={`/mypage/${props.auth.user.id}`}>
+                        <Navbar to={`/mypage/${props.auth.user?.id}`}>
                             마이페이지
                         </Navbar>
                     </>
                 )}
-                <Navbar to={'/Notice'}>사업 공지사항</Navbar>
+                <Navbar to={'/Notice'}>창업 공지사항</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
                 <Navbar to={'/'}>소개</Navbar>
             </div>

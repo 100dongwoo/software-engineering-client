@@ -121,26 +121,30 @@ function PostPage(props) {
     }, []);
 
     const postNext = (page, keyword) => {
-        if (keyword) {
-            page = 1;
-            setPage(1);
+        if (page === 1) {
             onEndReached = false;
         }
         if (onEndReached) {
             return;
         }
-        api.get(url, { page, keyword })
+
+        let params = { page: page };
+        if (keyword) {
+            params.keyword = keyword;
+        }
+
+        api.get(url, params)
             .then((res) => {
                 if (!res.ok) {
-                    alert('error');
+                    alert('창업정보 게시물을 불러오는데\n실패하였습니다.');
                     return;
                 }
-                if (keyword) {
-                    setPosts(res.data.results);
+                if (page === 1) {
+                    // 페이지네이션 처리
+                    setPosts(res.data.results); // page가 1이면 검색을 통해 게시물 리스트를 처음부터 보여줌
                 } else {
-                    setPosts([...posts, ...res.data.results]);
-                }
-                // setPosts(posts.concat(res.data.results));
+                    setPosts([...posts, ...res.data.results]); // page가 1 이상이면 기존 포스트 데이터가 20개 이상 있으므로 기존 포스트리스트에 추가
+                } // = setPosts(posts.concat(res.data.results));
                 setPage(page + 1);
                 if (res.data.next === null) {
                     onEndReached = true;
@@ -150,6 +154,7 @@ function PostPage(props) {
                 // console.log(res.data.results);
             })
             .catch((err) => {
+                alert('네트워크 에러입니다.');
                 console.log(err);
             });
     };
@@ -162,7 +167,8 @@ function PostPage(props) {
                         <SearchBtn
                             onClick={(e) => {
                                 e.preventDefault();
-                                postNext(page, keyword);
+                                postNext(1, keyword);
+                                setPage(1);
                             }}
                         >
                             <SearchIcon />

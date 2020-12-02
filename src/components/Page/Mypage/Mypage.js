@@ -64,7 +64,7 @@ function Mypage(props) {
     const [myPosts, setMyPosts] = useState([]);
     const [myFavoritePosts, setMyFavoritePosts] = useState([]);
     const user = props.auth.user;
-    const [file, setFile] = useState('');
+    const [file, setFile] = useState(null);
 
     useEffect(() => {
         console.log(props);
@@ -161,20 +161,20 @@ function Mypage(props) {
                             }
                         />
                     </div>
-                    <div className="wrap">
-                        <label
-                            className="button "
-                            htmlFor="input-file"
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
+                    {/*<div className="wrap">*/}
+                    {/*    <label*/}
+                    {/*        className="button "*/}
+                    {/*        htmlFor="input-file"*/}
+                    {/*        style={{*/}
+                    {/*            display: 'flex',*/}
+                    {/*            justifyContent: 'center',*/}
 
-                                alignItems: 'center',
-                            }}
-                        >
-                            수 정
-                        </label>
-                    </div>
+                    {/*            alignItems: 'center',*/}
+                    {/*        }}*/}
+                    {/*    >*/}
+                    {/*        수 정*/}
+                    {/*    </label>*/}
+                    {/*</div>*/}
                     <input
                         id="input-file"
                         style={{ display: 'none' }}
@@ -183,24 +183,29 @@ function Mypage(props) {
                         // accept=".jpg, .jpeg, .png"
                         onChange={(e) => {
                             // setFile(e.target.value);
-                            e.preventDefault();
-
-                            let reader = new FileReader();
-                            let file = e.target.files[0];
                             let form = new FormData();
+                            e.preventDefault();
+                            let reader = new FileReader();
+                            form.append('image', e.target.files[0]);
+                            let file = e.target.files[0];
 
                             reader.onloadend = () => {
-                                setFile(file);
-                                form.append('image', e.target.files[0]);
-                                props.auth.patchProfile(form).then((res) => {
-                                    if (!res.ok) {
-                                        alert(
-                                            '프로필 업데이트에 실패하였습니다.'
-                                        );
-                                        return;
-                                    }
-                                    alert('프로필이 업데이트되었습니다.');
-                                });
+                                setFile(e.target.files[0]);
+                                if (!!file) {
+                                    props.auth
+                                        .patchProfile(form)
+                                        .then((res) => {
+                                            if (!res.ok) {
+                                                alert(
+                                                    '프로필 업데이트에 실패하였습니다.'
+                                                );
+                                                return;
+                                            }
+                                            alert(
+                                                '프로필이 업데이트되었습니다.'
+                                            );
+                                        });
+                                }
                             };
                             reader.readAsDataURL(file);
                         }}
@@ -211,11 +216,11 @@ function Mypage(props) {
                         width: '100%',
                     }}
                 >
-                    <IntroduceFont>닉네임 : Luke</IntroduceFont>
-                    <IntroduceFont>휴대폰 번호 : 010-1111-1234</IntroduceFont>
+                    <IntroduceFont>닉네임 : {user?.nickname}</IntroduceFont>
                     <IntroduceFont>
-                        이 메 일 : qqwekfjnwe@ccc.cccc
+                        휴대폰 번호 : {user?.phoneNumber}
                     </IntroduceFont>
+                    <IntroduceFont>이 메 일 : {user?.email}</IntroduceFont>
                 </div>
             </TopContainer>
             <Title>나의 창업정보 게시물</Title>
