@@ -60,8 +60,8 @@
 }
 
 
-.btn-grad {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
-.btn-grad {
+.enrollmentModify {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
+.enrollmentModify {
     margin: 10px;
     padding: 15px 45px;
     transition: 0.5s;
@@ -74,15 +74,15 @@
     border: none;
 }
 
-.btn-grad:hover {
+.enrollmentModify:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
 }
 
 
-.btn-grad1 {background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%)}
-.btn-grad1 {
+.cancle {background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%)}
+.cancle {
     margin: 10px;
     padding: 15px 45px;
     transition: 0.5s;
@@ -95,17 +95,17 @@
     border: none;
 }
 
-.btn-grad1:hover {
+.cancle:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
 }
 
 @media only screen and (max-width: 768px) {
-   .btn-grad1{
+   .cancle{
        padding: 5px 15px;
    }
-    .btn-grad{
+    .enrollmentModify{
         padding: 5px 15px;
     }
     .FileUp{

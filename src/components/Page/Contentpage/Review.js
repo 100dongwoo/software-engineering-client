@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import api from '../../../api_manager';
 import { withAuthContext } from '../../../context/AuthContext';
-import { TextArea } from './Contentpage';
+import { ReviewArea } from './Contentpage';
 import DeleteIcon from '@material-ui/icons/Delete';
 import BorderColorOutlinedIcon from '@material-ui/icons/BorderColorOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -123,7 +123,7 @@ function Review(props) {
                     </div>
                 </div>
                 {isUpdateClicked ? (
-                    <TextArea
+                    <ReviewArea
                         onChange={(e) => {
                             setReviewContent(e.target.value);
                         }}

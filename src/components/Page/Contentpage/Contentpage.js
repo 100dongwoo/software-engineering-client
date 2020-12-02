@@ -22,7 +22,7 @@ const ReviewContent = styled.div`
         display: none;
     }
 `;
-export const TextArea = styled.textarea`
+export const ReviewArea = styled.textarea`
     width: 95%;
     resize: none;
     height: 150px;
@@ -204,6 +204,7 @@ function Contentpage(props) {
                                     (post.hasFavorite ? (
                                         <Tooltip title="찜 삭제">
                                             <FavoriteOutlinedIcon
+                                                aria-label="찜삭제"
                                                 style={{ cursor: 'pointer' }}
                                                 onClick={() =>
                                                     onChangeFavorite(
@@ -215,6 +216,7 @@ function Contentpage(props) {
                                     ) : (
                                         <Tooltip title="찜 추가">
                                             <FavoriteBorderOutlinedIcon
+                                                aria-label="찜 추가"
                                                 style={{ cursor: 'pointer' }}
                                                 onClick={() =>
                                                     onChangeFavorite(
@@ -290,7 +292,7 @@ function Contentpage(props) {
                     marginTop: '2.5rem',
                 }}
             >
-                <TextArea
+                <ReviewArea
                     onChange={(e) => {
                         setContent(e.target.value);
                     }}
