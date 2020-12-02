@@ -6,7 +6,7 @@ import GridLists from './GridLists';
 import TabScrollButton from '@material-ui/core/TabScrollButton';
 import { makeStyles } from '@material-ui/core/styles';
 import api from '../../../api_manager';
-import {withAuthContext} from '../../../context/AuthContext';
+import { withAuthContext } from '../../../context/AuthContext';
 
 const Title = styled.p`
     text-align: left;
@@ -44,12 +44,20 @@ const Message = styled.p`
     line-height: 150%;
     margin-left: 4%;
 `;
+const TopContainer = styled.div`
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
 const useStyles = makeStyles({
     TabBtn: {
         margin: 'auto 0',
         maxWidth: '10px',
     },
 });
+
 function Mypage(props) {
     const classes = useStyles();
     const userId = props.match.params.id; ///URL 에서 가져옴
@@ -130,65 +138,86 @@ function Mypage(props) {
     return (
         <div style={{ width: '100%', marginBottom: '50px' }}>
             <Image alt="Banner" src={banner} className="App-logo" />{' '}
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
+            <TopContainer
+            // style={{
+            //     display: 'flex',
+            //     alignItems: 'center',
+            // }}
             >
-                <div style={{ textAlign: 'center', marginLeft: '1%' }}>
-                    <div>
+                <div
+                    style={{
+                        textAlign: 'center',
+                        marginLeft: '1%',
+                        padding: '16px 0',
+                    }}
+                >
+                    <div style={{ marginBottom: 8 }}>
                         <Avartar
                             alt="Avartar"
-                            src="https://placeimg.com/700/700/anys"
+                            src={
+                                !!user?.image
+                                    ? user?.image
+                                    : 'https://placeimg.com/700/700/anys'
+                            }
                         />
                     </div>
-                    {/*<button>수정</button>*/}
-                </div>
-                <IntroduceFont>안녕하세요 ㄴㅁㅇㄴㅁㅇㄴㅁ</IntroduceFont>
-            </div>
+                    <div className="wrap">
+                        <label
+                            className="button "
+                            htmlFor="input-file"
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
 
-            <div style={{ textAlign: 'center', marginLeft: '1%' }}>
-                <div style={{marginBottom: 8}}>
-                    <Avartar
-                        alt="Avartar"
-                        src={!!user?.image ? user?.image : "https://placeimg.com/700/700/anys"}
+                                alignItems: 'center',
+                            }}
+                        >
+                            수 정
+                        </label>
+                    </div>
+                    <input
+                        id="input-file"
+                        style={{ display: 'none' }}
+                        type="file"
+                        // name="file"
+                        // accept=".jpg, .jpeg, .png"
+                        onChange={(e) => {
+                            // setFile(e.target.value);
+                            e.preventDefault();
+
+                            let reader = new FileReader();
+                            let file = e.target.files[0];
+                            let form = new FormData();
+
+                            reader.onloadend = () => {
+                                setFile(file);
+                                form.append('image', e.target.files[0]);
+                                props.auth.patchProfile(form).then((res) => {
+                                    if (!res.ok) {
+                                        alert(
+                                            '프로필 업데이트에 실패하였습니다.'
+                                        );
+                                        return;
+                                    }
+                                    alert('프로필이 업데이트되었습니다.');
+                                });
+                            };
+                            reader.readAsDataURL(file);
+                        }}
                     />
                 </div>
-                <div className="wrap">
-                    <button className="button">수 정</button>
-                </div>
-                <label className="input-file-button" htmlFor="input-file">
-                    수정
-                </label>
-                <input
-                    id="input-file"
-                    style={{ display: 'none' }}
-                    type="file"
-                    // name="file"
-                    // accept=".jpg, .jpeg, .png"
-                    onChange={(e) => {
-                        // setFile(e.target.value);
-                        e.preventDefault();
-
-                        let reader = new FileReader();
-                        let file = e.target.files[0];
-                        let form = new FormData();
-
-                        reader.onloadend = () => {
-                            setFile(file);
-                            form.append('image', e.target.files[0]);
-                            props.auth.patchProfile(form).then(res=>{
-                                if(!res.ok){alert('프로필 업데이트에 실패하였습니다.'); return}
-                                alert('프로필이 업데이트되었습니다.');
-                            });
-                        };
-                        reader.readAsDataURL(file);
+                <div
+                    style={{
+                        width: '100%',
                     }}
-                />
-            </div>
-
-
+                >
+                    <IntroduceFont>닉네임 : Luke</IntroduceFont>
+                    <IntroduceFont>휴대폰 번호 : 010-1111-1234</IntroduceFont>
+                    <IntroduceFont>
+                        이 메 일 : qqwekfjnwe@ccc.cccc
+                    </IntroduceFont>
+                </div>
+            </TopContainer>
             <Title>나의 창업정보 게시물</Title>
             {myPosts.length !== 0 ? (
                 <GridContainer>

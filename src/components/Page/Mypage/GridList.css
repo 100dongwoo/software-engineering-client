@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .button {
@@ -46,6 +47,7 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+
 }
 
 .button:hover {
@@ -53,5 +55,5 @@
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
     transform: translateY(-7px);
-    border: none;
+    border: 1px solid white;
 }
