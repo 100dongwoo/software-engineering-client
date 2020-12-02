@@ -22,7 +22,7 @@ const Navbar = styled(Link)`
         border-bottom: 1px solid #34558b;
     }
     color: #181717;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
         display: none;
     }
 `;
@@ -33,7 +33,7 @@ const SideBtn = styled.button`
     border: none;
     display: none;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
         display: inline-block !important;
         margin-right: -2%;
     }
@@ -46,7 +46,7 @@ const SideMenu = styled.p`
     &:hover {
         color: #34558b;
     }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
         display: inline-block !important;
     }
 `;
