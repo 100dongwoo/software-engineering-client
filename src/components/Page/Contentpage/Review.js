@@ -102,12 +102,7 @@ function Review(props) {
                                                     onUpdateReview(
                                                         reviewContent
                                                     );
-<<<<<<< HEAD
-=======
-                                                    setIsUpdateClicked(false);
-                                                } else {
                                                     setIsUpdateClicked(true);
->>>>>>> 1752bcc2e409cf6a0dca7a288c40256ca55aafc4
                                                 }
                                             }}
                                         >
