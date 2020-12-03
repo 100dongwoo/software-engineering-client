@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 const Container = styled.div`
     width: 100%;
+    cursor: pointer;
     height: 24.5rem;
     background: #ffffff;
     border-radius: 15px;
@@ -36,7 +37,13 @@ function Post({ post }) {
                 // src={`https://placeimg.com/700/700/${
                 //     Math.random() * (100 - 1) + 1
                 // }`}
-                src={!!post.image ? post.image : `https://picsum.photos/id/${Math.floor(Math.random()*(49))+1}/700/700`}
+                src={
+                    !!post.image
+                        ? post.image
+                        : `https://picsum.photos/id/${
+                              Math.floor(Math.random() * 49) + 1
+                          }/700/700`
+                }
                 style={{
                     backgroundRepeat: 'no-repeat',
                     width: '100%',

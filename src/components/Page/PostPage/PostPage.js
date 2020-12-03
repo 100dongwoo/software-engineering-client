@@ -25,7 +25,7 @@ const LastFont = styled.p`
 `;
 const GridContainer = styled.div`
     margin-bottom: 35px;
-    cursor: pointer;
+    //cursor: pointer;
     display: grid;
     padding: 15px 15px 15px 15px;
     grid-template-columns: repeat(4, 1.2fr);
@@ -79,6 +79,7 @@ const SearchBtn = styled.button`
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
 `;
 const Topcontainer = styled.div`
     display: flex;
@@ -99,6 +100,7 @@ function PostPage(props) {
 
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         props.auth.fetchProfile();
@@ -109,6 +111,7 @@ function PostPage(props) {
                     return;
                 }
                 setPosts(res.data.results);
+                setIsLoading(false);
                 setPage(page + 1);
                 if (!res.data.next) {
                     onEndReached = true;
@@ -142,6 +145,9 @@ function PostPage(props) {
                 if (page === 1) {
                     // 페이지네이션 처리
                     setPosts(res.data.results); // page가 1이면 검색을 통해 게시물 리스트를 처음부터 보여줌
+                    // if (posts.length === 0) {
+                    //     alert('창업정보 게시물이 존재하지않습니다.');
+                    // }
                 } else {
                     setPosts([...posts, ...res.data.results]); // page가 1 이상이면 기존 포스트 데이터가 20개 이상 있으므로 기존 포스트리스트에 추가
                 } // = setPosts(posts.concat(res.data.results));
@@ -149,6 +155,7 @@ function PostPage(props) {
                 if (res.data.next === null) {
                     onEndReached = true;
                 }
+
                 // setPosts(...(posts) => res.data.results);
 
                 // console.log(res.data.results);
@@ -208,9 +215,17 @@ function PostPage(props) {
                     next={() => postNext(page, keyword)}
                 >
                     <GridContainer>
-                        {posts.map((post, index) => (
-                            <Post post={post} key={index} />
-                        ))}
+                        {!isLoading ? (
+                            posts.length > 0 ? (
+                                posts.map((post, index) => (
+                                    <Post post={post} key={index} />
+                                ))
+                            ) : (
+                                <p>창업정보 게시글이 존재하지 않습니다!</p>
+                            )
+                        ) : (
+                            <p>로딩 중입니다!</p>
+                        )}
                     </GridContainer>
                 </InfiniteScroll>
             </Content>
