@@ -104,6 +104,7 @@ function Review(props) {
                                                     );
                                                     setIsUpdateClicked(false);
                                                 }
+                                                setIsUpdateClicked(true);
                                             }}
                                         >
                                             <BorderColorOutlinedIcon />
