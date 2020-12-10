@@ -49,8 +49,11 @@
 
 .PostDate {
     /*min-height: 40vh;*/
-    word-break: keep-all;
-    line-height: 200%;
+    /*word-break: keep-all;*/
+    /*!*line-height: 200%;*!*/
+    /*white-space: pre-line;*/
+    line-height: 150%;
+    white-space: pre-wrap;
     font-size: 1.5rem;
 }
 
