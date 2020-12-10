@@ -35,7 +35,7 @@ const IntroduceFont = styled.p`
     font-weight: normal;
     font-size: 14px;
     line-height: 150%;
-    margin-left: 5%;
+    margin-left: 3%;
 `;
 const Message = styled.p`
     font-style: normal;
@@ -143,74 +143,74 @@ function Mypage(props) {
             //     display: 'flex',
             //     alignItems: 'center',
             // }}
-            >
-                <div
-                    style={{
-                        textAlign: 'center',
-                        marginLeft: '1%',
-                        padding: '16px 0',
-                    }}
-                >
-                    <div style={{ marginBottom: 8 }}>
-                        <Avartar
-                            alt="Avartar"
-                            src={
-                                !!user?.image
-                                    ? user?.image
-                                    : 'https://placeimg.com/700/700/anys'
-                            }
-                        />
-                    </div>
-                    {/*<div className="wrap">*/}
-                    {/*    <label*/}
-                    {/*        className="button "*/}
-                    {/*        htmlFor="input-file"*/}
-                    {/*        style={{*/}
-                    {/*            display: 'flex',*/}
-                    {/*            justifyContent: 'center',*/}
+            >   {/*<div*/}
+                {/*    style={{*/}
+                {/*        textAlign: 'center',*/}
+                {/*        marginLeft: '1%',*/}
+                {/*        padding: '16px 0',*/}
+                {/*    }}*/}
+                {/*>*/}
+                {/*    /!*<div style={{ marginBottom: 8 }}>*!/*/}
+                {/*    /!*    <Avartar*!/*/}
+                {/*    /!*        alt="Avartar"*!/*/}
+                {/*    /!*        src={*!/*/}
+                {/*    /!*            !!user?.image*!/*/}
+                {/*    /!*                ? user?.image*!/*/}
+                {/*    /!*                : 'https://placeimg.com/700/700/anys'*!/*/}
+                {/*    /!*        }*!/*/}
+                {/*    /!*    />*!/*/}
+                {/*    /!*</div>*!/*/}
+                {/*    /!*<div className="wrap">*!/*/}
+                {/*    /!*    <label*!/*/}
+                {/*    /!*        className="button "*!/*/}
+                {/*    /!*        htmlFor="input-file"*!/*/}
+                {/*    /!*        style={{*!/*/}
+                {/*    /!*            display: 'flex',*!/*/}
+                {/*    /!*            justifyContent: 'center',*!/*/}
 
-                    {/*            alignItems: 'center',*/}
-                    {/*        }}*/}
-                    {/*    >*/}
-                    {/*        수 정*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
-                    <input
-                        id="input-file"
-                        style={{ display: 'none' }}
-                        type="file"
-                        // name="file"
-                        // accept=".jpg, .jpeg, .png"
-                        onChange={(e) => {
-                            // setFile(e.target.value);
-                            let form = new FormData();
-                            e.preventDefault();
-                            let reader = new FileReader();
-                            form.append('image', e.target.files[0]);
-                            let file = e.target.files[0];
+                {/*    /!*            alignItems: 'center',*!/*/}
+                {/*    /!*        }}*!/*/}
+                {/*    /!*    >*!/*/}
+                {/*    /!*        수 정*!/*/}
+                {/*    /!*    </label>*!/*/}
+                {/*    /!*</div>*!/*/}
+                {/*    <input*/}
+                {/*        id="input-file"*/}
+                {/*        style={{ display: 'none' }}*/}
+                {/*        type="file"*/}
+                {/*        // name="file"*/}
+                {/*        // accept=".jpg, .jpeg, .png"*/}
+                {/*        onChange={(e) => {*/}
+                {/*            // setFile(e.target.value);*/}
+                {/*            let form = new FormData();*/}
+                {/*            e.preventDefault();*/}
+                {/*            let reader = new FileReader();*/}
+                {/*            form.append('image', e.target.files[0]);*/}
+                {/*            let file = e.target.files[0];*/}
 
-                            reader.onloadend = () => {
-                                setFile(e.target.files[0]);
-                                if (!!file) {
-                                    props.auth
-                                        .patchProfile(form)
-                                        .then((res) => {
-                                            if (!res.ok) {
-                                                alert(
-                                                    '프로필 업데이트에 실패하였습니다.'
-                                                );
-                                                return;
-                                            }
-                                            alert(
-                                                '프로필이 업데이트되었습니다.'
-                                            );
-                                        });
-                                }
-                            };
-                            reader.readAsDataURL(file);
-                        }}
-                    />
-                </div>
+                {/*            reader.onloadend = () => {*/}
+                {/*                setFile(e.target.files[0]);*/}
+                {/*                if (!!file) {*/}
+                {/*                    props.auth*/}
+                {/*                        .patchProfile(form)*/}
+                {/*                        .then((res) => {*/}
+                {/*                            if (!res.ok) {*/}
+                {/*                                alert(*/}
+                {/*                                    '프로필 업데이트에 실패하였습니다.'*/}
+                {/*                                );*/}
+                {/*                                return;*/}
+                {/*                            }*/}
+                {/*                            alert(*/}
+
+               {/*                                '프로필이 업데이트되었습니다.'*/}
+                {/*                            );*/}
+                {/*                        });*/}
+                {/*                }*/}
+                {/*            };*/}
+                {/*            reader.readAsDataURL(file);*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <div
                     style={{
                         width: '100%',
