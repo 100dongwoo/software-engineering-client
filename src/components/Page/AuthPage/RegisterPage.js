@@ -95,7 +95,7 @@ function LoginPage(props) {
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
             if (values.checkPassword !== values.password) {
-                alert('비밀번호검사를 다시해주세요');
+                alert('비밀번호가 일치하지 않습니다.');
                 return;
             }
             console.log('onSubmit result', values);
