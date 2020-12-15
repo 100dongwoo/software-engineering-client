@@ -12,7 +12,8 @@ import Uploadpage from './components/Page/Uploadpage/Uploadpage';
 import Contentpage from './components/Page/Contentpage/Contentpage';
 import './styles/index.css';
 import ApiNotice from './components/Page/PublicDataPage/API_Notice';
-import StartUpPlace from './components/Page/PublicDataPage/StartUpPlace';
+import StartUpPlaceToopTip from './components/Page/PublicDataPage/StartUpPlace/StartUpPlaceToopTip';
+import StartUpPlace from './components/Page/PublicDataPage/StartUpPlace/StartUpPlace';
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
