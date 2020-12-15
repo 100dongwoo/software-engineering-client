@@ -12,6 +12,7 @@ import Uploadpage from './components/Page/Uploadpage/Uploadpage';
 import Contentpage from './components/Page/Contentpage/Contentpage';
 import './styles/index.css';
 import ApiNotice from './components/Page/PublicDataPage/API_Notice';
+import StartUpPlace from './components/Page/PublicDataPage/StartUpPlace';
 const GlobalStyle = createGlobalStyle`
   body {
     color: #000000;
@@ -35,6 +36,12 @@ function App() {
                         <Route exact path="/" component={Mainpage} />
                         <Route exact path="/mypage/:id" component={Mypage} />
                         <Route exact path="/Notice" component={ApiNotice} />
+                        <Route
+                            exact
+                            path="/Start-Place"
+                            component={StartUpPlace}
+                        />
+
                         <Route
                             exact
                             path="/uploadpage"
