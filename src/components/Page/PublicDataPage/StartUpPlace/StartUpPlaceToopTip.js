@@ -61,14 +61,22 @@ function StartUpPlaceToopTip({ place }) {
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
+                                textAlign: 'center',
                             }}
                         >
-                            <p>카카오지도보기</p>
+                            <p
+                                style={{
+                                    cursor: 'pointer',
+                                    marginRight: 4,
+                                }}
+                                onClick={openMap}
+                            >
+                                카카오지도보기
+                            </p>
                             <RoomIcon
                                 style={{
                                     color: 'red',
                                     cursor: 'pointer',
-                                    marginLeft: 4,
                                 }}
                                 onClick={openMap}
                             />
