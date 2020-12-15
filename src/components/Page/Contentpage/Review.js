@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import api from '../../../api_manager';
@@ -35,7 +35,11 @@ const ReviewIconContainer = styled.div`
 function Review(props) {
     const { review, postId, fetchReviews } = props;
     const [isUpdateClicked, setIsUpdateClicked] = useState(false);
-    const [reviewContent, setReviewContent] = useState(review.content);
+    const [reviewContent, setReviewContent] = useState(review?.content);
+
+    useEffect(()=>{
+        setReviewContent(review?.content);
+    },[review?.id]);
 
     const onUpdateReview = (content) => {
         api.patch(`v1/posts/${postId}/reviews/${review.id}/`, { content }).then(
@@ -44,6 +48,7 @@ function Review(props) {
                     alert('리뷰 업데이트에 실패하였습니다.');
                     return;
                 }
+                // setReviewContent(review?.content);
                 setIsUpdateClicked(false);
                 alert('리뷰가 업데이트되었습니다.');
                 fetchReviews();
@@ -90,6 +95,7 @@ function Review(props) {
                             {moment(review.createAt).format('YYYY-MM-DD')}
                         </p>
                     </div>
+                    {console.log('aa',reviewContent, review?.content)}
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {review?.user?.id === props.auth.user?.id && (
                             <ReviewIconContainer>

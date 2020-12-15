@@ -103,7 +103,7 @@ function Contentpage(props) {
         props.auth.fetchProfile();
         fetchPost();
         fetchReviews();
-    }, []);
+    }, [reviews?.length]);
 
     const fetchReviews = () => {
         api.get(`v1/posts/${postid}/reviews/`)
