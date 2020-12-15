@@ -39,6 +39,7 @@ function Review(props) {
 
     useEffect(()=>{
         setReviewContent(review?.content);
+        setIsUpdateClicked(false);
     },[review?.id]);
 
     const onUpdateReview = (content) => {
