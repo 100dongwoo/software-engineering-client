@@ -29,6 +29,9 @@ yarn start
 - Infinite Scroll
 - moment
 
+##### 사용한 공공데이터
+[창업진흥원_창업공간 플랫폼](https://www.data.go.kr/data/15043133/openapi.do) <br/>
+[창업넷 콘텐츠](https://www.data.go.kr/data/15001174/openapi.do)
 # 서버 저장소
 
 [서버 저장소](https://github.com/kimja7045/software-engineering-server)
