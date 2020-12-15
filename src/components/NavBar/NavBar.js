@@ -119,6 +119,7 @@ function NavBar(props) {
                         </Navbar>
                     </>
                 )}
+                <Navbar to={'/Start-Place'}>창업 지원센터</Navbar>
                 <Navbar to={'/Notice'}>창업 공지사항</Navbar>
                 <Navbar to={'/post'}>게시판</Navbar>
                 <Navbar to={'/'}>소개</Navbar>
@@ -154,6 +155,15 @@ function NavBar(props) {
                         }}
                     >
                         게시판
+                    </SideMenu>
+
+                    <SideMenu
+                        onClick={() => {
+                            setVisible(false);
+                            history.push('/Start-Place');
+                        }}
+                    >
+                        창업 지원센터
                     </SideMenu>
                     <SideMenu
                         onClick={() => {

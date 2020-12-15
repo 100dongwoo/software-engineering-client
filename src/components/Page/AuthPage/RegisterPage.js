@@ -94,6 +94,10 @@ function LoginPage(props) {
                 .required('필수 항목입니다.'),
         }),
         onSubmit: (values, { setSubmitting, setErrors }) => {
+            if (values.checkPassword !== values.password) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
             console.log('onSubmit result', values);
             api.post('v1/users/sign-up/', values)
                 .then((res) => {
@@ -101,7 +105,7 @@ function LoginPage(props) {
                     if (res.data.code === 'exists') {
                         alert(res.data.msg);
                         return;
-                    } else if (!res.ok){
+                    } else if (!res.ok) {
                         alert('회원가입에 실패하였습니다.');
                         return;
                     }
@@ -110,7 +114,7 @@ function LoginPage(props) {
                     // resetForm();
                 })
                 .catch((err) => {
-                    console.log('err',err);
+                    console.log('err', err);
                 });
         },
     });

@@ -58,6 +58,8 @@ function ApiNotice(props) {
 
 export default ApiNotice;
 const Container = styled.div`
+    color: #34558b;
+    font-weight: bold;
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1.2fr);
