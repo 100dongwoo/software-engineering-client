@@ -161,7 +161,7 @@ const TooltipContainer = styled.div`
     color: #34558b;
     display: block;
     font-weight: bold;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1224px) {
         display: none;
     }
 `;
@@ -172,7 +172,7 @@ const AnotherTooltipContainer = styled.div`
     color: #34558b;
     font-weight: bold;
     display: none;
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1224px) {
         display: inline-block;
     }
 `;
