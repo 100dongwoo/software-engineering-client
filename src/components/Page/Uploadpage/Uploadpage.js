@@ -4,7 +4,6 @@ import './Uploadpage.css';
 import api from '../../../api_manager';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-// import Input from '@material-ui/core/Input';
 import styled from 'styled-components';
 
 function Uploadpage(props) {

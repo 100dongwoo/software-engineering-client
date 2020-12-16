@@ -65,10 +65,6 @@ function StartUpPlace(props) {
                         {...params}
                         label="지역"
                         variant="outlined"
-                        // onChange={(e) => {
-                        //     console.log(e.target.value);
-                        //     fetchStartUpPlaces(e.target.value);
-                        // }}
                     />
                 )}
             />

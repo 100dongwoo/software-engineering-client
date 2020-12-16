@@ -27,16 +27,15 @@ function StartUpPlaceToopTip({ place }) {
             // `https://map.kakao.com/link/map/${place.name},${place.latitude},${place.longitude}`
         );
     };
-
+    // address: "부산 동구 중앙대로296번길 3-3 (초량동)"
+    // enterprise: "여성기업종합지원센터"
+    // id: 397
+    // latitude: 35.123116
+    // longitude: 129.04457
+    // name: "(재)여성기업종합지원센터 부산센터"
+    // region: "부산"
+    // tel: "051-465-1001"
     return (
-        // address: "부산 동구 중앙대로296번길 3-3 (초량동)"
-        // enterprise: "여성기업종합지원센터"
-        // id: 397
-        // latitude: 35.123116
-        // longitude: 129.04457
-        // name: "(재)여성기업종합지원센터 부산센터"
-        // region: "부산"
-        // tel: "051-465-1001"
         <>
             <TooltipContainer
                 ref={(element) => {
@@ -63,7 +62,6 @@ function StartUpPlaceToopTip({ place }) {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            {/*<p>{place.region}</p>*/}
                             <div
                                 style={{
                                     display: 'flex',
@@ -118,7 +116,6 @@ function StartUpPlaceToopTip({ place }) {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            {/*<p>{place.region}</p>*/}
                             <div
                                 style={{
                                     display: 'flex',
