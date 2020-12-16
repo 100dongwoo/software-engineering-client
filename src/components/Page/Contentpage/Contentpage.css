@@ -61,11 +61,14 @@
     border: 1px solid black;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .Container {
         width: 95%;
     }
+    .PostBox{
+        padding: 20px 3% 1% 5%;
 
+    }
     .PostDate {
         font-size: 1rem;
     }

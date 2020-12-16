@@ -178,7 +178,11 @@ function Contentpage(props) {
                         <p className="PostName">{post.title}</p>
                         <div>
                             {post.isMine && (
-                                <>
+                                <div
+                                    style={{
+                                        textAlign: 'right',
+                                    }}
+                                >
                                     <Tooltip title="수정">
                                         <IconButton
                                             aria-label="수정"
@@ -196,7 +200,7 @@ function Contentpage(props) {
                                             {/*<button onClick={onUpdatePost}>수정</button>*/}
                                         </IconButton>
                                     </Tooltip>
-                                </>
+                                </div>
                             )}
                             {
                                 !post.isMine &&
