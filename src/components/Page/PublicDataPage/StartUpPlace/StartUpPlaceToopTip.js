@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ToolTip from 'react-portal-tooltip';
-import { makeStyles } from '@material-ui/core/styles';
 import RoomIcon from '@material-ui/icons/Room';
 import styled from 'styled-components';
 

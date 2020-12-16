@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import api, { extraApi } from '../../../../api_manager';
-import moment from 'moment';
+import api from '../../../../api_manager';
 import styled from 'styled-components';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -75,8 +73,8 @@ function StartUpPlace(props) {
                 )}
             />
             <Container>
-                {startUpPlaces.map((place, i) => (
-                    <StartUpPlaceToopTip place={place} />
+                {startUpPlaces.map((place, index) => (
+                    <StartUpPlaceToopTip place={place} key={index} />
                 ))}
             </Container>
         </>
@@ -94,11 +92,11 @@ const Container = styled.div`
     grid-column-gap: 1rem;
     grid-row-gap: 1.5rem;
 
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1224px) {
         grid-template-columns: repeat(2, 1.2fr);
         margin-top: 1rem;
     }
-    @media only screen and (max-width: 524px) {
+    @media only screen and (max-width: 768px) {
         grid-template-columns: repeat(1, 1.2fr);
         margin-top: 1rem;
     }
