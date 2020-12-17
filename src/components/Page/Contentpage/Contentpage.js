@@ -172,6 +172,7 @@ function Contentpage(props) {
                 <div>
                     <div
                         style={{
+                            alignItems: 'top',
                             display: 'flex',
                             justifyContent: 'space-between',
                         }}
@@ -179,7 +180,11 @@ function Contentpage(props) {
                         <p className="PostName">{post.title}</p>
                         <div>
                             {post.isMine && (
-                                <>
+                                <div
+                                    style={{
+                                        textAlign: 'right',
+                                    }}
+                                >
                                     <Tooltip title="수정">
                                         <IconButton
                                             aria-label="수정"
@@ -197,38 +202,44 @@ function Contentpage(props) {
                                             {/*<button onClick={onUpdatePost}>수정</button>*/}
                                         </IconButton>
                                     </Tooltip>
-                                </>
+                                </div>
                             )}
-                            {
-                                !post.isMine &&
-                                    !!props.auth.user?.id &&
-                                    (post.hasFavorite ? (
-                                        <Tooltip title="찜 삭제">
-                                            <FavoriteOutlinedIcon
-                                                aria-label="찜삭제"
-                                                style={{ cursor: 'pointer' }}
-                                                onClick={() =>
-                                                    onChangeFavorite(
-                                                        post.hasFavorite
-                                                    )
-                                                }
-                                            />
-                                        </Tooltip>
-                                    ) : (
-                                        <Tooltip title="찜 추가">
-                                            <FavoriteBorderOutlinedIcon
-                                                aria-label="찜 추가"
-                                                style={{ cursor: 'pointer' }}
-                                                onClick={() =>
-                                                    onChangeFavorite(
-                                                        post.hasFavorite
-                                                    )
-                                                }
-                                            />
-                                        </Tooltip>
-                                    ))
-                                // </Tooltip>
-                            }
+                            <div style={{ marginTop: '0.5rem' }}>
+                                {
+                                    !post.isMine &&
+                                        !!props.auth.user?.id &&
+                                        (post.hasFavorite ? (
+                                            <Tooltip title="찜 삭제">
+                                                <FavoriteOutlinedIcon
+                                                    aria-label="찜삭제"
+                                                    style={{
+                                                        cursor: 'pointer',
+                                                    }}
+                                                    onClick={() =>
+                                                        onChangeFavorite(
+                                                            post.hasFavorite
+                                                        )
+                                                    }
+                                                />
+                                            </Tooltip>
+                                        ) : (
+                                            <Tooltip title="찜 추가">
+                                                <FavoriteBorderOutlinedIcon
+                                                    aria-label="찜 추가"
+                                                    style={{
+                                                        cursor: 'pointer',
+                                                    }}
+                                                    onClick={() =>
+                                                        onChangeFavorite(
+                                                            post.hasFavorite
+                                                        )
+                                                    }
+                                                />
+                                            </Tooltip>
+                                        ))
+                                    // </Tooltip>
+                                }
+                            </div>
 
                             {/*<Tooltip title="수정">*/}
                             {/*    <IconButton*/}
