@@ -149,19 +149,20 @@ function Contentpage(props) {
     };
 
     const onChangeFavorite = (hasFavorite) => {
+        if (hasFavorite) {
+            setPost(Object.assign({}, post, { hasFavorite: false }));
+        } else {
+            setPost(Object.assign({}, post, { hasFavorite: true }));
+        }
+        alert('찜목록이 업데이트되었습니다.');
+
         api.get(
             `v1/posts/${postid}/${hasFavorite ? 'unfavorite' : 'favorite'}/`
         ).then((res) => {
-            if (!res.ok) {
-                alert('찜목록 업데이트에 실패하였습니다.');
-                return;
-            }
-            if (hasFavorite) {
-                setPost(Object.assign({}, post, { hasFavorite: false }));
-            } else {
-                setPost(Object.assign({}, post, { hasFavorite: true }));
-            }
-            alert('찜목록이 업데이트되었습니다.');
+            // if (!res.ok) {
+            //     alert('찜목록 업데이트에 실패하였습니다.');
+            //     return;
+            // }
         });
     };
     return (
